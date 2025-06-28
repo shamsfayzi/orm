@@ -11,9 +11,11 @@
     @await Html.PartialAsync("_HeaderPageButtons")
 
 </div>
-<div class="card">
-    <form asp-action="Edit" method="post" id="appCreate">
-        @Html.AntiForgeryToken()
+@if (ViewStaticState.IsAdmin)
+{
+    <div class="card">
+        <form asp-action="Edit" method="post" id="appCreate">
+            @Html.AntiForgeryToken()
         @Html.HiddenFor(a=>a.Id)
         <div class="grid-input grid-cols-3">
             <div>
@@ -51,9 +53,16 @@
         </div>
     </form>
 </div>
+}
+else
+{
+    <div class="alert alert-danger">Access Denied. You do not have permission to edit users.</div>
+}
 
 
 @section Scripts {
+    @if (ViewStaticState.IsAdmin) // Only render script if form is rendered
+    {
     <script>
         var appCreate = createApp({
             data() {
@@ -92,4 +101,5 @@
         appCreate.mount("#appCreate")
 
     </script>
+    }
 }

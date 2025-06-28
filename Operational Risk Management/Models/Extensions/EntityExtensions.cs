@@ -90,7 +90,7 @@ namespace Operational_Risk_Management.Models.Extensions
         }
         public static void LogAndSave(this ILogger logger, IApplicationDbContext dbContext, string message, params object[] args)
         {
-            dbContext.Logs.Add(new ActivityLog()
+            dbContext.Logs.Add(new Log() // Changed ActivityLog to Log
             {
                 Content = string.Format(message, args)
             });

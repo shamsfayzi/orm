@@ -7,9 +7,11 @@
     <span class="font-semibold">New User form</span>
     @await Html.PartialAsync("_HeaderPageButtons")
 </div>
-<div class="card">
-    <form asp-action="create" method="post" id="appCreate">
-        @Html.AntiForgeryToken()
+@if (ViewStaticState.IsAdmin)
+{
+    <div class="card">
+        <form asp-action="create" method="post" id="appCreate">
+            @Html.AntiForgeryToken()
         <div class="grid-input grid-cols-2">
             <div>
                 @Html.DisplayFor(a => a.DepartmentName)
@@ -32,9 +34,16 @@
     </form>
 
 </div>
+}
+else
+{
+    <div class="alert alert-danger">Access Denied. You do not have permission to create departments.</div>
+}
 
 
 @section Scripts {
+    @if (ViewStaticState.IsAdmin) // Only render script if form is rendered
+    {
     <script>
         var appCreate = createApp({
             data() {

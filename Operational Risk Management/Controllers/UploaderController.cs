@@ -82,6 +82,7 @@ namespace Operational_Risk_Management.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateSubmission(VM_SubmissionUpdate model)
         {
             if (ModelState.IsValid && await _submissionRepository.IsExistedByIdAsync(model.Id, out var submission))
@@ -90,14 +91,15 @@ namespace Operational_Risk_Management.Controllers
                 submission.Breaches = model.Breaches;
                 await _submissionRepository.UpdateAsync(submission);
 
-                TempData["SuccessMessage"] = "Submission updated successfully.";
+                TempData["msg-success"] = "Submission updated successfully.";
                 return RedirectToAction("ViewSubmission", new { id = model.Id });
             }
 
-            TempData["ErrorMessage"] = "Invalid submission data or submission not found.";
+            TempData["msg-error"] = "Invalid submission data or submission not found.";
             return RedirectToAction("ViewSubmission", new { id = model.Id });
         }
         [HttpPost]
+        [ValidateAntiForgeryToken] // Added for AJAX, client must send token
         public async Task<IActionResult> UploadAttachments(IFormCollection form)
         {
             if (!Guid.TryParse(form["submissionId"], out var submissionId))
@@ -115,6 +117,8 @@ namespace Operational_Risk_Management.Controllers
             return Ok(new { success = true, message, files = savedFiles });
         
         }
+        [HttpPost] // Assuming this should be POST, and thus needs AntiForgeryToken
+        [ValidateAntiForgeryToken] // Added for AJAX, client must send token
         public async Task<IActionResult> RequestOverride([FromBody] VM_CR_OverrideAccessRequest overrideAccessRequest)
         {
             if (!ModelState.IsValid)

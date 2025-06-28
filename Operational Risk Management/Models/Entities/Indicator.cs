@@ -23,7 +23,8 @@ namespace Operational_Risk_Management.Models.Entities
 
         public int TolerableBreaches { get; set; } = 0;
 
-        public DateTime? UpdatedAt { get; set; }
+        // Removed UpdatedAt property to rely on BaseEntity.UpdatedDate
+        // public DateTime? UpdatedAt { get; set; }
 
         public bool IsActive { get; set; } = true;
 

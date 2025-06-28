@@ -60,13 +60,13 @@ namespace Operational_Risk_Management.Controllers
 
             [HttpPost]
             [Authorize(Roles = "Admin,RiskManagement")]
-            // [ValidateAntiForgeryToken] // Consider adding if you have @Html.AntiForgeryToken() in the form
+            [ValidateAntiForgeryToken]
             public async Task<IActionResult> AddComment(AddIncidentCommentViewModel model)
             {
                 if (!ModelState.IsValid)
                 {
                     // Option 1: Redirect back with TempData for error (simpler for now)
-                    TempData["ErrorMessage"] = ModelState.Values.SelectMany(v => v.Errors).FirstOrDefault()?.ErrorMessage ?? "Invalid comment submission.";
+                    TempData["msg-error"] = ModelState.Values.SelectMany(v => v.Errors).FirstOrDefault()?.ErrorMessage ?? "Invalid comment submission.";
                     // Assuming IncidentDetails is served from HomeController.GetIncidentDetails or similar.
                     // The view is actually /Home/IncidentDetails/{id}, which implies an action like GetIncidentDetails in HomeController.
                     return RedirectToAction("IncidentDetails", "Home", new { id = model.IncidentId });
@@ -77,7 +77,7 @@ namespace Operational_Risk_Management.Controllers
 
                 if (string.IsNullOrEmpty(commenterId) || string.IsNullOrEmpty(commenterName))
                 {
-                    TempData["ErrorMessage"] = "Could not identify commenter.";
+                    TempData["msg-error"] = "Could not identify commenter.";
                     return RedirectToAction("IncidentDetails", "Home", new { id = model.IncidentId });
                 }
 
@@ -90,7 +90,7 @@ namespace Operational_Risk_Management.Controllers
                     model.IsVisibleToDepartment
                 );
 
-                TempData["SuccessMessage"] = "Comment added successfully.";
+                TempData["msg-success"] = "Comment added successfully.";
                 return RedirectToAction("IncidentDetails", "Home", new { id = model.IncidentId });
             }
 
@@ -128,7 +128,7 @@ namespace Operational_Risk_Management.Controllers
 
                 if (createdIncidentDetails != null && createdIncidentDetails.Id != Guid.Empty)
                 {
-                    TempData["SuccessMessage"] = $"Incident '{createdIncidentDetails.TitleOfIncident}' reported successfully with ID {createdIncidentDetails.Id}!";
+                    TempData["msg-success"] = $"Incident '{createdIncidentDetails.TitleOfIncident}' reported successfully with ID {createdIncidentDetails.Id.ToString().Substring(0,8).ToUpper()}!";
 
                     // Handle Supporting Document Uploads
                     if (model.SupportingDocuments != null && model.SupportingDocuments.Any())
@@ -143,14 +143,14 @@ namespace Operational_Risk_Management.Controllers
                                 await _incidentService.UploadDocumentAsync(createdIncidentDetails.Id, file, file.FileName, userId);
                             }
                         }
-                        TempData["SuccessMessage"] += " Supporting documents uploaded."; // Append to existing success message
+                        TempData["msg-success"] += " Supporting documents uploaded."; // Append to existing success message
                     }
 
                     return RedirectToAction("GetIncidentDetails", "Home", new { incidentId = createdIncidentDetails.Id });
                 }
                 else
                 {
-                    TempData["ErrorMessage"] = "Failed to report incident. Please try again or contact support.";
+                    TempData["msg-error"] = "Failed to report incident. Please try again or contact support.";
                     // Re-populate dropdowns before returning view
                     model.IncidentTypes = Enum.GetValues(typeof(IncidentType)).Cast<IncidentType>()
                         .Select(e => new SelectListItem { Value = e.ToString(), Text = e.ToString() }).ToList();
@@ -498,12 +498,12 @@ namespace Operational_Risk_Management.Controllers
                         }
                     }
 
-                    TempData["SuccessMessage"] = "Incident updated successfully.";
+                    TempData["msg-success"] = "Incident updated successfully.";
                     return RedirectToAction("GetIncidentDetails", "Home", new { incidentId = model.Id });
                 }
                 else
                 {
-                    TempData["ErrorMessage"] = "Failed to update incident.";
+                    TempData["msg-error"] = "Failed to update incident.";
                     model.IncidentTypes = Enum.GetValues(typeof(IncidentType)).Cast<IncidentType>()
                         .Select(e => new SelectListItem { Value = e.ToString(), Text = e.ToString() }).ToList();
                     model.IncidentCategoryLevels = Enum.GetValues(typeof(IncidentCategoryLevel)).Cast<IncidentCategoryLevel>()

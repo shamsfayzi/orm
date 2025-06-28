@@ -14,20 +14,26 @@
                     <p class="mt-2 text-gray-600">Manage and track operational risk incidents</p>
                 </div>
                 <div class="flex space-x-3">
-                    <a href="@Url.Action("CreateIncident", "Incident")" 
-                       class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    @if (ViewStaticState.IsUploader || ViewStaticState.IsAdmin || ViewStaticState.IsRiskManager)
+                    {
+                        <a href="@Url.Action("CreateIncident", "Incident")"
+                           class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                         </svg>
                         New Incident
-                    </a>
-                    <button @click="exportData" 
-                            class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        </a>
+                    }
+                    @if (ViewStaticState.IsAdmin || ViewStaticState.IsRiskManager)
+                    {
+                        <button @click="exportData" id="exportIncidentsButton"
+                                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                         </svg>
                         Export
-                    </button>
+                        </button>
+                    }
                 </div>
             </div>
         </div>
@@ -452,8 +458,21 @@ createApp({
             this.currentPage = page;
         },
         exportData() {
-            // Implementation for data export
-            console.log('Exporting data...');
+            let exportUrl = '@Url.Action("ExportIncidentsToExcel", "Incident")';
+            const params = new URLSearchParams();
+            if (this.filters.searchTerm) params.append('searchTerm', this.filters.searchTerm);
+            if (this.filters.status) params.append('status', this.filters.status);
+            if (this.filters.type) params.append('type', this.filters.type);
+            if (this.filters.riskLevel) params.append('riskLevel', this.filters.riskLevel);
+            if (this.filters.startDate) params.append('startDate', this.filters.startDate);
+            if (this.filters.endDate) params.append('endDate', this.filters.endDate);
+
+            const queryString = params.toString();
+            if (queryString) {
+                exportUrl += '?' + queryString;
+            }
+            console.log('Exporting data to URL:', exportUrl);
+            window.location.href = exportUrl; // Trigger file download
         }
     }
 }).mount('#incidentApp');

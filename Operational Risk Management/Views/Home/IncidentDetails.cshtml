@@ -10,12 +10,15 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
         <div>
             <h1 class="text-2xl font-bold text-gray-900">Incident Details</h1>
-            <p class="text-sm text-gray-500 mt-1">Reference: <span class="font-medium">@Model.Id</span></p>
+            <p class="text-sm text-gray-500 mt-1">Reference: <span class="font-medium">@Model.Id.ToString().Substring(0,8).ToUpper()</span></p>
         </div>
         <div class="flex space-x-3">
-            <button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
-                <i class="fas fa-edit mr-2"></i> Edit
-            </button>
+            @if (ViewStaticState.IsAdmin || ViewStaticState.IsRiskManager || (ViewStaticState.CurrentUserName == Model.ReportedBy && (Model.IncidentStatus == Operational_Risk_Management.Models.Incident.IncidentStatus.Open || Model.RequiresRevision)))
+            {
+                <a asp-action="EditIncident" asp-controller="Incident" asp-route-id="@Model.Id" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition flex items-center">
+                    <i class="fas fa-edit mr-2"></i> Edit
+                </a>
+            }
             <a href="@Url.Action("ExportIncidentToPdf", "Incident", new { id = Model.Id })"
                class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition flex items-center">
                 <i class="fas fa-file-pdf mr-2"></i> Download PDF
@@ -182,7 +185,10 @@
             {
                 foreach (var comment in Model.ReviewComments.OrderByDescending(c => c.CommentDate))
                 {
-                    if (User.IsInRole("Admin") || User.IsInRole("RiskManagement") || comment.IsVisibleToDepartment)
+                    // Role check for comment visibility: Admin & RiskManager see all. Others see it if IsVisibleToDepartment is true.
+                    // Further refinement could be: (ViewStaticState.IsUploader && ViewStaticState.CurrentUserDepartment == Model.BranchDepartmentUnit && comment.IsVisibleToDepartment)
+                    bool canViewComment = ViewStaticState.IsAdmin || ViewStaticState.IsRiskManager || comment.IsVisibleToDepartment;
+                    if (canViewComment)
                     {
                         <div class="p-4 rounded-md @(comment.IsRevisionNote ? "bg-yellow-50 border border-yellow-200" : "bg-gray-50")">
                             <div class="flex justify-between items-center mb-1">
@@ -207,7 +213,7 @@
         </div>
     </section>
 
-    @if (User.IsInRole("Admin") || User.IsInRole("RiskManagement"))
+    @if (ViewStaticState.IsAdmin || ViewStaticState.IsRiskManager)
     {
         <section class="bg-white shadow rounded-lg overflow-hidden mb-8">
             <div class="px-6 py-5 border-b border-gray-200">
@@ -215,7 +221,7 @@
             </div>
             <div class="p-6">
                 <form method="post" action="@Url.Action("AddComment", "Incident")">
-                    @* @Html.AntiForgeryToken() // Add if ValidateAntiForgeryToken is used in controller *@
+                    @Html.AntiForgeryToken()
                     <input type="hidden" name="IncidentId" value="@Model.Id" />
 
                     <div>

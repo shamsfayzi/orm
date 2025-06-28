@@ -9,7 +9,7 @@ namespace Operational_Risk_Management.Models.Interfaces
     {
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Department> Departments { get; set; }
-        public DbSet<ActivityLog> Logs { get; set; }
+        public DbSet<Log> Logs { get; set; } // Changed ActivityLog to Log
         public DbSet<Indicator> Indicators { get; set; }
         public DbSet<Submission> Submissions { get; set; }
         public DbSet<Template> Templates { get; set; }

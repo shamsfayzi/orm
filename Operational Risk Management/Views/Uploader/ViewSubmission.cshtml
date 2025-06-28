@@ -79,6 +79,7 @@
                     </h3>
                 </div>
                 <form asp-action="UpdateSubmission" method="post" class="p-6 space-y-6">
+                    @Html.AntiForgeryToken()
                     <input type="hidden" name="Id" asp-for="UpdateModel.Id" />
 
                     <div>

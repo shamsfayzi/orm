@@ -18,7 +18,7 @@ namespace Operational_Risk_Management.Models.Context
         public DbSet<Indicator> Indicators { get; set; }
         public DbSet<Submission> Submissions { get; set; }
         public DbSet<Template> Templates { get; set; }
-        public DbSet<ActivityLog> Logs { get; set; }
+        public DbSet<Log> Logs { get; set; } // Changed ActivityLog to Log
         public DbSet<Feedback> Feedbacks { get; set; }
         public DbSet<Attachment> Attachments { get; set; }
         public DbSet<SubmissionWindows> SubmissionWindows { get; set; }
@@ -26,12 +26,16 @@ namespace Operational_Risk_Management.Models.Context
         public DbSet<Incident.IncidentDocument> IncidentDocuments { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<IncidentReviewComment> IncidentReviewComments { get; set; }
+        public DbSet<OverrideAccessRequest> OverrideAccessRequests { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyFilter<ISoftDelete>(a => !a.IsDeleted);
 
             //modelBuilder.ApplyFilter<Tag>(a => a.CreateBy==_accessor.HttpContext.User.GetUserName());
             //InitDB.Init(modelBuilder);
+
+            modelBuilder.Entity<Log>().ToTable("Logs"); // Ensure Log entity maps to "Logs" table
+
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<IncidentReviewComment>()

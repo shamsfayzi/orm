@@ -20,15 +20,18 @@
         </div>
 
         <div class="flex flex-wrap gap-2">
-            <button type="button" asp-action="AddIndicator" asp-route-id="@template.Id"
-                    class="hs-button-active:scale-[.98] py-2 px-3 inline-flex items-center gap-x-1.5 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">
-                <svg class="size-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            @if (ViewStaticState.IsAdmin || ViewStaticState.IsRiskManager)
+            {
+                <a asp-controller="Template" asp-action="AddIndicator" asp-route-id="@template.Id"
+                        class="hs-button-active:scale-[.98] py-2 px-3 inline-flex items-center gap-x-1.5 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700">
+                    <svg class="size-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                 </svg>
                 Add Indicator
-            </button>
+                </a>
+            }
 
-            <a href="/KRI/Templates"
+            <a href="@Url.Action("Index","Template")"
                class="py-2 px-3 inline-flex items-center gap-x-1.5 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 hover:bg-gray-50 dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700">
                 <svg class="size-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
