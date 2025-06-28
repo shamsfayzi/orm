@@ -1,0 +1,308 @@
+@model Operational_Risk_Management.Models.View_Models.Incident.CreateIncidentPageViewModel
+@{
+    ViewData["Title"] = "Report New Incident";
+}
+
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <h1 class="text-2xl font-bold text-gray-900">@ViewData["Title"]</h1>
+    </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <form asp-action="CreateIncident" asp-controller="Incident" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+
+        <div asp-validation-summary="ModelOnly" class="text-red-600 mb-4 p-3 bg-red-50 rounded-md border border-red-200"></div>
+
+        <!-- This Report Section -->
+        <div class="bg-white shadow rounded-lg overflow-hidden mb-8">
+            <div class="px-6 py-5 border-b border-gray-200">
+                <h2 class="text-lg font-medium text-gray-900">This Report</h2>
+            </div>
+            <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+                <div>
+                    <label asp-for="ReportedBy" class="block text-sm font-medium text-gray-700"></label>
+                    <input asp-for="ReportedBy" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                    <span asp-validation-for="ReportedBy" class="text-red-500 text-xs"></span>
+                </div>
+                <div>
+                    <label asp-for="TitleRole" class="block text-sm font-medium text-gray-700"></label>
+                    <input asp-for="TitleRole" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                    <span asp-validation-for="TitleRole" class="text-red-500 text-xs"></span>
+                </div>
+                <div>
+                    <label asp-for="BranchDepartmentUnit" class="block text-sm font-medium text-gray-700"></label>
+                    <input asp-for="BranchDepartmentUnit" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                    <span asp-validation-for="BranchDepartmentUnit" class="text-red-500 text-xs"></span>
+                </div>
+                <div>
+                    <label asp-for="ReportDate" class="block text-sm font-medium text-gray-700"></label>
+                    <input asp-for="ReportDate" type="date" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                    <span asp-validation-for="ReportDate" class="text-red-500 text-xs"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Incident/Event Reported Section -->
+        <div class="bg-white shadow rounded-lg overflow-hidden mb-8">
+            <div class="px-6 py-5 border-b border-gray-200">
+                <h2 class="text-lg font-medium text-gray-900">Incident/Event Reported</h2>
+            </div>
+            <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+                <div>
+                    <label asp-for="StartDate" class="block text-sm font-medium text-gray-700"></label>
+                    <input asp-for="StartDate" type="datetime-local" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                    <span asp-validation-for="StartDate" class="text-red-500 text-xs"></span>
+                </div>
+                <div>
+                    <label asp-for="EndDate" class="block text-sm font-medium text-gray-700"></label>
+                    <input asp-for="EndDate" type="datetime-local" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                    <span asp-validation-for="EndDate" class="text-red-500 text-xs"></span>
+                </div>
+                <div>
+                    <label asp-for="DiscoveryDate" class="block text-sm font-medium text-gray-700"></label>
+                    <input asp-for="DiscoveryDate" type="datetime-local" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                    <span asp-validation-for="DiscoveryDate" class="text-red-500 text-xs"></span>
+                </div>
+                <div>
+                    <label asp-for="DiscoveredBy" class="block text-sm font-medium text-gray-700"></label>
+                    <input asp-for="DiscoveredBy" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                    <span asp-validation-for="DiscoveredBy" class="text-red-500 text-xs"></span>
+                </div>
+                <div class="md:col-span-2">
+                    <label asp-for="TitleOfIncident" class="block text-sm font-medium text-gray-700"></label>
+                    <input asp-for="TitleOfIncident" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                    <span asp-validation-for="TitleOfIncident" class="text-red-500 text-xs"></span>
+                </div>
+                <div>
+                    <label asp-for="ActivityProcess" class="block text-sm font-medium text-gray-700"></label>
+                    <input asp-for="ActivityProcess" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                    <span asp-validation-for="ActivityProcess" class="text-red-500 text-xs"></span>
+                </div>
+                <div>
+                    <label asp-for="FirstLineRiskOwner" class="block text-sm font-medium text-gray-700"></label>
+                    <input asp-for="FirstLineRiskOwner" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                    <span asp-validation-for="FirstLineRiskOwner" class="text-red-500 text-xs"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Staff Concerned Section -->
+        <div class="bg-white shadow rounded-lg overflow-hidden mb-8">
+            <div class="px-6 py-5 border-b border-gray-200">
+                <h2 class="text-lg font-medium text-gray-900">Staff Concerned</h2>
+            </div>
+            <div class="p-6" id="staffConcernedContainer">
+                @for (int i = 0; i < Model.StaffConcerned.Count; i++)
+                {
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-4 items-end mb-3 staff-entry">
+                        <input type="hidden" asp-for="StaffConcerned[i].Name" /> <!-- Workaround for model binding with potential removal -->
+                        <div class="md:col-span-1">
+                            <label asp-for="StaffConcerned[i].Name" class="block text-sm font-medium text-gray-700">Name</label>
+                            <input asp-for="StaffConcerned[i].Name" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 staff-name-input">
+                        </div>
+                        <div class="md:col-span-1">
+                            <label asp-for="StaffConcerned[i].TitleFunction" class="block text-sm font-medium text-gray-700">Title/Function</label>
+                            <input asp-for="StaffConcerned[i].TitleFunction" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 staff-title-input">
+                        </div>
+                        @if (i > 1) // Allow removal for entries beyond the initial two
+                        {
+                        <div class="md:col-span-1">
+                             <button type="button" class="remove-staff-entry mt-1 inline-flex items-center px-3 py-2 border border-red-300 text-sm font-medium rounded-md text-red-700 bg-red-50 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Remove</button>
+                        </div>
+                        } else {
+                             <div class="md:col-span-1"></div> <!-- Placeholder for alignment -->
+                        }
+                    </div>
+                }
+                <button type="button" id="addStaffEntry" class="mt-2 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Add Staff Member</button>
+            </div>
+        </div>
+
+        <!-- Incident/Event Details Section -->
+        <div class="bg-white shadow rounded-lg overflow-hidden mb-8">
+            <div class="px-6 py-5 border-b border-gray-200">
+                <h2 class="text-lg font-medium text-gray-900">Incident/Event Details</h2>
+            </div>
+            <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+                <div>
+                    <label asp-for="IncidentType" class="block text-sm font-medium text-gray-700"></label>
+                    <select asp-for="IncidentType" asp-items="Model.IncidentTypes" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"></select>
+                    <span asp-validation-for="IncidentType" class="text-red-500 text-xs"></span>
+                </div>
+                <div>
+                    <label asp-for="IncidentCategoryLevel" class="block text-sm font-medium text-gray-700"></label>
+                    <select asp-for="IncidentCategoryLevel" asp-items="Model.IncidentCategoryLevels" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"></select>
+                    <span asp-validation-for="IncidentCategoryLevel" class="text-red-500 text-xs"></span>
+                </div>
+                <div>
+                    <label asp-for="RiskType" class="block text-sm font-medium text-gray-700"></label>
+                    <select asp-for="RiskType" asp-items="Model.RiskTypes" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"></select>
+                    <span asp-validation-for="RiskType" class="text-red-500 text-xs"></span>
+                </div>
+                <div>
+                    <label asp-for="RiskAssessment" class="block text-sm font-medium text-gray-700"></label>
+                    <select asp-for="RiskAssessment" asp-items="Model.RiskAssessments" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"></select>
+                    <span asp-validation-for="RiskAssessment" class="text-red-500 text-xs"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Incident/Event Impact Section -->
+        <div class="bg-white shadow rounded-lg overflow-hidden mb-8">
+            <div class="px-6 py-5 border-b border-gray-200">
+                <h2 class="text-lg font-medium text-gray-900">Incident/Event Impact</h2>
+            </div>
+            <div class="p-6">
+                <h3 class="text-md font-semibold text-gray-700 mb-2">Financial - Loss</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-7 gap-x-6 gap-y-4 mb-4">
+                    <div><label asp-for="FinancialLossCurrency" class="block text-sm font-medium text-gray-700"></label><input asp-for="FinancialLossCurrency" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></div>
+                    <div><label asp-for="FinancialLossGrossAmount" class="block text-sm font-medium text-gray-700"></label><input type="number" step="any" asp-for="FinancialLossGrossAmount" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></div>
+                    <div><label asp-for="FinancialLossLegalCosts" class="block text-sm font-medium text-gray-700"></label><input type="number" step="any" asp-for="FinancialLossLegalCosts" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></div>
+                    <div><label asp-for="FinancialLossOtherCosts" class="block text-sm font-medium text-gray-700"></label><input type="number" step="any" asp-for="FinancialLossOtherCosts" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></div>
+                    <div><label asp-for="FinancialLossRecoveryFromClient" class="block text-sm font-medium text-gray-700"></label><input type="number" step="any" asp-for="FinancialLossRecoveryFromClient" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></div>
+                    <div><label asp-for="FinancialLossRecoveryFromInsurance" class="block text-sm font-medium text-gray-700"></label><input type="number" step="any" asp-for="FinancialLossRecoveryFromInsurance" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></div>
+                </div>
+                <h3 class="text-md font-semibold text-gray-700 mb-2">Financial - Gain/Opp. Cost</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-7 gap-x-6 gap-y-4 mb-4">
+                    <div><label asp-for="GainCurrency" class="block text-sm font-medium text-gray-700"></label><input asp-for="GainCurrency" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></div>
+                    <div><label asp-for="GainGrossAmount" class="block text-sm font-medium text-gray-700"></label><input type="number" step="any" asp-for="GainGrossAmount" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></div>
+                    <div><label asp-for="GainLegalCosts" class="block text-sm font-medium text-gray-700"></label><input type="number" step="any" asp-for="GainLegalCosts" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></div>
+                    <div><label asp-for="GainOtherCosts" class="block text-sm font-medium text-gray-700"></label><input type="number" step="any" asp-for="GainOtherCosts" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></div>
+                    <div><label asp-for="GainRecoveryFromClient" class="block text-sm font-medium text-gray-700"></label><input type="number" step="any" asp-for="GainRecoveryFromClient" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></div>
+                    <div><label asp-for="GainRecoveryFromInsurance" class="block text-sm font-medium text-gray-700"></label><input type="number" step="any" asp-for="GainRecoveryFromInsurance" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></div>
+                </div>
+                 <div>
+                    <label asp-for="NonFinancialImpact" class="block text-sm font-medium text-gray-700"></label>
+                    <textarea asp-for="NonFinancialImpact" rows="3" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                    <span asp-validation-for="NonFinancialImpact" class="text-red-500 text-xs"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summaries Section -->
+        <div class="bg-white shadow rounded-lg overflow-hidden mb-8">
+            <div class="px-6 py-5 border-b border-gray-200">
+                <h2 class="text-lg font-medium text-gray-900">Summaries</h2>
+            </div>
+            <div class="p-6 space-y-4">
+                <div><label asp-for="EventIncidentDescription" class="block text-sm font-medium text-gray-700"></label><textarea asp-for="EventIncidentDescription" rows="4" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea><span asp-validation-for="EventIncidentDescription" class="text-red-500 text-xs"></span></div>
+                <div><label asp-for="EventIncidentCause" class="block text-sm font-medium text-gray-700"></label><textarea asp-for="EventIncidentCause" rows="4" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea><span asp-validation-for="EventIncidentCause" class="text-red-500 text-xs"></span></div>
+                <div><label asp-for="EventIncidentDiscovery" class="block text-sm font-medium text-gray-700"></label><textarea asp-for="EventIncidentDiscovery" rows="4" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea><span asp-validation-for="EventIncidentDiscovery" class="text-red-500 text-xs"></span></div>
+                <div><label asp-for="CorrectiveActionsImplemented" class="block text-sm font-medium text-gray-700"></label><textarea asp-for="CorrectiveActionsImplemented" rows="4" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea><span asp-validation-for="CorrectiveActionsImplemented" class="text-red-500 text-xs"></span></div>
+            </div>
+        </div>
+
+        <!-- Controls (in summary) Section -->
+        <div class="bg-white shadow rounded-lg overflow-hidden mb-8">
+            <div class="px-6 py-5 border-b border-gray-200"><h2 class="text-lg font-medium text-gray-900">Controls (in summary)</h2></div>
+            <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+                <div>
+                    <label asp-for="HasWrittenProcedure" class="block text-sm font-medium text-gray-700"></label>
+                    <select asp-for="HasWrittenProcedure" asp-items="Model.YesNoOptions" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></select>
+                    <span asp-validation-for="HasWrittenProcedure" class="text-red-500 text-xs"></span>
+                </div>
+                <div>
+                    <label asp-for="ProcedureIncludesControls" class="block text-sm font-medium text-gray-700"></label>
+                    <select asp-for="ProcedureIncludesControls" asp-items="Model.YesNoOptions" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></select>
+                    <span asp-validation-for="ProcedureIncludesControls" class="text-red-500 text-xs"></span>
+                </div>
+                <div class="md:col-span-2"><label asp-for="ExistingControlMeasures" class="block text-sm font-medium text-gray-700"></label><textarea asp-for="ExistingControlMeasures" rows="3" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea><span asp-validation-for="ExistingControlMeasures" class="text-red-500 text-xs"></span></div>
+                <div class="md:col-span-2"><label asp-for="ReasonsForFailure" class="block text-sm font-medium text-gray-700"></label><textarea asp-for="ReasonsForFailure" rows="3" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea><span asp-validation-for="ReasonsForFailure" class="text-red-500 text-xs"></span></div>
+            </div>
+        </div>
+
+        <!-- Proposed Corrective Measures Section -->
+        <div class="bg-white shadow rounded-lg overflow-hidden mb-8">
+            <div class="px-6 py-5 border-b border-gray-200"><h2 class="text-lg font-medium text-gray-900">Proposed Corrective Measures</h2></div>
+            <div class="p-6 space-y-4">
+                <div><label asp-for="ProposedPoliciesProcedures" class="block text-sm font-medium text-gray-700"></label><textarea asp-for="ProposedPoliciesProcedures" rows="3" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea></div>
+                <div><label asp-for="ProposedControls" class="block text-sm font-medium text-gray-700"></label><textarea asp-for="ProposedControls" rows="3" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea></div>
+                <div><label asp-for="ProposedHumanResources" class="block text-sm font-medium text-gray-700"></label><textarea asp-for="ProposedHumanResources" rows="3" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea></div>
+                <div><label asp-for="ProposedSystems" class="block text-sm font-medium text-gray-700"></label><textarea asp-for="ProposedSystems" rows="3" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea></div>
+                <div><label asp-for="ProposedOthers" class="block text-sm font-medium text-gray-700"></label><textarea asp-for="ProposedOthers" rows="3" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea></div>
+            </div>
+        </div>
+
+        <!-- Supporting Documents Section -->
+        <div class="bg-white shadow rounded-lg overflow-hidden mb-8">
+            <div class="px-6 py-5 border-b border-gray-200">
+                <h2 class="text-lg font-medium text-gray-900">Supporting Documents</h2>
+            </div>
+            <div class="p-6">
+                <div>
+                    <label asp-for="SupportingDocuments" class="block text-sm font-medium text-gray-700"></label>
+                    <input type="file" asp-for="SupportingDocuments" multiple class="mt-1 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+                    <p class="mt-1 text-xs text-gray-500" id="file_input_help">You can select multiple files. Max file size and allowed types are subject to system limits.</p>
+                    <span asp-validation-for="SupportingDocuments" class="text-red-500 text-xs"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Comments Section -->
+        <div class="bg-white shadow rounded-lg overflow-hidden mb-8">
+            <div class="px-6 py-5 border-b border-gray-200"><h2 class="text-lg font-medium text-gray-900">Other Comments (Overall)</h2></div>
+            <div class="p-6">
+                <textarea asp-for="OtherComments" rows="4" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+                <span asp-validation-for="OtherComments" class="text-red-500 text-xs"></span>
+            </div>
+        </div>
+
+        <div class="mt-8 flex justify-end">
+            <button type="button" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Cancel
+            </button>
+            <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Submit Incident Report
+            </button>
+        </div>
+    </form>
+</main>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const staffConcernedContainer = document.getElementById('staffConcernedContainer');
+        const addStaffEntryButton = document.getElementById('addStaffEntry');
+        let staffIndex = @Model.StaffConcerned.Count; // Start index from current count
+
+        addStaffEntryButton.addEventListener('click', function () {
+            const entryDiv = document.createElement('div');
+            entryDiv.className = 'grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-4 items-end mb-3 staff-entry';
+
+            entryDiv.innerHTML = `
+                <div class="md:col-span-1">
+                    <label for="StaffConcerned_${staffIndex}__Name" class="block text-sm font-medium text-gray-700">Name</label>
+                    <input type="text" id="StaffConcerned_${staffIndex}__Name" name="StaffConcerned[${staffIndex}].Name" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 staff-name-input">
+                </div>
+                <div class="md:col-span-1">
+                    <label for="StaffConcerned_${staffIndex}__TitleFunction" class="block text-sm font-medium text-gray-700">Title/Function</label>
+                    <input type="text" id="StaffConcerned_${staffIndex}__TitleFunction" name="StaffConcerned[${staffIndex}].TitleFunction" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 staff-title-input">
+                </div>
+                <div class="md:col-span-1">
+                    <button type="button" class="remove-staff-entry mt-1 inline-flex items-center px-3 py-2 border border-red-300 text-sm font-medium rounded-md text-red-700 bg-red-50 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Remove</button>
+                </div>
+            `;
+            staffConcernedContainer.insertBefore(entryDiv, addStaffEntryButton);
+            staffIndex++;
+
+            // Add event listener to the new remove button
+            entryDiv.querySelector('.remove-staff-entry').addEventListener('click', function() {
+                entryDiv.remove();
+                // Note: This simple removal might cause issues with model binding list indices if items are removed from the middle.
+                // A more robust solution would re-index or handle non-sequential indices on the server.
+                // For now, this provides basic removal.
+            });
+        });
+
+        // Add event listeners to existing remove buttons
+        staffConcernedContainer.querySelectorAll('.remove-staff-entry').forEach(button => {
+            button.addEventListener('click', function() {
+                button.closest('.staff-entry').remove();
+            });
+        });
+    });
+    </script>
+}

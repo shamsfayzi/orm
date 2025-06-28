@@ -1,0 +1,733 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Operational Risk Management.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Operational Risk Management.eyywgir4ju.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\attachments\\computer-scientist-resume-example49.pdf",
+      "PackagePath": "staticwebassets\\attachments\\computer-scientist-resume-example49.pdf"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\img\\AIB_BANK_Logo.png",
+      "PackagePath": "staticwebassets\\img\\AIB_BANK_Logo.png"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\img\\Aib1-name.png",
+      "PackagePath": "staticwebassets\\img\\Aib1-name.png"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\img\\Aib1.jpeg",
+      "PackagePath": "staticwebassets\\img\\Aib1.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\img\\Aib1.png",
+      "PackagePath": "staticwebassets\\img\\Aib1.png"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\img\\aib-pattern.png",
+      "PackagePath": "staticwebassets\\img\\aib-pattern.png"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\img\\doc2.png",
+      "PackagePath": "staticwebassets\\img\\doc2.png"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\img\\docApproved1.png",
+      "PackagePath": "staticwebassets\\img\\docApproved1.png"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\img\\documentApproved.png",
+      "PackagePath": "staticwebassets\\img\\documentApproved.png"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\img\\documentPending.png",
+      "PackagePath": "staticwebassets\\img\\documentPending.png"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\img\\documentrejected.png",
+      "PackagePath": "staticwebassets\\img\\documentrejected.png"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\img\\newDocument.png",
+      "PackagePath": "staticwebassets\\img\\newDocument.png"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\img\\newPR1.png",
+      "PackagePath": "staticwebassets\\img\\newPR1.png"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\img\\newPR2.png",
+      "PackagePath": "staticwebassets\\img\\newPR2.png"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\img\\newPr.png",
+      "PackagePath": "staticwebassets\\img\\newPr.png"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\img\\no file.jpg",
+      "PackagePath": "staticwebassets\\img\\no file.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\img\\no_comment.jpg",
+      "PackagePath": "staticwebassets\\img\\no_comment.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\img\\pendingDoc.png",
+      "PackagePath": "staticwebassets\\img\\pendingDoc.png"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\img\\rejected.png",
+      "PackagePath": "staticwebassets\\img\\rejected.png"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\img\\wave.png",
+      "PackagePath": "staticwebassets\\img\\wave.png"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\Notification.js",
+      "PackagePath": "staticwebassets\\js\\Notification.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\PrivateListManagerNotification.js",
+      "PackagePath": "staticwebassets\\js\\PrivateListManagerNotification.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\alpinejs@3.min.js",
+      "PackagePath": "staticwebassets\\js\\alpinejs@3.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\alpinejs_persist@3.13.0.min.js",
+      "PackagePath": "staticwebassets\\js\\alpinejs_persist@3.13.0.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\apexcharts\\apexcharts.min.js",
+      "PackagePath": "staticwebassets\\js\\apexcharts\\apexcharts.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\axios.min.js",
+      "PackagePath": "staticwebassets\\js\\axios.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\clipboard\\clipboard.min.js",
+      "PackagePath": "staticwebassets\\js\\clipboard\\clipboard.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\code.jquery.com_jquery-3.7.0.min.js",
+      "PackagePath": "staticwebassets\\js\\code.jquery.com_jquery-3.7.0.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\editorjs.js",
+      "PackagePath": "staticwebassets\\js\\editorjs.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\flowbite.min.js",
+      "PackagePath": "staticwebassets\\js\\flowbite.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\jquery\\jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\lodash\\lodash.min.js",
+      "PackagePath": "staticwebassets\\js\\lodash\\lodash.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\moment.min.js",
+      "PackagePath": "staticwebassets\\js\\moment.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\pexcharts.js",
+      "PackagePath": "staticwebassets\\js\\pexcharts.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\accordion.js",
+      "PackagePath": "staticwebassets\\js\\preline\\accordion.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\carousel.js",
+      "PackagePath": "staticwebassets\\js\\preline\\carousel.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\collapse.js",
+      "PackagePath": "staticwebassets\\js\\preline\\collapse.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\combobox.js",
+      "PackagePath": "staticwebassets\\js\\preline\\combobox.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\copy-markup.js",
+      "PackagePath": "staticwebassets\\js\\preline\\copy-markup.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\datatable.js",
+      "PackagePath": "staticwebassets\\js\\preline\\datatable.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\dropdown.js",
+      "PackagePath": "staticwebassets\\js\\preline\\dropdown.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\file-upload.js",
+      "PackagePath": "staticwebassets\\js\\preline\\file-upload.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\helper-apexcharts.js",
+      "PackagePath": "staticwebassets\\js\\preline\\helper-apexcharts.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\helper-clipboard.js",
+      "PackagePath": "staticwebassets\\js\\preline\\helper-clipboard.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\index.js",
+      "PackagePath": "staticwebassets\\js\\preline\\index.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\input-number.js",
+      "PackagePath": "staticwebassets\\js\\preline\\input-number.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\layout-splitter.js",
+      "PackagePath": "staticwebassets\\js\\preline\\layout-splitter.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\overlay.js",
+      "PackagePath": "staticwebassets\\js\\preline\\overlay.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\pin-input.js",
+      "PackagePath": "staticwebassets\\js\\preline\\pin-input.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\preline.js",
+      "PackagePath": "staticwebassets\\js\\preline\\preline.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\range-slider.js",
+      "PackagePath": "staticwebassets\\js\\preline\\range-slider.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\remove-element.js",
+      "PackagePath": "staticwebassets\\js\\preline\\remove-element.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\scrollspy.js",
+      "PackagePath": "staticwebassets\\js\\preline\\scrollspy.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\select.js",
+      "PackagePath": "staticwebassets\\js\\preline\\select.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\stepper.js",
+      "PackagePath": "staticwebassets\\js\\preline\\stepper.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\strong-password.js",
+      "PackagePath": "staticwebassets\\js\\preline\\strong-password.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\tabs.js",
+      "PackagePath": "staticwebassets\\js\\preline\\tabs.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\textarea-auto-height.js",
+      "PackagePath": "staticwebassets\\js\\preline\\textarea-auto-height.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\theme-switch.js",
+      "PackagePath": "staticwebassets\\js\\preline\\theme-switch.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\toggle-count.js",
+      "PackagePath": "staticwebassets\\js\\preline\\toggle-count.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\toggle-password.js",
+      "PackagePath": "staticwebassets\\js\\preline\\toggle-password.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\tooltip.js",
+      "PackagePath": "staticwebassets\\js\\preline\\tooltip.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\preline\\tree-view.js",
+      "PackagePath": "staticwebassets\\js\\preline\\tree-view.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\tailwind3.3.js",
+      "PackagePath": "staticwebassets\\js\\tailwind3.3.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\template.js",
+      "PackagePath": "staticwebassets\\js\\template.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\vue-select.js",
+      "PackagePath": "staticwebassets\\js\\vue-select.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\vue.global.js",
+      "PackagePath": "staticwebassets\\js\\vue.global.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\vue.global.prod.js",
+      "PackagePath": "staticwebassets\\js\\vue.global.prod.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\Toastify\\toastify.min.css",
+      "PackagePath": "staticwebassets\\lib\\Toastify\\toastify.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\alertifyjs\\alertify.js",
+      "PackagePath": "staticwebassets\\lib\\alertifyjs\\alertify.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\alertifyjs\\alertify.min.js",
+      "PackagePath": "staticwebassets\\lib\\alertifyjs\\alertify.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\alertifyjs\\css\\alertify.css",
+      "PackagePath": "staticwebassets\\lib\\alertifyjs\\css\\alertify.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\alertifyjs\\css\\alertify.min.css",
+      "PackagePath": "staticwebassets\\lib\\alertifyjs\\css\\alertify.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\alertifyjs\\css\\alertify.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\alertifyjs\\css\\alertify.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\alertifyjs\\css\\alertify.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\alertifyjs\\css\\alertify.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\alertifyjs\\css\\themes\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\alertifyjs\\css\\themes\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\alertifyjs\\css\\themes\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\alertifyjs\\css\\themes\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\alertifyjs\\css\\themes\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\alertifyjs\\css\\themes\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\alertifyjs\\css\\themes\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\alertifyjs\\css\\themes\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\alertifyjs\\css\\themes\\default.css",
+      "PackagePath": "staticwebassets\\lib\\alertifyjs\\css\\themes\\default.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\alertifyjs\\css\\themes\\default.min.css",
+      "PackagePath": "staticwebassets\\lib\\alertifyjs\\css\\themes\\default.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\alertifyjs\\css\\themes\\default.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\alertifyjs\\css\\themes\\default.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\alertifyjs\\css\\themes\\default.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\alertifyjs\\css\\themes\\default.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\alertifyjs\\css\\themes\\semantic.css",
+      "PackagePath": "staticwebassets\\lib\\alertifyjs\\css\\themes\\semantic.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\alertifyjs\\css\\themes\\semantic.min.css",
+      "PackagePath": "staticwebassets\\lib\\alertifyjs\\css\\themes\\semantic.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\alertifyjs\\css\\themes\\semantic.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\alertifyjs\\css\\themes\\semantic.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\alertifyjs\\css\\themes\\semantic.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\alertifyjs\\css\\themes\\semantic.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\datatable\\dataTables.css",
+      "PackagePath": "staticwebassets\\lib\\datatable\\dataTables.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\datatable\\dataTables.js",
+      "PackagePath": "staticwebassets\\lib\\datatable\\dataTables.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\editor\\editor.js",
+      "PackagePath": "staticwebassets\\lib\\editor\\editor.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\editor\\editor.min.css",
+      "PackagePath": "staticwebassets\\lib\\editor\\editor.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\jquery-ajax-unobtrusive\\jquery.unobtrusive-ajax.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-ajax-unobtrusive\\jquery.unobtrusive-ajax.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\jquery-ajax-unobtrusive\\jquery.unobtrusive-ajax.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-ajax-unobtrusive\\jquery.unobtrusive-ajax.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\select2\\select2.min.css",
+      "PackagePath": "staticwebassets\\lib\\select2\\select2.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\select2\\select2.min.js",
+      "PackagePath": "staticwebassets\\lib\\select2\\select2.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\signalr\\dist\\browser\\signalr.js",
+      "PackagePath": "staticwebassets\\lib\\signalr\\dist\\browser\\signalr.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\signalr\\dist\\browser\\signalr.min.js",
+      "PackagePath": "staticwebassets\\lib\\signalr\\dist\\browser\\signalr.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\tippy\\2.5.4_tippy.css",
+      "PackagePath": "staticwebassets\\lib\\tippy\\2.5.4_tippy.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\lib\\tippy\\tippy.min.js",
+      "PackagePath": "staticwebassets\\lib\\tippy\\tippy.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\memos\\CHR_form42.docx",
+      "PackagePath": "staticwebassets\\memos\\CHR_form42.docx"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\src\\dist\\Utilities.js",
+      "PackagePath": "staticwebassets\\src\\dist\\Utilities.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\src\\dist\\apexcharts.css",
+      "PackagePath": "staticwebassets\\src\\dist\\apexcharts.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\src\\dist\\apexcharts.min.js",
+      "PackagePath": "staticwebassets\\src\\dist\\apexcharts.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\src\\dist\\clipboard.min.js",
+      "PackagePath": "staticwebassets\\src\\dist\\clipboard.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\src\\dist\\helper-apexcharts.js",
+      "PackagePath": "staticwebassets\\src\\dist\\helper-apexcharts.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\src\\dist\\hs-copy-clipboard-helpers.js",
+      "PackagePath": "staticwebassets\\src\\dist\\hs-copy-clipboard-helpers.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\src\\dist\\hs.clipboard.js",
+      "PackagePath": "staticwebassets\\src\\dist\\hs.clipboard.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\src\\dist\\lodash.min.js",
+      "PackagePath": "staticwebassets\\src\\dist\\lodash.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\src\\dist\\preline.js",
+      "PackagePath": "staticwebassets\\src\\dist\\preline.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\src\\input.css",
+      "PackagePath": "staticwebassets\\src\\input.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\src\\lodash.min.js",
+      "PackagePath": "staticwebassets\\src\\lodash.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\src\\output.css",
+      "PackagePath": "staticwebassets\\src\\output.css"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\src\\package-lock.json",
+      "PackagePath": "staticwebassets\\src\\package-lock.json"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\src\\package.json",
+      "PackagePath": "staticwebassets\\src\\package.json"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\src\\tailwind.config.js",
+      "PackagePath": "staticwebassets\\src\\tailwind.config.js"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\uploads\\submissions\\c3e5b17d-bbaa-4546-8605-845bbd1dca8d\\e7d1bd50-2027-436e-a34f-1dbdfe367fe8_database_schema.pdf",
+      "PackagePath": "staticwebassets\\uploads\\submissions\\c3e5b17d-bbaa-4546-8605-845bbd1dca8d\\e7d1bd50-2027-436e-a34f-1dbdfe367fe8_database_schema.pdf"
+    },
+    {
+      "Id": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\uploads\\submissions\\c4ffe684-f299-483c-b53a-6d3786de9b07\\8f4767e0-9de5-4c2c-825a-64118236399e_computer-scientist-resume-example.pdf",
+      "PackagePath": "staticwebassets\\uploads\\submissions\\c4ffe684-f299-483c-b53a-6d3786de9b07\\8f4767e0-9de5-4c2c-825a-64118236399e_computer-scientist-resume-example.pdf"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Operational Risk Management.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Operational Risk Management.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Operational Risk Management.props",
+      "PackagePath": "build\\Operational Risk Management.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Operational Risk Management.props",
+      "PackagePath": "buildMultiTargeting\\Operational Risk Management.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Operational Risk Management.props",
+      "PackagePath": "buildTransitive\\Operational Risk Management.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

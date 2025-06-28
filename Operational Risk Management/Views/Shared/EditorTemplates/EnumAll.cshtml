@@ -1,0 +1,54 @@
+﻿@model Enum
+@using System.ComponentModel.DataAnnotations
+@using System.Reflection
+@{
+    // Safely get model type even if Model is null
+    var enumType = Nullable.GetUnderlyingType(ViewData.ModelMetadata.ModelType) ?? ViewData.ModelMetadata.ModelType;
+
+    // Get enum values
+    var enumValues = Enum.GetValues(enumType).Cast<Enum>().Select(e => new SelectListItem
+            {
+                Text = e.ToString().Replace('_', ' '),
+                Value = e.ToString(),
+                Selected = e.Equals(Model)
+            }).ToList();
+
+    // Get property metadata if available
+    var displayName = ViewData.ModelMetadata?.DisplayName ?? ViewData.ModelMetadata?.PropertyName ?? "Enum Value";
+    bool isValueSelected = enumValues.Any(e => e.Selected);
+    var htmlAttributes = ViewData["htmlAttributes"] as IDictionary<string, object> ?? new Dictionary<string, object>();
+
+    // Check for required attribute
+    var isRequired = false;
+    if (ViewData.ModelMetadata?.ContainerType != null && ViewData.ModelMetadata.PropertyName != null)
+    {
+        var propertyInfo = ViewData.ModelMetadata.ContainerType.GetProperty(ViewData.ModelMetadata.PropertyName);
+        if (propertyInfo != null)
+        {
+            isRequired = propertyInfo.GetCustomAttributes(typeof(RequiredAttribute), false).Any();
+        }
+    }
+}
+
+<div>
+    <label for="@ViewData.TemplateInfo.HtmlFieldPrefix" class="block font-medium mb-1.5 pl-1 text-sm">
+        @displayName
+        @if (isRequired)
+        {
+            <span class="text-red-400">*</span>
+        }
+    </label>
+    <select id="@ViewData.TemplateInfo.HtmlFieldPrefix" name="@ViewData.TemplateInfo.HtmlFieldPrefix" class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+        @foreach (var attr in htmlAttributes)
+        {
+            @Html.Raw($" {attr.Key}=\"{attr.Value}\"")
+        }>
+        <option value="" disabled selected="@(isValueSelected ? null : "selected")">---- select option ----</option>
+        @foreach (var item in enumValues)
+        {
+            <option value="@item.Value" selected="@(item.Selected ? "selected" : null)">@item.Text</option>
+        }
+
+    </select>
+    @Html.ValidationMessageFor(a => a)
+</div>

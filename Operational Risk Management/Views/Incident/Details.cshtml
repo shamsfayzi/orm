@@ -1,0 +1,508 @@
+@model Operational_Risk_Management.Models.View_Models.Incident.IncidentDetailDTO
+
+@{
+    ViewData["Title"] = "Incident Details";
+}
+
+<div id="incidentDetailsApp" class="min-h-screen bg-gray-50">
+    <!-- Header Section -->
+    <div class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex justify-between items-start">
+                <div>
+                    <div class="flex items-center space-x-3 mb-2">
+                        <h1 class="text-3xl font-bold text-gray-900">@Model.TitleOfIncident</h1>
+                        <span class="inline-flex px-3 py-1 text-sm font-semibold rounded-full"
+                              :class="getStatusClass('@Model.IncidentStatus')">
+                            @Model.IncidentStatus
+                        </span>
+                    </div>
+                    <p class="text-gray-600">Incident ID: @Model.Id</p>
+                    <p class="text-gray-600">Reported by: @Model.ReportedBy on @Model.ReportDate.ToString("MMM dd, yyyy")</p>
+                </div>
+                <div class="flex space-x-3">
+                    <a href="@Url.Action("Edit", "Incident", new { id = Model.Id })" 
+                       class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                        </svg>
+                        Edit
+                    </a>
+                    <button @click="printReport" 
+                            class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                        </svg>
+                        Print
+                    </button>
+                    <a href="@Url.Action("Index", "Incident")" 
+                       class="bg-gray-300 hover:bg-gray-400 text-gray-700 px-4 py-2 rounded-lg font-medium transition-colors duration-200">
+                        Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Main Content -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Basic Information -->
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Basic Information</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Department/Unit</label>
+                            <p class="mt-1 text-sm text-gray-900">@Model.BranchDepartmentUnit</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Activity/Process</label>
+                            <p class="mt-1 text-sm text-gray-900">@Model.ActivityProcess</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">First Line Risk Owner</label>
+                            <p class="mt-1 text-sm text-gray-900">@Model.FirstLineRiskOwner</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Discovered By</label>
+                            <p class="mt-1 text-sm text-gray-900">@Model.DiscoveredBy</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Timeline</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-shrink-0 w-2 h-2 bg-blue-600 rounded-full"></div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-900">Start Date</p>
+                                <p class="text-sm text-gray-600">@Model.StartDate.ToString("MMM dd, yyyy")</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-shrink-0 w-2 h-2 bg-yellow-600 rounded-full"></div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-900">End Date</p>
+                                <p class="text-sm text-gray-600">@Model.EndDate.ToString("MMM dd, yyyy")</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-shrink-0 w-2 h-2 bg-red-600 rounded-full"></div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-900">Discovery Date</p>
+                                <p class="text-sm text-gray-600">@Model.DiscoveryDate.ToString("MMM dd, yyyy")</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-shrink-0 w-2 h-2 bg-green-600 rounded-full"></div>
+                            <div>
+                                <p class="text-sm font-medium text-gray-900">Report Date</p>
+                                <p class="text-sm text-gray-600">@Model.ReportDate.ToString("MMM dd, yyyy")</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Staff Concerned -->
+                @if (Model.StaffConcerned != null && Model.StaffConcerned.Any())
+                {
+                    <div class="bg-white rounded-lg shadow-sm border p-6">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4">Staff Concerned</h2>
+                        <div class="space-y-3">
+                            @foreach (var staff in Model.StaffConcerned)
+                            {
+                                <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                                    <div class="flex-shrink-0">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">@staff.Name</p>
+                                        <p class="text-sm text-gray-600">@staff.TitleFunction</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+
+                <!-- Incident Description -->
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Incident Description</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Event Description</label>
+                            <div class="p-3 bg-gray-50 rounded-lg">
+                                <p class="text-sm text-gray-900 whitespace-pre-wrap">@Model.EventIncidentDescription</p>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Cause</label>
+                            <div class="p-3 bg-gray-50 rounded-lg">
+                                <p class="text-sm text-gray-900 whitespace-pre-wrap">@Model.EventIncidentCause</p>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Discovery</label>
+                            <div class="p-3 bg-gray-50 rounded-lg">
+                                <p class="text-sm text-gray-900 whitespace-pre-wrap">@Model.EventIncidentDiscovery</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Impact -->
+                @if (Model.FinancialLossGrossAmount.HasValue || Model.GainGrossAmount.HasValue)
+                {
+                    <div class="bg-white rounded-lg shadow-sm border p-6">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4">Financial Impact</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            @if (Model.FinancialLossGrossAmount.HasValue)
+                            {
+                                <div>
+                                    <h3 class="text-lg font-medium text-red-700 mb-3">Loss</h3>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-gray-600">Gross Amount:</span>
+                                            <span class="text-sm font-medium">@Model.FinancialLossCurrency @Model.FinancialLossGrossAmount?.ToString("N2")</span>
+                                        </div>
+                                        @if (Model.FinancialLossLegalCosts.HasValue)
+                                        {
+                                            <div class="flex justify-between">
+                                                <span class="text-sm text-gray-600">Legal Costs:</span>
+                                                <span class="text-sm font-medium">@Model.FinancialLossCurrency @Model.FinancialLossLegalCosts?.ToString("N2")</span>
+                                            </div>
+                                        }
+                                        @if (Model.FinancialLossOtherCosts.HasValue)
+                                        {
+                                            <div class="flex justify-between">
+                                                <span class="text-sm text-gray-600">Other Costs:</span>
+                                                <span class="text-sm font-medium">@Model.FinancialLossCurrency @Model.FinancialLossOtherCosts?.ToString("N2")</span>
+                                            </div>
+                                        }
+                                        @if (Model.FinancialLossNetLossToDate.HasValue)
+                                        {
+                                            <div class="flex justify-between border-t pt-2">
+                                                <span class="text-sm font-medium text-gray-900">Net Loss:</span>
+                                                <span class="text-sm font-bold text-red-600">@Model.FinancialLossCurrency @Model.FinancialLossNetLossToDate?.ToString("N2")</span>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            @if (Model.GainGrossAmount.HasValue)
+                            {
+                                <div>
+                                    <h3 class="text-lg font-medium text-green-700 mb-3">Gain</h3>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between">
+                                            <span class="text-sm text-gray-600">Gross Amount:</span>
+                                            <span class="text-sm font-medium">@Model.GainCurrency @Model.GainGrossAmount?.ToString("N2")</span>
+                                        </div>
+                                        @if (Model.GainNetAmount.HasValue)
+                                        {
+                                            <div class="flex justify-between border-t pt-2">
+                                                <span class="text-sm font-medium text-gray-900">Net Gain:</span>
+                                                <span class="text-sm font-bold text-green-600">@Model.GainCurrency @Model.GainNetAmount?.ToString("N2")</span>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+
+                <!-- Corrective Actions -->
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Corrective Actions & Controls</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Actions Implemented</label>
+                            <div class="p-3 bg-gray-50 rounded-lg">
+                                <p class="text-sm text-gray-900 whitespace-pre-wrap">@Model.CorrectiveActionsImplemented</p>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Existing Control Measures</label>
+                            <div class="p-3 bg-gray-50 rounded-lg">
+                                <p class="text-sm text-gray-900 whitespace-pre-wrap">@Model.ExistingControlMeasures</p>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Reasons for Failure</label>
+                            <div class="p-3 bg-gray-50 rounded-lg">
+                                <p class="text-sm text-gray-900 whitespace-pre-wrap">@Model.ReasonsForFailure</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Written Procedure</label>
+                                <p class="mt-1 text-sm text-gray-900">@(Model.HasWrittenProcedure ? "Yes" : "No")</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Procedure Includes Controls</label>
+                                <p class="mt-1 text-sm text-gray-900">@(Model.ProcedureIncludesControls ? "Yes" : "No")</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proposed Improvements -->
+                @if (!string.IsNullOrEmpty(Model.ProposedPoliciesProcedures) || !string.IsNullOrEmpty(Model.ProposedControls))
+                {
+                    <div class="bg-white rounded-lg shadow-sm border p-6">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4">Proposed Improvements</h2>
+                        <div class="space-y-4">
+                            @if (!string.IsNullOrEmpty(Model.ProposedPoliciesProcedures))
+                            {
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Policies & Procedures</label>
+                                    <div class="p-3 bg-blue-50 rounded-lg">
+                                        <p class="text-sm text-gray-900 whitespace-pre-wrap">@Model.ProposedPoliciesProcedures</p>
+                                    </div>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.ProposedControls))
+                            {
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Controls</label>
+                                    <div class="p-3 bg-blue-50 rounded-lg">
+                                        <p class="text-sm text-gray-900 whitespace-pre-wrap">@Model.ProposedControls</p>
+                                    </div>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.ProposedHumanResources))
+                            {
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Human Resources</label>
+                                    <div class="p-3 bg-blue-50 rounded-lg">
+                                        <p class="text-sm text-gray-900 whitespace-pre-wrap">@Model.ProposedHumanResources</p>
+                                    </div>
+                                </div>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.ProposedSystems))
+                            {
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Systems</label>
+                                    <div class="p-3 bg-blue-50 rounded-lg">
+                                        <p class="text-sm text-gray-900 whitespace-pre-wrap">@Model.ProposedSystems</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+
+                <!-- Comments -->
+                @if (!string.IsNullOrEmpty(Model.OtherComments))
+                {
+                    <div class="bg-white rounded-lg shadow-sm border p-6">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4">Additional Comments</h2>
+                        <div class="p-3 bg-gray-50 rounded-lg">
+                            <p class="text-sm text-gray-900 whitespace-pre-wrap">@Model.OtherComments</p>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Sidebar -->
+            <div class="space-y-6">
+                <!-- Classification -->
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Classification</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Type</label>
+                            <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full mt-1"
+                                  :class="getTypeClass('@Model.IncidentType')">
+                                @Model.IncidentType
+                            </span>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Category Level</label>
+                            <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full mt-1"
+                                  :class="getCategoryClass('@Model.IncidentCategoryLevel')">
+                                @Model.IncidentCategoryLevel
+                            </span>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Risk Type</label>
+                            <p class="mt-1 text-sm text-gray-900">@Model.RiskType</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Risk Assessment</label>
+                            <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full mt-1"
+                                  :class="getRiskClass('@Model.RiskAssessment')">
+                                @Model.RiskAssessment
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Status -->
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Review Status</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Requires Revision</label>
+                            <p class="mt-1 text-sm">
+                                <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full"
+                                      class="@(Model.RequiresRevision ? "bg-red-100 text-red-800" : "bg-green-100 text-green-800")">
+                                    @(Model.RequiresRevision ? "Yes" : "No")
+                                </span>
+                            </p>
+                        </div>
+                        @if (Model.LastReviewDate.HasValue)
+                        {
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Last Review</label>
+                                <p class="mt-1 text-sm text-gray-900">@Model.LastReviewDate.Value.ToString("MMM dd, yyyy")</p>
+                                @if (!string.IsNullOrEmpty(Model.ReviewedBy))
+                                {
+                                    <p class="text-sm text-gray-600">by @Model.ReviewedBy</p>
+                                }
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.RiskManagementNotes))
+                        {
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Risk Management Notes</label>
+                                <div class="p-3 bg-yellow-50 rounded-lg">
+                                    <p class="text-sm text-gray-900 whitespace-pre-wrap">@Model.RiskManagementNotes</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Documents -->
+                @if (Model.Documents != null && Model.Documents.Any())
+                {
+                    <div class="bg-white rounded-lg shadow-sm border p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Supporting Documents</h3>
+                        <div class="space-y-3">
+                            @foreach (var doc in Model.Documents)
+                            {
+                                <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                                    <div class="flex-shrink-0">
+                                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="text-sm font-medium text-gray-900 truncate">@doc.FileName</p>
+                                        <p class="text-sm text-gray-500">@doc.FileType • @((doc.FileSize / 1024).ToString("N0")) KB</p>
+                                        @if (!string.IsNullOrEmpty(doc.Description))
+                                        {
+                                            <p class="text-xs text-gray-600 mt-1">@doc.Description</p>
+                                        }
+                                    </div>
+                                    <div class="flex-shrink-0">
+                                        <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                                            Download
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+
+                <!-- Audit Trail -->
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Audit Trail</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Created By</label>
+                            <p class="mt-1 text-sm text-gray-900">@Model.CreateBy</p>
+                            <p class="text-sm text-gray-600">@Model.CreateDate.ToString("MMM dd, yyyy HH:mm")</p>
+                        </div>
+                        @if (!string.IsNullOrEmpty(Model.UpdateBy) && Model.UpdatedDate.HasValue)
+                        {
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Last Updated By</label>
+                                <p class="mt-1 text-sm text-gray-900">@Model.UpdateBy</p>
+                                <p class="text-sm text-gray-600">@Model.UpdatedDate.Value.ToString("MMM dd, yyyy HH:mm")</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+const { createApp } = Vue;
+
+createApp({
+    data() {
+        return {
+            // Add any reactive data here
+        }
+    },
+    methods: {
+        getStatusClass(status) {
+            const classes = {
+                'Open': 'bg-yellow-100 text-yellow-800',
+                'InReview': 'bg-blue-100 text-blue-800',
+                'Closed': 'bg-green-100 text-green-800',
+                'RequiresRevision': 'bg-red-100 text-red-800'
+            };
+            return classes[status] || 'bg-gray-100 text-gray-800';
+        },
+        getTypeClass(type) {
+            const classes = {
+                'Operational': 'bg-purple-100 text-purple-800',
+                'Financial': 'bg-green-100 text-green-800',
+                'Compliance': 'bg-blue-100 text-blue-800',
+                'Technology': 'bg-indigo-100 text-indigo-800',
+                'External': 'bg-orange-100 text-orange-800'
+            };
+            return classes[type] || 'bg-gray-100 text-gray-800';
+        },
+        getCategoryClass(category) {
+            const classes = {
+                'Level1': 'bg-green-100 text-green-800',
+                'Level2': 'bg-yellow-100 text-yellow-800',
+                'Level3': 'bg-orange-100 text-orange-800',
+                'Level4': 'bg-red-100 text-red-800'
+            };
+            return classes[category] || 'bg-gray-100 text-gray-800';
+        },
+        getRiskClass(risk) {
+            const classes = {
+                'Low': 'bg-green-100 text-green-800',
+                'Medium': 'bg-yellow-100 text-yellow-800',
+                'High': 'bg-orange-100 text-orange-800',
+                'Critical': 'bg-red-100 text-red-800'
+            };
+            return classes[risk] || 'bg-gray-100 text-gray-800';
+        },
+        printReport() {
+            window.print();
+        }
+    }
+}).mount('#incidentDetailsApp');
+</script>
+
+<style>
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    .print-break {
+        page-break-before: always;
+    }
+}
+</style>
+

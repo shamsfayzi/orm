@@ -1,0 +1,246 @@
+﻿@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import '../lib/alertifyjs/css/alertify.css';
+@import '../lib/tippy/2.5.4_tippy.css';
+
+/*===================================custome styles*/
+
+/*======================================list*/
+.list {
+    @apply flex flex-col;
+}
+.list-item {
+    @apply inline-flex items-center gap-x-2 py-3 text-sm border-b text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg;
+}
+
+.space-between {
+    @apply flex items-center justify-between w-full;
+}
+.input {
+    @apply py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none;
+}
+.grid-input {
+    @apply grid gap-4;
+}
+.badge {
+    @apply inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium;
+}
+#sidebar-menu>li>a.active {
+    @apply bg-blue-900 text-white;
+}
+
+.hs-accordion.active>button {
+    @apply bg-blue-900 text-white;
+}
+.hs-accordion.active > div > ul > li > a.active {
+    @apply bg-blue-900 text-white;
+}
+
+.field-validation-error {
+    @apply text-sm text-red-600;
+    margin-left:14px;
+}
+
+.modal-lg {
+    @apply lg:max-w-4xl lg:w-full lg:mx-auto;
+}
+.modal-md {
+    @apply md:max-w-2xl md:w-full md:mx-auto;
+}
+.modal-sm {
+    @apply sm:max-w-lg sm:w-full sm:mx-auto;
+}
+
+.-end-1{
+    inset-inline-end: -1rem;
+}
+
+.h-full-page {
+    @apply h-screen; 
+}
+/* Custom styles for the loader */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Make sure the loader is above other content */
+}
+
+.loader-logo {
+    width: 100px; /* Adjust the size of your logo */
+    height: 100px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* datatables*/
+.dt-layout-row:has(.dt-search),
+.dt-layout-row:has(.dt-length),
+.dt-layout-row:has(.dt-paging) {
+    display: none !important;
+}
+
+/*template*/
+.card {
+    @apply bg-white border grid gap-3 p-5 rounded-lg;
+}
+
+/*tabs*/
+.tab-container {
+    @apply -mb-0.5 flex gap-x-3 bg-gray-200 rounded-lg;
+}
+
+.tab-inactive {
+    @apply px-4 py-4 inline-flex items-center gap-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600;
+}
+
+.tab-active {
+    @apply bg-white rounded-t-lg px-4 py-4 inline-flex items-center gap-2 border-b-2 border-blue-500 text-sm font-medium whitespace-nowrap text-blue-600 focus:outline-none focus:text-blue-800;
+}
+
+.tab-inactive-badge {
+    @apply py-0.5 px-1.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800;
+}
+
+.tab-active-badge {
+    @apply py-0.5 px-1.5 rounded-full text-xs font-medium bg-blue-100 text-blue-600;
+}
+
+.tab-body {
+}
+
+.tab-icon {
+    @apply shrink-0 size-4;
+}
+
+/*tables*/
+.table-container {
+    @apply overflow-x-auto grid gap-4;
+}
+.table {
+    @apply min-w-full divide-y divide-gray-200;
+}
+.table-header-name {
+    @apply px-6 py-2 text-start text-xs font-medium text-gray-900 uppercase;
+}
+.table-data {
+    @apply px-2 py-2 whitespace-nowrap text-sm;
+}
+.table-row {
+    @apply hover:bg-gray-100;
+}
+.table-body {
+    @apply divide-y divide-gray-200;
+}
+.table-btn-icon {
+    @apply shrink-0 size-4;
+}
+.table-btn-group {
+    @apply inline-flex rounded-lg border shadow bg-white;
+}
+.table-btn-group-btn {
+    @apply -ms-px disabled:opacity-50 disabled:pointer-events-none first:ms-0 first:rounded-s-lg focus:bg-gray-50 focus:outline-none focus:z-10 font-medium gap-2 inline-flex items-center justify-center last:rounded-e-lg px-3 py-2 text-sm;
+}
+/* table detail*/
+.table-detail {
+    @apply w-full text-sm text-left;
+}
+.table-detail-body{
+
+}
+.table-detail-row{
+    @apply border-b
+}
+.table-detail-data-row {
+    @apply border-b;
+}
+.table-detail-row-data {
+    @apply px-6 py-4;
+}
+.table-detail-row-header {
+    @apply bg-gray-50 font-medium px-6 py-4 text-gray-900 whitespace-nowrap;
+}
+
+/*btn group*/
+.btn-group {
+    @apply inline-flex rounded-lg;
+}
+.btn-group-btn-first {
+    @apply py-2 px-3 inline-flex justify-center items-center gap-2 -ms-px first:rounded-s-lg first:ms-0 last:rounded-e-lg text-sm font-medium focus:z-10 border border-gray-200 disabled:opacity-50 disabled:pointer-events-none;
+}
+.btn-group-btn {
+    @apply py-2 px-3 inline-flex justify-center items-center gap-2 -ms-px  first:ms-0 text-sm font-medium focus:z-10 border border-gray-200 disabled:opacity-50 disabled:pointer-events-none;
+}
+.btn-group-btn-last {
+    @apply py-2 px-3 inline-flex justify-center items-center gap-2 -ms-px first:rounded-s-lg first:ms-0 last:rounded-e-lg text-sm font-medium focus:z-10 border border-gray-200 disabled:opacity-50 disabled:pointer-events-none;
+}
+
+
+/*btn styles*/
+.btn-hover-yellow {
+    @apply text-yellow-800 hover:bg-yellow-50;
+}
+.btn-hover-red {
+    @apply text-red-800 hover:bg-red-50;
+}
+.btn-hover-blue {
+    @apply text-blue-800 hover:bg-blue-50;
+}
+.btn-hover-green {
+    @apply text-green-800 hover:bg-green-50;
+}
+.btn-hover-fill-green {
+    @apply bg-white text-gray-800 hover:text-white hover:bg-green-900;
+}
+.btn-hover-fill-yellow {
+    @apply bg-white text-gray-800 hover:text-white hover:bg-yellow-900;
+}
+.btn-hover-fill-red {
+    @apply bg-white text-gray-800 hover:text-white hover:bg-red-900;
+}
+.btn-hover-fill-blue {
+    @apply bg-white text-gray-800 hover:text-white hover:bg-blue-900;
+}
+.btn-icon {
+    @apply size-4;
+}
+.btn-sm {
+   @apply py-2 px-2;
+}
+.btn-md {
+   @apply py-2 px-4;
+}
+.btn {
+    @apply inline-flex items-center gap-x-2 text-xs font-medium rounded-lg border border-transparent  focus:outline-none  disabled:opacity-50 disabled:pointer-events-none;
+}
+.btn-fill-blue {
+    @apply bg-blue-900 text-white hover:bg-blue-700;
+}
+
+.btn-fill-green {
+    @apply bg-green-900 text-white hover:bg-green-700;
+}
+.btn-fill-red {
+    @apply bg-red-900 text-white hover:bg-red-700;
+}
+.btn-fill-yellow {
+    @apply bg-yellow-900 text-white hover:bg-yellow-700;
+}
+.btn-fill-white {
+    @apply border-gray-200 bg-white text-gray-800 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none;
+}

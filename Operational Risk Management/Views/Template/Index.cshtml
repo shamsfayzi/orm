@@ -1,0 +1,169 @@
+﻿@model PaginatedModel<Template>
+
+<div class="container mx-auto px-4">
+
+    <!-- Page Header -->
+    <div class="flex items-center justify-between mb-6">
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-dark">KRI Templates</h1>
+        <div>
+            <a asp-controller="Template" asp-action="CreateTemplate" 
+            class="hs-tooltip-toggle inline-flex items-center gap-2 bg-primary hover:bg-primary-700 text-dark text-sm font-medium rounded-lg px-4 py-2 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                New Template
+            </a>
+        </div>
+    </div>
+
+    <!-- Templates List -->
+    @if (Model.Items.Any())
+    {
+
+        <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+            <!-- Card -->
+            <div class="flex flex-col">
+                <div class="-m-1.5 overflow-x-auto">
+                    <div class="p-1.5 min-w-full inline-block align-middle">
+                        <div class="bg-white border border-gray-200 rounded-xl shadow-2xs overflow-hidden dark:bg-neutral-900 dark:border-neutral-700">
+                            <!-- Header -->
+                            <div class="px-6 py-4 border-b border-gray-200 dark:border-neutral-700">
+                                <h2 class="text-xl font-semibold text-gray-800 dark:text-neutral-200">
+                                    All KRI Templates
+                                </h2>
+
+                            </div>
+                            <!-- End Header -->
+                            <!-- Table -->
+                            <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
+                                <thead class="bg-gray-50 dark:bg-neutral-800">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-start whitespace-nowrap">
+                                            <span class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
+                                                #
+                                            </span>
+                                        </th>
+
+                                        <th scope="col" class="px-6 py-3 text-start whitespace-nowrap">
+                                            <span class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
+                                                DepartmentName
+                                            </span>
+                                        </th>
+
+                                        <th scope="col" class="px-6 py-3 text-start whitespace-nowrap min-w-64">
+                                            <span class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
+                                                FocalPoint
+                                            </span>
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-start whitespace-nowrap">
+                                            <span class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
+                                                Created by
+                                            </span>
+                                        </th>
+
+                                        <th scope="col" class="px-6 py-3 text-start whitespace-nowrap">
+                                            <span class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
+                                                Created date
+                                            </span>
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-start whitespace-nowrap">
+                                            <span class="text-xs font-semibold uppercase text-gray-800 dark:text-neutral-200">
+                                            </span>
+                                        </th>
+
+
+
+                                    </tr>
+                                </thead>
+
+                                <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
+                                    @{int count = 0;}
+                                    @foreach (var template in Model.Items)
+                                    {
+                                        
+                                        count = count +1;
+
+                                        <tr id="row_@template.Id">
+                                            <td class="size-px whitespace-nowrap px-6 py-3">
+                                                <button type="button"
+                                                        class="flex items-center gap-x-2 text-gray-800 hover:text-gray-600 focus:outline-hidden focus:text-gray-600 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400">
+                                                    
+                                                    <span class="text-sm text-gray-800 dark:text-neutral-200">@count</span>
+                                                </button>
+                                            </td>
+                                            <td class="size-px whitespace-nowrap px-6 py-3">
+                                                <div class="flex items-center gap-x-3">
+                                                   
+                                                    <span class="font-semibold text-sm text-gray-800 dark:text-white">@template.Department.DepartmentName</span>
+                                                </div>
+                                            </td>
+                                            <td class="size-px whitespace-nowrap px-6 py-3">
+                                                <div class="flex items-center gap-x-3">
+                                                   
+                                                    <span class="font-semibold text-sm text-gray-800 dark:text-white">@template.FocalPoint</span>
+                                                </div>
+                                            </td>
+                                            <td class="size-px whitespace-nowrap px-6 py-3">
+                                                <div class="flex items-center gap-x-3">
+                                                  
+                                                    <span class="font-semibold text-sm text-gray-800 dark:text-white">@template.CreatedByFullName</span>
+                                                </div>
+                                            </td>
+                                            <td class="size-px whitespace-nowrap px-6 py-3">
+                                                <div class="flex items-center gap-x-3">
+                                                    
+                                                    <span class="font-semibold text-sm text-gray-800 dark:text-white">
+                                                        @Html.DisplayFor(_
+                                                                 => template.CreateDate, "datetime_date_value")
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td class="size-px whitespace-nowrap">
+                                                <div class="px-6 py-2">
+                                                    <div class="hs-dropdown [--placement:bottom-right] relative inline-block">
+                                                        <button id="hs-table-dropdown-1" type="button" class="hs-dropdown-toggle py-1.5 px-2 inline-flex justify-center items-center gap-2 rounded-lg text-gray-700 align-middle disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:text-neutral-400 dark:hover:text-white dark:focus:ring-offset-gray-800" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+                                                            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /><circle cx="5" cy="12" r="1" /></svg>
+                                                        </button>
+                                                        <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden divide-y divide-gray-200 min-w-40 z-20 bg-white shadow-2xl rounded-lg p-2 mt-2 dark:divide-neutral-700 dark:bg-neutral-800 dark:border dark:border-neutral-700" role="menu" aria-orientation="vertical" aria-labelledby="hs-table-dropdown-1">
+                                                            <div class="py-2 first:pt-0 last:pb-0">
+                                                                <span class="block py-2 px-3 text-xs font-medium uppercase text-gray-400 dark:text-neutral-600">
+                                                                    Actions
+                                                                </span>
+                                                                <a asp-controller="Template" asp-action="EditTemplate" asp-route-id="@template.Id" class="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300">
+                                                                    Edit Template
+                                                                </a>
+                                                                <a href="@Url.Action("ManageIndicators","TemplateIndicator",new {templateId = template.Id})" class="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300">
+                                                                    Manage Indicators
+                                                                </a>
+                                                               
+                                                               
+                                                            </div>
+                                                            <div class="py-2 first:pt-0 last:pb-0">
+                                                                <button  data-tippy title="Delete" data-delete-url="@Url.Action("delete", "template", new { id = template.Id })" data-delete-elementId="row_@template.Id" class="btn-delete flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-red-600 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-red-500 dark:hover:bg-neutral-700 dark:hover:text-neutral-300">
+                                                                    Delete
+                                                                </button>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Pagination -->
+    <div class="mt-6">
+        @await Html.PartialAsync("_Pagination", Model.Pagination)
+    </div>
+
+</div>

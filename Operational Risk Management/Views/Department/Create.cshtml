@@ -1,0 +1,76 @@
+﻿@using Operational_Risk_Management.Models.Common
+@using Operational_Risk_Management.Models.Enums
+@using Operational_Risk_Management.Models.Extensions
+@using Operational_Risk_Management.Models.View_Models.Departments
+@model VM_DepartmentCreate
+<div class="flex justify-between mb-1.5">
+    <span class="font-semibold">New User form</span>
+    @await Html.PartialAsync("_HeaderPageButtons")
+</div>
+<div class="card">
+    <form asp-action="create" method="post" id="appCreate">
+        @Html.AntiForgeryToken()
+        <div class="grid-input grid-cols-2">
+            <div>
+                @Html.DisplayFor(a => a.DepartmentName)
+                <input type="text" v-model="departmentName" name="departmentName" placeholder="Write department name here" class="input">
+                <span v-show="checked" class="text-sm" :class="available?'text-green-500':'text-red-500'">{{available?'Available':'Not Available'}}</span>
+                @Html.ValidationMessageFor(a => a.DepartmentName)
+            </div>
+            @Html.EditorFor(a => a.Description)
+            @* @Html.EditorFor(a => a.Phone1) *@
+        </div>
+        <div>
+            @* @Html.EditorFor(a => a.DatabaseVAAccess, "Toggle") *@
+            @* @Html.EditorFor(a => a.NetworkVAAccess, "Toggle") *@
+            @* @Html.EditorFor(a => a.CanReAssign, "Toggle") *@
+            @* @Html.EditorFor(a => a.IsAdmin, "Toggle") *@
+        </div>
+        <div class="flex justify-end mt-1">
+            <button type="submit" class="btn btn-fill-green btn-md">Save</button>
+        </div>
+    </form>
+
+</div>
+
+
+@section Scripts {
+    <script>
+        var appCreate = createApp({
+            data() {
+                return {
+                    checked: false,
+                    departmentName: '@(Model != null && !Model.DepartmentName.IsEmptyOrNull() ? Model.DepartmentName : "")',
+                    available: false,
+                    msg: "",
+
+                }
+            },
+            methods: {
+                CheckDepartmentName() {
+                    this.msg = "loading..."
+                    this.checked = true
+                    const thisVue = this
+                    axios.get("/department/CheckDepartmentNameAvailability?departmentName=" + this.departmentName).then(function (response) {
+                        if (response.data) {
+                            thisVue.available = true
+                        } else {
+                            thisVue.available = false
+                        }
+                    }).catch(function (error) {
+
+                        console.log(error);
+                    });
+                },
+
+            },
+            watch: {
+                departmentName(newValue, oldValue) {
+                    this.CheckDepartmentName()
+                }
+            }
+        })
+        appCreate.mount("#appCreate")
+
+    </script>
+}

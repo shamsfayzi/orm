@@ -1,0 +1,12 @@
+﻿@model int?
+@{
+    var isRequired = ViewData.ModelMetadata.IsRequired;
+    var displayName = ViewData.ModelMetadata.DisplayName ?? ViewData.ModelMetadata.PropertyName;
+    var label = displayName;
+}
+<label for="@ViewData.TemplateInfo.HtmlFieldPrefix" class="block font-medium mb-1.5 pl-1 text-sm">
+    @displayName @if (isRequired)
+    {
+        <span class="text-red-400">*</span>
+    }
+</label>

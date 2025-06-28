@@ -1,0 +1,316 @@
+@using Operational_Risk_Management.Models.View_Models.Uploader
+@model List<VM_Submission>
+@{
+    ViewData["Title"] = "KRI Submissions List";
+    var filterModel = ViewBag.FilterModel as FilterModelForSubmissions ?? new FilterModelForSubmissions();
+    var departments = ViewBag.Departments as List<string> ?? new List<string>();
+    var indicators = ViewBag.Indicators as List<dynamic> ?? new List<dynamic>(); // Assuming 'dynamic' is appropriate as before
+    var statuses = new List<string> { "Draft", "Submitted", "Overdue", "Requires Resubmission", "Opened", "In Progress" }; // Ensure this matches service defaults or is passed via ViewBag
+}
+
+<div class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <div class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900">@ViewData["Title"]</h1>
+                </div>
+                <div>
+                    <button id="toggleFilters" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        <i class="fas fa-filter mr-1"></i> Filters
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Panel -->
+    <div id="filterPanel" class="bg-white shadow mb-6 @(ViewBag.ShowFilters == true ? "" : "hidden")"> <!-- Consider if ShowFilters is still needed or if it's always shown/toggled by JS only -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <form id="filterForm" method="get" asp-action="SubmissionList" asp-controller="Home">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Date From -->
+                    <div>
+                        <label for="dateFrom" class="block text-sm font-medium text-gray-700 mb-1">Date From</label>
+                        <input type="date" id="dateFrom" name="DateFrom" value="@(filterModel.DateFrom?.ToString("yyyy-MM-dd"))"
+                               class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <!-- Date To -->
+                    <div>
+                        <label for="dateTo" class="block text-sm font-medium text-gray-700 mb-1">Date To</label>
+                        <input type="date" id="dateTo" name="DateTo" value="@(filterModel.DateTo?.ToString("yyyy-MM-dd"))"
+                               class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+                    <!-- Department Filter -->
+                    <div>
+                        <label for="departmentFilterSelect" class="block text-sm font-medium text-gray-700 mb-1">Department (for Indicator list)</label>
+                        <select id="departmentFilterSelect" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">All Departments</option>
+                            @foreach (var dept in departments)
+                            {
+                                <option value="@dept">@dept</option>
+                            }
+                        </select>
+                    </div>
+
+                    <!-- Indicators Filter -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Indicators</label>
+                        <div class="relative">
+                            <div class="flex flex-wrap gap-2 p-2 border border-gray-300 rounded-md min-h-[42px] max-h-32 overflow-y-auto" id="selectedIndicatorsDisplay">
+                                <!-- Selected indicators will be displayed here as tags -->
+                            </div>
+                            <div class="mt-1">
+                                <button type="button" id="showIndicatorSelector" class="text-sm text-blue-600 hover:text-blue-800">
+                                    + Select Indicators
+                                </button>
+                            </div>
+                            <!-- Hidden inputs for selected indicators for form submission -->
+                            <div id="indicatorInputsContainer">
+                                @foreach(var indicatorId in filterModel.IndicatorIds)
+                                {
+                                    <input type="hidden" name="IndicatorIds" value="@indicatorId" />
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Status Filter -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                        <div class="grid grid-cols-2 gap-2 max-h-32 overflow-y-auto p-2 border border-gray-300 rounded-md">
+                            @foreach (var status in statuses) // Assuming 'statuses' list is defined at top
+                            {
+                                <div class="flex items-center">
+                                    <input type="checkbox" name="Statuses" value="@status" id="status_@status.Replace(" ", "")"
+                                           class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                                           @(filterModel.Statuses.Contains(status) ? "checked" : "")>
+                                    <label for="status_@status.Replace(" ", "")" class="ml-2 text-sm text-gray-700">@status</label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Search Term -->
+                    <div>
+                        <label for="searchTerm" class="block text-sm font-medium text-gray-700 mb-1">Search</label>
+                        <input type="text" id="searchTerm" name="SearchTerm" value="@filterModel.SearchTerm"
+                               class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                               placeholder="Search in notes...">
+                    </div>
+                </div>
+
+                <div class="mt-6 flex justify-end space-x-3">
+                    <button type="button" id="resetFiltersBtn" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        Reset
+                    </button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        Apply Filters
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Indicator Selector Modal (adapt from old SubmissionDetails.cshtml) -->
+    <div id="indicatorModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[80vh] flex flex-col">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-medium text-gray-900">Select Indicators</h3>
+                    <button type="button" id="closeIndicatorModal" class="text-gray-400 hover:text-gray-500">&times;</button>
+                </div>
+                <div class="mt-2">
+                    <input type="text" id="indicatorSearchInput" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" placeholder="Search indicators...">
+                </div>
+            </div>
+            <div class="px-6 py-4 flex-1 overflow-y-auto">
+                <div id="indicatorListContainer" class="space-y-2">
+                    @foreach (var indicator in indicators) // ViewBag.Indicators
+                    {
+                        <div class="flex items-center indicator-item" data-id="@indicator.Id" data-department="@(indicator.Template?.Department?.DepartmentName ?? "")" data-name="@indicator.IndicatorName">
+                            <input type="checkbox" id="modal_ind_@indicator.Id" value="@indicator.Id" data-name="@indicator.IndicatorName"
+                                   class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded indicator-checkbox-modal"
+                                   @(filterModel.IndicatorIds.Contains(Guid.Parse(indicator.Id.ToString())) ? "checked" : "")>
+                            <label for="modal_ind_@indicator.Id" class="ml-2 text-sm text-gray-700">
+                                <span class="font-medium">@indicator.IndicatorName</span>
+                                <span class="text-gray-500 text-xs ml-1">(@(indicator.Template?.Department?.DepartmentName ?? "No Dept"))</span>
+                            </label>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="px-6 py-4 border-t border-gray-200 flex justify-end">
+                <button type="button" id="applyIndicatorSelectionBtn" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Apply Selection</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content - Submissions Table -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="mb-4">
+            <p class="text-sm text-gray-600">Showing <span class="font-medium">@Model.Count</span> results</p>
+        </div>
+        <div class="bg-white shadow overflow-hidden sm:rounded-md">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Indicator</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Reporting Period</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Breaches</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    @if (Model.Any())
+                    {
+                        foreach (var submission in Model)
+                        {
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm font-medium text-gray-900">@submission.Indicator.IndicatorName</div></td>
+                                <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-gray-500">@submission.Indicator.Template.Department.DepartmentName</div></td>
+                                <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-gray-500">@submission.ReportingMonth.ToString("MMM yyyy")</div></td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    @{
+                                        var statusClass = submission.Status switch {
+                                            "Overdue" => "bg-red-100 text-red-800",
+                                            "Submitted" => "bg-green-100 text-green-800",
+                                            _ => "bg-gray-100 text-gray-800"
+                                        };
+                                    }
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full @statusClass">@submission.Status</span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm @(submission.Breaches > submission.Indicator.TolerableBreaches ? "text-red-600 font-medium" : "text-gray-500")">@submission.Breaches / @submission.Indicator.TolerableBreaches</div></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <a href="@Url.Action("Details", "IndicatorSubmission", new { id = submission.Id })" class="text-indigo-600 hover:text-indigo-900">View Details</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td colspan="6" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">No submissions found matching the current filters.</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Toggle filter panel
+        const toggleFiltersBtn = document.getElementById('toggleFilters');
+        const filterPanel = document.getElementById('filterPanel');
+        if (toggleFiltersBtn) {
+            toggleFiltersBtn.addEventListener('click', function() { filterPanel.classList.toggle('hidden'); });
+        }
+
+        // Reset filters
+        const resetFiltersBtn = document.getElementById('resetFiltersBtn');
+        if (resetFiltersBtn) {
+            resetFiltersBtn.addEventListener('click', function() {
+                document.getElementById('filterForm').reset();
+                // Clear selected indicators display and hidden inputs
+                document.getElementById('selectedIndicatorsDisplay').innerHTML = '';
+                document.getElementById('indicatorInputsContainer').innerHTML = '';
+                // Uncheck all statuses
+                 document.querySelectorAll('input[name="Statuses"]').forEach(cb => cb.checked = false);
+                // Could trigger form submit here or let user do it: document.getElementById('filterForm').submit();
+            });
+        }
+
+        // Indicator Modal
+        const showIndicatorSelectorBtn = document.getElementById('showIndicatorSelector');
+        const indicatorModal = document.getElementById('indicatorModal');
+        const closeIndicatorModalBtn = document.getElementById('closeIndicatorModal');
+        const applyIndicatorSelectionBtn = document.getElementById('applyIndicatorSelectionBtn');
+        const indicatorSearchInput = document.getElementById('indicatorSearchInput');
+        const indicatorListContainer = document.getElementById('indicatorListContainer');
+        const departmentFilterSelect = document.getElementById('departmentFilterSelect');
+        const selectedIndicatorsDisplay = document.getElementById('selectedIndicatorsDisplay');
+        const indicatorInputsContainer = document.getElementById('indicatorInputsContainer');
+
+        if (showIndicatorSelectorBtn) {
+            showIndicatorSelectorBtn.addEventListener('click', () => indicatorModal.classList.remove('hidden'));
+        }
+        if (closeIndicatorModalBtn) {
+            closeIndicatorModalBtn.addEventListener('click', () => indicatorModal.classList.add('hidden'));
+        }
+
+        function updateIndicatorDisplay() {
+            const selectedDepartment = departmentFilterSelect ? departmentFilterSelect.value : "";
+            const searchTerm = indicatorSearchInput ? indicatorSearchInput.value.toLowerCase() : "";
+
+            indicatorListContainer.querySelectorAll('.indicator-item').forEach(item => {
+                const itemDepartment = item.dataset.department;
+                const itemName = item.dataset.name.toLowerCase();
+                let departmentMatch = (!selectedDepartment || itemDepartment === selectedDepartment);
+                let searchMatch = (!searchTerm || itemName.includes(searchTerm));
+                item.style.display = (departmentMatch && searchMatch) ? '' : 'none';
+            });
+        }
+
+        if (departmentFilterSelect) {
+            departmentFilterSelect.addEventListener('change', updateIndicatorDisplay);
+        }
+        if (indicatorSearchInput) {
+            indicatorSearchInput.addEventListener('input', updateIndicatorDisplay);
+        }
+
+        if (applyIndicatorSelectionBtn) {
+            applyIndicatorSelectionBtn.addEventListener('click', function() {
+                selectedIndicatorsDisplay.innerHTML = ''; // Clear current display tags
+                indicatorInputsContainer.innerHTML = ''; // Clear current hidden inputs
+
+                indicatorListContainer.querySelectorAll('.indicator-checkbox-modal:checked').forEach(checkbox => {
+                    const id = checkbox.value;
+                    const name = checkbox.dataset.name;
+
+                    // Add display tag
+                    const tag = document.createElement('span');
+                    tag.className = 'inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-indigo-100 text-indigo-800 mr-1 mb-1';
+                    tag.textContent = name;
+                    selectedIndicatorsDisplay.appendChild(tag);
+
+                    // Add hidden input for form submission
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'IndicatorIds'; // Matches FilterModelForSubmissions
+                    input.value = id;
+                    indicatorInputsContainer.appendChild(input);
+                });
+                indicatorModal.classList.add('hidden');
+            });
+        }
+
+        // Initial population of selected indicators tags and hidden fields from filterModel
+        function initializeSelectedIndicators() {
+            @foreach(var indicatorId in filterModel.IndicatorIds)
+            {
+                var idStr = indicatorId.ToString();
+                // Find the indicator in the modal list to get its name
+                var matchingCheckbox = indicatorListContainer.querySelector(`.indicator-checkbox-modal[value="${idStr}"]`);
+                if (matchingCheckbox) {
+                    var name = matchingCheckbox.dataset.name;
+                     // Add display tag
+                    const tag = document.createElement('span');
+                    tag.className = 'inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-indigo-100 text-indigo-800 mr-1 mb-1';
+                    tag.textContent = name;
+                    selectedIndicatorsDisplay.appendChild(tag);
+                    // Hidden input already rendered by Razor for existing filterModel.IndicatorIds
+                }
+            }
+        }
+        initializeSelectedIndicators();
+        updateIndicatorDisplay(); // Initial filter based on department
+
+    });
+    </script>
+}

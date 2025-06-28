@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Operational_Risk_Management</RootNamespace>
+  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="AIBDecrypt" Version="1.0.1" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+		<PackageReference Include="ByteSize" Version="2.1.2" />
+		<PackageReference Include="ClosedXML" Version="0.104.2" />
+		<PackageReference Include="DinkToPdf" Version="1.0.8" />
+		<PackageReference Include="ExcelDataReader" Version="3.7.0" />
+		<PackageReference Include="ExcelDataReader.DataSet" Version="3.7.0" />
+		<PackageReference Include="itext" Version="9.2.0" />
+		<PackageReference Include="iTextSharp.LGPLv2.Core" Version="1.8.2" />
+		<PackageReference Include="EPPlus" Version="5.8.8" />
+		<PackageReference Include="FluentValidation" Version="11.11.0" />
+		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
+		<PackageReference Include="Hangfire" Version="1.8.17" />
+		<PackageReference Include="Hangfire.AspNetCore" Version="1.8.17" />
+		<PackageReference Include="Hangfire.Core" Version="1.8.17" />
+		<PackageReference Include="Jdenticon-net" Version="3.1.2" />
+		<PackageReference Include="MailKit" Version="4.9.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.Negotiate" Version="8.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Common" Version="9.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="8.0.11" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.11">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.11" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="MimeKit" Version="4.9.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Migrations\" />
+	</ItemGroup>
+
+</Project>

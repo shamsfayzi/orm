@@ -1,0 +1,681 @@
+﻿@using Operational_Risk_Management.Services.Interfaces;
+@model IncidentDashboardDTO
+@{
+    ViewData["Title"] = "Risk Management Dashboard";
+}
+    @section Styles{
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    }
+
+        <!-- Header -->
+        <header class="bg-white shadow">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-900">Risk Management Dashboard</h1>
+                        <p class="mt-1 text-sm text-gray-500">Monitor and manage risk incidents across departments</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <form id="dateFilterForm" method="get" action="@Url.Action("GetDashboardData", "IncidentManagement")" class="flex space-x-4">
+                            <div class="flex items-center">
+                                <label for="startDate" class="block text-sm font-medium text-gray-700 mr-2">Start:</label>
+                                <input type="date" id="startDate" name="startDate" value="@(ViewBag.StartDate?.ToString("yyyy-MM-dd"))"
+                                       class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                            </div>
+                            <div class="flex items-center">
+                                <label for="endDate" class="block text-sm font-medium text-gray-700 mr-2">End:</label>
+                                <input type="date" id="endDate" name="endDate" value="@(ViewBag.EndDate?.ToString("yyyy-MM-dd"))"
+                                       class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                            </div>
+                            <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                Apply Filter
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <!-- Key Metrics -->
+            <section class="mb-8">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Key Metrics</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <!-- Total Incidents Card -->
+                    <a href="@Url.Action("GetAllIncidents", "IncidentManagement")" class="bg-white rounded-lg shadow p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 rounded-md bg-indigo-100 p-3">
+                                <i class="fas fa-exclamation-circle text-indigo-600 text-xl"></i>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500">Total Incidents</dt>
+                                    <dd>
+                                        <div class="text-lg font-semibold text-gray-900">@Model.TotalIncidents</div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Open Incidents Card -->
+                    <a href="@Url.Action("GetOpenIncidents", "IncidentManagement")" class="bg-white rounded-lg shadow p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 rounded-md bg-blue-100 p-3">
+                                <i class="fas fa-folder-open text-blue-600 text-xl"></i>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500">Open Incidents</dt>
+                                    <dd>
+                                        <div class="text-lg font-semibold text-gray-900">@Model.OpenIncidents</div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Pending Review Incidents Card -->
+                    <a href="@Url.Action("GetPendingReviewIncidents", "IncidentManagement")" class="bg-white rounded-lg shadow p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 rounded-md bg-yellow-100 p-3">
+                                <i class="fas fa-clock text-yellow-600 text-xl"></i>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500">Pending Review</dt>
+                                    <dd>
+                                        <div class="text-lg font-semibold text-gray-900">@Model.PendingReviewIncidents</div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Requiring Revision Incidents Card -->
+                    <a href="@Url.Action("GetRequiringRevisionIncidents", "IncidentManagement")" class="bg-white rounded-lg shadow p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 rounded-md bg-red-100 p-3">
+                                <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500">Requires Revision</dt>
+                                    <dd>
+                                        <div class="text-lg font-semibold text-gray-900">@Model.RequiringRevisionIncidents</div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Closed Incidents Card -->
+                    <a href="@Url.Action("GetClosedIncidents", "IncidentManagement")" class="bg-white rounded-lg shadow p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 rounded-md bg-green-100 p-3">
+                                <i class="fas fa-check-circle text-green-600 text-xl"></i>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500">Closed Incidents</dt>
+                                    <dd>
+                                        <div class="text-lg font-semibold text-gray-900">@Model.ClosedIncidents</div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="mb-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Incidents by Department Chart -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Incidents by Department</h3>
+                        <div id="incidentsByDepartmentChart" class="h-80"></div>
+                    </div>
+
+                    <!-- Incidents by Category Chart -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Incidents by Category</h3>
+                        <div id="incidentsByCategoryChart" class="h-80"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Additional Charts Section -->
+            <section class="mb-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Incidents by Risk Level Chart -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Incidents by Risk Level</h3>
+                        <div id="incidentsByRiskLevelChart" class="h-80"></div>
+                    </div>
+
+                    <!-- Incidents Trend Chart -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-medium text-gray-900">Incidents Trend</h3>
+                            <div class="flex space-x-2">
+                                <button type="button" class="trend-interval px-3 py-1 text-sm font-medium rounded-md" data-interval="month">Monthly</button>
+                                <button type="button" class="trend-interval px-3 py-1 text-sm font-medium rounded-md" data-interval="week">Weekly</button>
+                                <button type="button" class="trend-interval px-3 py-1 text-sm font-medium rounded-md" data-interval="day">Daily</button>
+                            </div>
+                        </div>
+                        <div id="incidentsTrendChart" class="h-80"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tabs Section -->
+            <section class="mb-8">
+                <div class="border-b border-gray-200">
+                    <nav class="-mb-px flex" aria-label="Tabs">
+                        <a href="#" class="tab-link active border-indigo-500 text-indigo-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-target="pending-incidents">
+                            Pending Review Incidents
+                        </a>
+                        <a href="#" class="tab-link border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm ml-8" data-target="revision-incidents">
+                            Incidents Requiring Revision
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="mt-4">
+                    <!-- Pending Review Incidents -->
+                    <div id="pending-incidents" class="tab-content">
+                        <div class="bg-white shadow overflow-hidden sm:rounded-md">
+                            <div class="px-4 py-5 border-b border-gray-200 sm:px-6 flex justify-between items-center">
+                                <h3 class="text-lg leading-6 font-medium text-gray-900">Pending Review Incidents</h3>
+                                <a href="@Url.Action("GetPendingReviewIncidents", "IncidentManagement")" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                                    View All <span aria-hidden="true">→</span>
+                                </a>
+                            </div>
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Risk Level</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Report Date</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                        <th scope="col" class="relative px-6 py-3">
+                                            <span class="sr-only">Actions</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200" id="pendingIncidentsTable">
+                                    <tr>
+                                        <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">Loading incidents...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Incidents Requiring Revision -->
+                    <div id="revision-incidents" class="tab-content hidden">
+                        <div class="bg-white shadow overflow-hidden sm:rounded-md">
+                            <div class="px-4 py-5 border-b border-gray-200 sm:px-6 flex justify-between items-center">
+                                <h3 class="text-lg leading-6 font-medium text-gray-900">Incidents Requiring Revision</h3>
+                                <a href="@Url.Action("GetRequiringRevisionIncidents", "IncidentManagement")" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                                    View All <span aria-hidden="true">→</span>
+                                </a>
+                            </div>
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Risk Level</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Report Date</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Review</th>
+                                        <th scope="col" class="relative px-6 py-3">
+                                            <span class="sr-only">Actions</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200" id="revisionIncidentsTable">
+                                    <tr>
+                                        <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">Loading incidents...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        @section Scripts{
+    <script>
+        $(document).ready(function() {
+            // Initialize active tab
+            $('.tab-link').on('click', function(e) {
+                e.preventDefault();
+                const target = $(this).data('target');
+
+                // Update active tab
+                $('.tab-link').removeClass('active border-indigo-500 text-indigo-600').addClass('border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300');
+                $(this).addClass('active border-indigo-500 text-indigo-600').removeClass('border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300');
+
+                // Show target content
+                $('.tab-content').addClass('hidden');
+                $(`#${target}`).removeClass('hidden');
+
+                // Load data for the active tab
+                if (target === 'pending-incidents') {
+                    loadPendingIncidents();
+                } else if (target === 'revision-incidents') {
+                    loadRevisionIncidents();
+                }
+            });
+
+            // Initialize trend interval buttons
+            $('.trend-interval').on('click', function() {
+                const interval = $(this).data('interval');
+                $('.trend-interval').removeClass('bg-indigo-100 text-indigo-700').addClass('text-gray-700 bg-gray-100');
+                $(this).addClass('bg-indigo-100 text-indigo-700').removeClass('text-gray-700 bg-gray-100');
+                loadIncidentsTrend(interval);
+            });
+
+            // Set default active trend interval
+            $('.trend-interval[data-interval="month"]').addClass('bg-indigo-100 text-indigo-700').removeClass('text-gray-700 bg-gray-100');
+
+            // Initialize charts and load data
+            initializeCharts();
+            loadPendingIncidents();
+            loadRevisionIncidents();
+        });
+
+        function initializeCharts() {
+            // Load chart data from model
+            const departmentData = @Html.Raw(Json.Serialize(Model.IncidentsByDepartment));
+            const categoryData = @Html.Raw(Json.Serialize(Model.IncidentsByCategory));
+            const riskLevelData = @Html.Raw(Json.Serialize(Model.IncidentsByRiskLevel));
+            const trendData = @Html.Raw(Json.Serialize(Model.IncidentsTrend));
+
+            renderIncidentsByDepartmentChart(departmentData);
+            renderIncidentsByCategoryChart(categoryData);
+            renderIncidentsByRiskLevelChart(riskLevelData);
+            renderIncidentsTrendChart(trendData);
+        }
+
+        function renderIncidentsByDepartmentChart(data) {
+            const departments = Object.keys(data);
+            const counts = Object.values(data);
+
+            const options = {
+                series: [{
+                    name: 'Incidents',
+                    data: counts
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 320,
+                    toolbar: {
+                        show: false
+                    }
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: true,
+                        borderRadius: 4,
+                        dataLabels: {
+                            position: 'top'
+                        }
+                    }
+                },
+                colors: ['#4F46E5'],
+                dataLabels: {
+                    enabled: true,
+                    formatter: function(val) {
+                        return val;
+                    },
+                    offsetX: 20,
+                    style: {
+                        fontSize: '12px',
+                        colors: ['#304758']
+                    }
+                },
+                xaxis: {
+                    categories: departments,
+                    labels: {
+                        style: {
+                            fontSize: '12px'
+                        }
+                    }
+                },
+                tooltip: {
+                    y: {
+                        formatter: function(val) {
+                            return val + " incidents";
+                        }
+                    }
+                }
+            };
+
+            const chart = new ApexCharts(document.querySelector("#incidentsByDepartmentChart"), options);
+            chart.render();
+        }
+
+        function renderIncidentsByCategoryChart(data) {
+            const categories = Object.keys(data);
+            const counts = Object.values(data);
+
+            const options = {
+                series: counts,
+                chart: {
+                    type: 'pie',
+                    height: 320
+                },
+                labels: categories,
+                colors: ['#4F46E5', '#EC4899', '#F59E0B', '#10B981', '#6366F1'],
+                legend: {
+                    position: 'bottom'
+                },
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            width: 200
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }],
+                tooltip: {
+                    y: {
+                        formatter: function(val) {
+                            return val + " incidents";
+                        }
+                    }
+                }
+            };
+
+            const chart = new ApexCharts(document.querySelector("#incidentsByCategoryChart"), options);
+            chart.render();
+        }
+
+        function renderIncidentsByRiskLevelChart(data) {
+            const riskLevels = Object.keys(data);
+            const counts = Object.values(data);
+
+            const options = {
+                series: [{
+                    name: 'Incidents',
+                    data: counts
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 320,
+                    toolbar: {
+                        show: false
+                    }
+                },
+                plotOptions: {
+                    bar: {
+                        borderRadius: 4,
+                        columnWidth: '60%',
+                        distributed: true,
+                        dataLabels: {
+                            position: 'top'
+                        }
+                    }
+                },
+                colors: ['#EF4444', '#F59E0B', '#10B981', '#3B82F6'],
+                dataLabels: {
+                    enabled: true,
+                    formatter: function(val) {
+                        return val;
+                    },
+                    offsetY: -20,
+                    style: {
+                        fontSize: '12px',
+                        colors: ['#304758']
+                    }
+                },
+                xaxis: {
+                    categories: riskLevels,
+                    labels: {
+                        style: {
+                            fontSize: '12px'
+                        }
+                    }
+                },
+                tooltip: {
+                    y: {
+                        formatter: function(val) {
+                            return val + " incidents";
+                        }
+                    }
+                }
+            };
+
+            const chart = new ApexCharts(document.querySelector("#incidentsByRiskLevelChart"), options);
+            chart.render();
+        }
+
+        function renderIncidentsTrendChart(data) {
+            const dates = Object.keys(data);
+            const counts = Object.values(data);
+
+            const options = {
+                series: [{
+                    name: 'Incidents',
+                    data: counts
+                }],
+                chart: {
+                    type: 'line',
+                    height: 320,
+                    zoom: {
+                        enabled: false
+                    },
+                    toolbar: {
+                        show: false
+                    }
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    curve: 'smooth',
+                    width: 3
+                },
+                colors: ['#4F46E5'],
+                grid: {
+                    row: {
+                        colors: ['#f3f3f3', 'transparent'],
+                        opacity: 0.5
+                    }
+                },
+                xaxis: {
+                    categories: dates,
+                    labels: {
+                        rotate: -45,
+                        style: {
+                            fontSize: '12px'
+                        }
+                    }
+                },
+                yaxis: {
+                    title: {
+                        text: 'Number of Incidents'
+                    }
+                },
+                tooltip: {
+                    y: {
+                        formatter: function(val) {
+                            return val + " incidents";
+                        }
+                    }
+                }
+            };
+
+            const chart = new ApexCharts(document.querySelector("#incidentsTrendChart"), options);
+            chart.render();
+        }
+
+        function loadIncidentsTrend(interval) {
+            const startDate = $('#startDate').val();
+            const endDate = $('#endDate').val();
+
+            $.ajax({
+                url: '@Url.Action("GetIncidentsTrend", "IncidentManagement")',
+                type: 'GET',
+                data: {
+                    startDate: startDate,
+                    endDate: endDate,
+                    interval: interval
+                },
+                success: function(data) {
+                    // Clear previous chart
+                    document.querySelector("#incidentsTrendChart").innerHTML = '';
+                    renderIncidentsTrendChart(data);
+                },
+                error: function(error) {
+                    console.error('Error loading incidents trend:', error);
+                }
+            });
+        }
+
+        function loadPendingIncidents() {
+            $.ajax({
+                url: '@Url.Action("GetPendingReviewIncidents", "IncidentManagement")',
+                type: 'GET',
+                data: {
+                    pageNumber: 1,
+                    pageSize: 5
+                },
+                success: function(data) {
+                    renderPendingIncidentsTable(data.items);
+                },
+                error: function(error) {
+                    console.error('Error loading pending incidents:', error);
+                    $('#pendingIncidentsTable').html('<tr><td colspan="6" class="px-6 py-4 text-center text-sm text-red-500">Error loading incidents</td></tr>');
+                }
+            });
+        }
+
+        function loadRevisionIncidents() {
+            $.ajax({
+                url: '@Url.Action("GetRequiringRevisionIncidents", "IncidentManagement")',
+                type: 'GET',
+                data: {
+                    pageNumber: 1,
+                    pageSize: 5
+                },
+                success: function(data) {
+                    renderRevisionIncidentsTable(data.items);
+                },
+                error: function(error) {
+                    console.error('Error loading revision incidents:', error);
+                    $('#revisionIncidentsTable').html('<tr><td colspan="6" class="px-6 py-4 text-center text-sm text-red-500">Error loading incidents</td></tr>');
+                }
+            });
+        }
+
+        function renderPendingIncidentsTable(incidents) {
+            if (!incidents || incidents.length === 0) {
+                $('#pendingIncidentsTable').html('<tr><td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">No pending incidents found</td></tr>');
+                return;
+            }
+
+            let html = '';
+            incidents.forEach(incident => {
+                const riskLevelClass = getRiskLevelClass(incident.riskAssessment);
+                const statusClass = getStatusClass(incident.incidentStatus);
+
+                html += `
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${incident.titleOfIncident}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${incident.branchDepartmentUnit}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${riskLevelClass}">
+                                ${incident.riskAssessment}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatDate(incident.reportDate)}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${statusClass}">
+                                ${incident.incidentStatus}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <a href="@Url.Action("ViewIncident", "IncidentManagement")/${incident.id}" class="text-indigo-600 hover:text-indigo-900">View</a>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            $('#pendingIncidentsTable').html(html);
+        }
+
+        function renderRevisionIncidentsTable(incidents) {
+            if (!incidents || incidents.length === 0) {
+                $('#revisionIncidentsTable').html('<tr><td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">No incidents requiring revision found</td></tr>');
+                return;
+            }
+
+            let html = '';
+            incidents.forEach(incident => {
+                const riskLevelClass = getRiskLevelClass(incident.riskAssessment);
+
+                html += `
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${incident.titleOfIncident}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${incident.branchDepartmentUnit}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${riskLevelClass}">
+                                ${incident.riskAssessment}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${formatDate(incident.reportDate)}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${incident.lastReviewDate ? formatDate(incident.lastReviewDate) : 'Not reviewed'}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <a href="@Url.Action("ViewIncident", "IncidentManagement")/${incident.id}" class="text-indigo-600 hover:text-indigo-900">View</a>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            $('#revisionIncidentsTable').html(html);
+        }
+
+        function getRiskLevelClass(riskLevel) {
+            switch (riskLevel) {
+                case 'Critical':
+                case 'High':
+                    return 'bg-red-100 text-red-800';
+                case 'Medium':
+                    return 'bg-yellow-100 text-yellow-800';
+                case 'Low':
+                    return 'bg-green-100 text-green-800';
+                default:
+                    return 'bg-gray-100 text-gray-800';
+            }
+        }
+
+        function getStatusClass(status) {
+            switch (status) {
+                case 'Open':
+                    return 'bg-yellow-100 text-yellow-800';
+                case 'Closed':
+                    return 'bg-green-100 text-green-800';
+                default:
+                    return 'bg-gray-100 text-gray-800';
+            }
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString();
+        }
+    </script>
+
+        }

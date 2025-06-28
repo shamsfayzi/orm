@@ -1,0 +1,25 @@
+﻿@model Microsoft.AspNetCore.Http.IFormFile
+@using System.ComponentModel.DataAnnotations
+@using System.Reflection
+
+@{
+    var metadata = ViewData.ModelMetadata;
+    var propertyName = metadata.PropertyName;
+    var propertyInfo = metadata.ContainerType.GetProperty(propertyName);
+    var isRequired = propertyInfo.GetCustomAttributes(typeof(RequiredAttribute), false).Any();
+    var displayName = metadata.DisplayName ?? propertyName;
+}
+<div>
+    <label for="@ViewData.TemplateInfo.HtmlFieldPrefix" class="block font-medium mb-1.5 pl-1 text-sm">
+        @displayName @if (isRequired)
+        {
+            <span class="text-red-400">*</span>
+        }
+    </label>
+    <input type="file" id="@ViewData.TemplateInfo.HtmlFieldPrefix" name="@ViewData.TemplateInfo.HtmlFieldPrefix" class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none
+    file:bg-gray-50 file:border-0
+    file:me-4
+    file:py-3 file:px-4
+   ">
+    @Html.ValidationMessageFor(a => a)
+</div>

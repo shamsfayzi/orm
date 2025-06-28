@@ -1,0 +1,1259 @@
+﻿@model DashboardDTO
+@{
+    ViewData["Title"] = "Integrated Risk Management Dashboard";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .metric-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+            .metric-card:hover {
+                transform: scale(1.05);
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            }
+
+        /* Improved tab styling */
+        .tabs-container {
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 1.5rem;
+        }
+
+        .tab-link {
+            display: inline-block;
+            padding: 0.75rem 1rem;
+            font-weight: 500;
+            font-size: 0.875rem;
+            border-bottom: 2px solid transparent;
+            margin-right: 1.5rem;
+            color: #6b7280;
+            transition: all 0.2s ease;
+        }
+
+            .tab-link:hover {
+                color: #4b5563;
+            }
+
+            .tab-link.active {
+                color: #4F46E5;
+                border-color: #4F46E5;
+            }
+
+        .tab-content.hidden {
+            display: none;
+        }
+
+        .trend-interval {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-radius: 0.375rem;
+            background-color: #f3f4f6;
+            color: #6b7280;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+            .trend-interval:hover {
+                background-color: #e5e7eb;
+            }
+
+            .trend-interval.active {
+                background-color: #EEF2FF;
+                color: #4F46E5;
+            }
+
+        /* Status badges */
+        .status-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .status-badge-breached {
+            background-color: #FEE2E2;
+            color: #B91C1C;
+        }
+
+        .status-badge-normal {
+            background-color: #DCFCE7;
+            color: #166534;
+        }
+
+        .status-badge-overdue {
+            background-color: #FEF3C7;
+            color: #92400E;
+        }
+    </style>
+}
+
+<!-- Header -->
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">Integrated Risk Management Dashboard</h1>
+                <p class="mt-1 text-sm text-gray-500">Monitor and manage risk incidents and KRIs across departments</p>
+            </div>
+            <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <form id="dateFilterForm" method="get" action="@Url.Action("Index", "Home")" class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <div class="flex items-center">
+                        <label for="startDate" class="block text-sm font-medium text-gray-700 mr-2">Start:</label>
+                        <input type="date" id="startDate" name="startDate" value="@(ViewBag.StartDate?.ToString("yyyy-MM-dd"))"
+                               class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                    </div>
+                    <div class="flex items-center">
+                        <label for="endDate" class="block text-sm font-medium text-gray-700 mr-2">End:</label>
+                        <input type="date" id="endDate" name="endDate" value="@(ViewBag.EndDate?.ToString("yyyy-MM-dd"))"
+                               class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                    </div>
+                    <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Apply Filter
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <!-- Key Metrics Section -->
+    <section class="mb-8">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Key Metrics</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
+            <!-- Total Incidents Card -->
+            <a href="@Url.Action("GetAllIncidents", "Home")" class="bg-white rounded-lg shadow p-6 metric-card">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 rounded-md bg-indigo-100 p-3">
+                        <i class="fas fa-exclamation-circle text-indigo-600 text-xl"></i>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500">Total Incidents</dt>
+                            <dd>
+                                <div class="text-lg font-semibold text-gray-900">@Model.IncidentDashboardDTO.TotalIncidents</div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Open Incidents Card -->
+            <a href="@Url.Action("GetOpenIncidents", "Home")" class="bg-white rounded-lg shadow p-6 metric-card">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 rounded-md bg-blue-100 p-3">
+                        <i class="fas fa-folder-open text-blue-600 text-xl"></i>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500">Open Incidents</dt>
+                            <dd>
+                                <div class="text-lg font-semibold text-gray-900">@Model.IncidentDashboardDTO.OpenIncidents</div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Pending Review Incidents Card -->
+            <a href="@Url.Action("GetPendingReviewIncidents", "Home")" class="bg-white rounded-lg shadow p-6 metric-card">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 rounded-md bg-yellow-100 p-3">
+                        <i class="fas fa-clock text-yellow-600 text-xl"></i>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500">Pending Review</dt>
+                            <dd>
+                                <div class="text-lg font-semibold text-gray-900">@Model.IncidentDashboardDTO.PendingReviewIncidents</div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Requiring Revision Incidents Card -->
+            <a href="@Url.Action("GetRequiringRevisionIncidents", "Home")" class="bg-white rounded-lg shadow p-6 metric-card">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 rounded-md bg-red-100 p-3">
+                        <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500">Requires Revision</dt>
+                            <dd>
+                                <div class="text-lg font-semibold text-gray-900">@Model.IncidentDashboardDTO.RequiringRevisionIncidents</div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Closed Incidents Card -->
+            <a href="@Url.Action("GetClosedIncidents", "Home")" class="bg-white rounded-lg shadow p-6 metric-card">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 rounded-md bg-green-100 p-3">
+                        <i class="fas fa-check-circle text-green-600 text-xl"></i>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500">Closed Incidents</dt>
+                            <dd>
+                                <div class="text-lg font-semibold text-gray-900">@Model.IncidentDashboardDTO.ClosedIncidents</div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Breach Rate Card -->
+            <a href="@Url.Action("Details", "Home", new { type = "breached" })" class="bg-white rounded-lg shadow p-6 metric-card">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 rounded-md bg-purple-100 p-3">
+                        <i class="fas fa-exclamation text-purple-600 text-xl"></i>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500">Breach Rate</dt>
+                            <dd>
+                                <div class="text-lg font-semibold text-gray-900">
+                                    @{
+                                        var breachRate = Model.KRIDashboardDataDTO.AllSubmissions > 0
+                                        ? (Model.KRIDashboardDataDTO.BreachedSubmissions * 100.0 / Model.KRIDashboardDataDTO.AllSubmissions).ToString("0.0")
+                                        : "0.0";
+                                    }
+                                    @breachRate%
+                                </div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- KRI Summary Section -->
+    <section class="mb-8">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">KRI Summary</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <!-- All Submissions Card -->
+            <a href="@Url.Action("Details", "Home", new { type = "all" })"
+               class="bg-white rounded-lg shadow p-6 metric-card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-blue-100 text-blue-600">
+                        <i class="fas fa-file-alt text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h2 class="text-sm font-medium text-gray-600">All Submissions</h2>
+                        <p class="text-3xl font-bold text-gray-900">@Model.KRIDashboardDataDTO.AllSubmissions</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Breached Submissions Card -->
+            <a href="@Url.Action("Details", "Home", new { type = "breached" })"
+               class="bg-white rounded-lg shadow p-6 metric-card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-red-100 text-red-600">
+                        <i class="fas fa-exclamation-circle text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h2 class="text-sm font-medium text-gray-600">Breached Submissions</h2>
+                        <p class="text-3xl font-bold text-gray-900">@Model.KRIDashboardDataDTO.BreachedSubmissions</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Overdue Submissions Card -->
+            <a href="@Url.Action("Details", "Home", new { type = "overdue" })"
+               class="bg-white rounded-lg shadow p-6 metric-card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-yellow-100 text-yellow-600">
+                        <i class="fas fa-clock text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h2 class="text-sm font-medium text-gray-600">Overdue Submissions</h2>
+                        <p class="text-3xl font-bold text-gray-900">@Model.KRIDashboardDataDTO.OverDueSubmissions</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Revision Submissions Card -->
+            <a href="@Url.Action("Details", "Home", new { type = "revision" })"
+               class="bg-white rounded-lg shadow p-6 metric-card">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-green-100 text-green-600">
+                        <i class="fas fa-sync-alt text-xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h2 class="text-sm font-medium text-gray-600">Revision Submissions</h2>
+                        <p class="text-3xl font-bold text-gray-900">@Model.KRIDashboardDataDTO.RevissionSubmissions</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Tab Navigation -->
+    <section class="mb-8">
+        <div class="tabs-container">
+            <nav class="flex" aria-label="Tabs">
+                <a href="#" class="tab-link active" data-target="incident-overview">
+                    Incident Overview
+                </a>
+                <a href="#" class="tab-link" data-target="kri-overview">
+                    KRI Overview
+                </a>
+                <a href="#" class="tab-link" data-target="department-analysis">
+                    Department Analysis
+                </a>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Tab Content -->
+    <!-- Incident Overview Tab -->
+    <div id="incident-overview" class="tab-content">
+        <!-- Charts Section -->
+        <section class="mb-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Incidents by Category Chart -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Incidents by Category</h3>
+                    <div id="incidentsByCategoryChart" class="h-80"></div>
+                </div>
+
+                <!-- Incidents by Risk Level Chart -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Incidents by Risk Level</h3>
+                    <div id="incidentsByRiskLevelChart" class="h-80"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Incidents Trend Chart -->
+        <section class="mb-8">
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-medium text-gray-900">Incidents Trend</h3>
+                    <div class="flex space-x-2">
+                        <button type="button" class="trend-interval active" data-interval="month">Monthly</button>
+                        <button type="button" class="trend-interval" data-interval="week">Weekly</button>
+                        <button type="button" class="trend-interval" data-interval="day">Daily</button>
+                    </div>
+                </div>
+                <div id="incidentsTrendChart" class="h-80"></div>
+            </div>
+        </section>
+
+        <!-- Incidents Tables -->
+        <section class="mb-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Pending Review Incidents -->
+                <div class="bg-white shadow overflow-hidden sm:rounded-md">
+                    <div class="px-4 py-5 border-b border-gray-200 sm:px-6 flex justify-between items-center">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">Pending Review Incidents</h3>
+                        <a href="@Url.Action("GetPendingReviewIncidents", "Home")" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                            View All <span aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Risk Level</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Report Date</th>
+                                <th scope="col" class="relative px-6 py-3">
+                                    <span class="sr-only">Actions</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200" id="pendingIncidentsTable">
+                            <tr>
+                                <td colspan="5" class="px-6 py-4 text-center text-sm text-gray-500">Loading incidents...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Incidents Requiring Revision -->
+                <div class="bg-white shadow overflow-hidden sm:rounded-md">
+                    <div class="px-4 py-5 border-b border-gray-200 sm:px-6 flex justify-between items-center">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">Incidents Requiring Revision</h3>
+                        <a href="@Url.Action("GetRequiringRevisionIncidents", "Home")" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                            View All <span aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Risk Level</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Review</th>
+                                <th scope="col" class="relative px-6 py-3">
+                                    <span class="sr-only">Actions</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200" id="revisionIncidentsTable">
+                            <tr>
+                                <td colspan="5" class="px-6 py-4 text-center text-sm text-gray-500">Loading incidents...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- KRI Overview Tab -->
+    <div id="kri-overview" class="tab-content hidden">
+        <!-- KRI Charts -->
+        <section class="mb-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Most Breached by Department -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Most Breached by Department</h3>
+                    <div id="departmentBreachChart" class="h-80"></div>
+                </div>
+
+                <!-- Most Breached by Indicator -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Most Breached by Indicator</h3>
+                    <div id="indicatorBreachChart" class="h-80"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Breach Percentage Overview -->
+        <section class="mb-8">
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-lg font-medium text-gray-900 mb-4">Breach Percentage Overview</h3>
+                <div id="breachPercentageChart" class="h-80"></div>
+            </div>
+        </section>
+
+        <!-- KRI Submissions Table -->
+        <section class="mb-8">
+            <div class="bg-white shadow overflow-hidden sm:rounded-md">
+                <div class="px-4 py-5 border-b border-gray-200 sm:px-6 flex justify-between items-center">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">Recent KRI Submissions</h3>
+                    <a href="@Url.Action("Details", "Home", new { type = "all" })" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                        View All <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Indicator</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Target</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actual</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th scope="col" class="relative px-6 py-3">
+                                <span class="sr-only">Actions</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200" id="kriSubmissionsTable">
+                        <tr>
+                            <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">Loading submissions...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <!-- Department Analysis Tab -->
+    <div id="department-analysis" class="tab-content hidden">
+        <!-- Department Selector -->
+        <section class="mb-8">
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
+                    <h3 class="text-lg font-medium text-gray-900">Department Analysis</h3>
+                    <div class="w-full md:w-64">
+                        <label for="departmentSelect" class="block text-sm font-medium text-gray-700 mb-1">Select Department</label>
+                        <select id="departmentSelect" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            <option value="">Select a department</option>
+                            <!-- Department options will be populated via JavaScript -->
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4" id="departmentMetrics">
+                    <div class="bg-gray-50 p-4 rounded-md">
+                        <p class="text-sm text-gray-500">Total Incidents</p>
+                        <p class="text-xl font-semibold text-gray-900" id="deptTotalIncidents">-</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-md">
+                        <p class="text-sm text-gray-500">Open Incidents</p>
+                        <p class="text-xl font-semibold text-gray-900" id="deptOpenIncidents">-</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-md">
+                        <p class="text-sm text-gray-500">KRI Submissions</p>
+                        <p class="text-xl font-semibold text-gray-900" id="deptKriSubmissions">-</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-md">
+                        <p class="text-sm text-gray-500">Breach Rate</p>
+                        <p class="text-xl font-semibold text-gray-900" id="deptBreachRate">-</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Department Charts -->
+        <section class="mb-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Department Incidents by Category</h3>
+                    <div id="deptIncidentsByCategoryChart" class="h-80"></div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Department KRI Breach Trend</h3>
+                    <div id="deptKriBreachTrendChart" class="h-80"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Department Tables -->
+        <section class="mb-8">
+            <div class="grid grid-cols-1 gap-6">
+                <div class="bg-white shadow overflow-hidden sm:rounded-md">
+                    <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">Department Incidents</h3>
+                    </div>
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Risk Level</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Report Date</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th scope="col" class="relative px-6 py-3">
+                                    <span class="sr-only">Actions</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200" id="departmentIncidentsTable">
+                            <tr>
+                                <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">Select a department to view incidents</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-white border-t border-gray-200 py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center">
+            <p class="text-sm text-gray-500">Last updated: @DateTime.Now.ToString("MMMM dd, yyyy hh:mm tt")</p>
+            <div class="flex space-x-4">
+                <button id="exportDataBtn" class="text-sm text-indigo-600 hover:text-indigo-500">Export Data</button>
+                <button id="printDashboardBtn" class="text-sm text-indigo-600 hover:text-indigo-500">Print Dashboard</button>
+            </div>
+        </div>
+    </div>
+</footer>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.35.0/dist/apexcharts.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab Navigation
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Remove active class from all tabs
+                    tabLinks.forEach(tab => tab.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.add('hidden'));
+
+                    // Add active class to current tab
+                    this.classList.add('active');
+
+                    // Show corresponding content
+                    const targetId = this.getAttribute('data-target');
+                    document.getElementById(targetId).classList.remove('hidden');
+
+                    // Initialize charts for the active tab
+                    if (targetId === 'incident-overview') {
+                        renderIncidentCharts();
+                    } else if (targetId === 'kri-overview') {
+                        renderKRICharts();
+                    } else if (targetId === 'department-analysis') {
+                        initializeDepartmentSelector();
+                    }
+                });
+            });
+
+            // Trend Interval Buttons
+            const trendIntervals = document.querySelectorAll('.trend-interval');
+            trendIntervals.forEach(button => {
+                button.addEventListener('click', function() {
+                    trendIntervals.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    const interval = this.getAttribute('data-interval');
+                    updateTrendChart(interval);
+                });
+            });
+
+            // Initialize default tab charts
+            renderIncidentCharts();
+
+            // Load incident tables data
+            loadPendingIncidents();
+            loadRevisionIncidents();
+
+            // Initialize print and export buttons
+            document.getElementById('printDashboardBtn').addEventListener('click', function() {
+                window.print();
+            });
+
+            document.getElementById('exportDataBtn').addEventListener('click', function() {
+                // This would be implemented based on your export requirements
+                alert('Export functionality would be implemented here');
+            });
+        });
+
+        // Render Incident Charts
+        function renderIncidentCharts() {
+            // Convert C# Dictionary to JavaScript array for charts
+            const categoryData = [];
+        @foreach (var item in Model.IncidentDashboardDTO.IncidentsByCategory)
+        {
+            @:categoryData.push({ name: "@item.Key", value: @item.Value });
+        }
+
+            const riskLevelData = [];
+        @foreach (var item in Model.IncidentDashboardDTO.IncidentsByRiskLevel)
+        {
+            @:riskLevelData.push({ name: "@item.Key", value: @item.Value });
+        }
+
+            const trendData = [];
+        @foreach (var item in Model.IncidentDashboardDTO.IncidentsTrend)
+        {
+            @:trendData.push({ name: "@item.Key", value: @item.Value });
+        }
+
+            // Render charts
+            renderPieChart('incidentsByCategoryChart', categoryData, 'Incidents');
+            renderBarChart('incidentsByRiskLevelChart', riskLevelData, 'Incidents', false);
+            renderLineChart('incidentsTrendChart', trendData, 'Incidents');
+        }
+
+        // Render KRI Charts
+        function renderKRICharts() {
+            // Most Breached by Department Chart
+            const departmentData = [];
+        @foreach (var item in Model.KRIDashboardDataDTO.MostBreachedByDepartment)
+        {
+            @:departmentData.push({ name: "@item.Department", value: @item.Count });
+        }
+
+            // Most Breached by Indicator Chart
+            const indicatorData = [];
+        @foreach (var item in Model.KRIDashboardDataDTO.MostBreachedByIndicator)
+        {
+            @:indicatorData.push({ name: "@item.IndicatorName", value: @item.Count });
+        }
+
+            renderHorizontalBarChart('departmentBreachChart', departmentData, 'Breaches');
+            renderBarChart('indicatorBreachChart', indicatorData, 'Breaches', false);
+            renderBreachPercentageChart();
+
+            // Load KRI submissions table
+            loadKRISubmissions();
+        }
+
+        // Initialize Department Selector
+        function initializeDepartmentSelector() {
+            const departmentSelect = document.getElementById('departmentSelect');
+
+            // Get unique departments from both data sources
+            const departments = [];
+
+        @foreach (var item in Model.IncidentDashboardDTO.IncidentsByDepartment)
+        {
+            @:if (!departments.includes("@item.Key")) departments.push("@item.Key");
+        }
+
+        @foreach (var item in Model.KRIDashboardDataDTO.MostBreachedByDepartment)
+        {
+            @:if (!departments.includes("@item.Department")) departments.push("@item.Department");
+        }
+
+            // Clear existing options
+            departmentSelect.innerHTML = '<option value="">Select a department</option>';
+
+            // Add department options
+            departments.forEach(dept => {
+                const option = document.createElement('option');
+                option.value = dept;
+                option.textContent = dept;
+                departmentSelect.appendChild(option);
+            });
+
+            // Add change event listener
+            departmentSelect.addEventListener('change', function() {
+                if (this.value) {
+                    loadDepartmentData(this.value);
+                } else {
+                    clearDepartmentData();
+                }
+            });
+        }
+
+        // Load Department Data
+        function loadDepartmentData(department) {
+            // This would be implemented to load department-specific data
+            // For now, we'll just update the UI with placeholder data
+            let deptIncidents = 0;
+
+        @foreach (var item in Model.IncidentDashboardDTO.IncidentsByDepartment)
+        {
+            @:if ("@item.Key" === department) deptIncidents = @item.Value;
+        }
+
+            document.getElementById('deptTotalIncidents').textContent = deptIncidents;
+            document.getElementById('deptOpenIncidents').textContent = Math.floor(deptIncidents * 0.3);
+            document.getElementById('deptKriSubmissions').textContent = '12'; // Placeholder
+            document.getElementById('deptBreachRate').textContent = '8.3%'; // Placeholder
+
+            // Render department charts with placeholder data
+            renderDepartmentCharts(department);
+
+            // Load department incidents table
+            const tableBody = document.getElementById('departmentIncidentsTable');
+            tableBody.innerHTML = `<tr><td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">Loading incidents for ${department}...</td></tr>`;
+
+            const fetchUrl = `@Url.Action("GetAllIncidents", "Home")?BranchDepartmentUnit=${encodeURIComponent(department)}`;
+
+            fetch(fetchUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const fetchedTbody = doc.querySelector('tbody'); // Assuming IncidentList.cshtml structure
+
+                    if (fetchedTbody && fetchedTbody.rows.length > 0 && (fetchedTbody.rows[0].cells.length > 1 || (fetchedTbody.rows[0].cells.length === 1 && !fetchedTbody.rows[0].cells[0].hasAttribute('colspan')))) {
+                        tableBody.innerHTML = ''; // Clear loading message
+                        let rowsProcessed = 0;
+                        for (const fetchedRow of fetchedTbody.rows) {
+                            // IncidentList.cshtml now renders 6 columns: Title, Department, Risk Level, Report Date, Status, Actions
+                            // DepartmentIncidentsTable expects: Title, Category, Risk Level, Report Date, Status, Actions
+                            if (fetchedRow.cells.length < 6) continue; // Expect 6 cells from IncidentList.cshtml
+
+                            const newRow = tableBody.insertRow();
+
+                            // Title (cell 0 from fetched)
+                            const cellTitle = newRow.insertCell();
+                            cellTitle.className = "px-6 py-4 whitespace-nowrap text-sm text-gray-900";
+                            cellTitle.innerHTML = fetchedRow.cells[0]?.innerHTML || 'N/A';
+
+                            // Category (N/A - not in IncidentList.cshtml)
+                            const cellCategory = newRow.insertCell();
+                            cellCategory.className = "px-6 py-4 whitespace-nowrap text-sm text-gray-500";
+                            cellCategory.innerText = 'N/A';
+
+                            // Risk Level (cell 2 from fetched)
+                            const cellRiskLevel = newRow.insertCell();
+                            cellRiskLevel.className = "px-6 py-4 whitespace-nowrap text-sm text-gray-500";
+                            cellRiskLevel.innerHTML = fetchedRow.cells[2]?.innerHTML || 'N/A';
+
+                            // Report Date (cell 3 from fetched)
+                            const cellReportDate = newRow.insertCell();
+                            cellReportDate.className = "px-6 py-4 whitespace-nowrap text-sm text-gray-500";
+                            cellReportDate.innerHTML = fetchedRow.cells[3]?.innerHTML || 'N/A';
+
+                            // Status (cell 4 from fetched)
+                            const cellStatus = newRow.insertCell();
+                            cellStatus.className = "px-6 py-4 whitespace-nowrap text-sm text-gray-500";
+                            cellStatus.innerHTML = fetchedRow.cells[4]?.innerHTML || 'N/A';
+
+                            // Actions (cell 5 from fetched)
+                            const cellActions = newRow.insertCell();
+                            cellActions.className = "px-6 py-4 whitespace-nowrap text-right text-sm font-medium";
+                            cellActions.innerHTML = fetchedRow.cells[5]?.innerHTML || '<a href="#" class="text-indigo-600 hover:text-indigo-900">View</a>';
+                            rowsProcessed++;
+                        }
+                         if (rowsProcessed === 0) {
+                            tableBody.innerHTML = `<tr><td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">No incidents data processed for ${department}.</td></tr>`;
+                        }
+                    } else {
+                        tableBody.innerHTML = `<tr><td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">No incidents found for ${department}.</td></tr>`;
+                    }
+                })
+                .catch(error => {
+                    console.error(`Error loading incidents for ${department}:`, error);
+                    tableBody.innerHTML = `<tr><td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">Error loading incidents for ${department}.</td></tr>`;
+                });
+        }
+
+        // Clear Department Data
+        function clearDepartmentData() {
+            document.getElementById('deptTotalIncidents').textContent = '-';
+            document.getElementById('deptOpenIncidents').textContent = '-';
+            document.getElementById('deptKriSubmissions').textContent = '-';
+            document.getElementById('deptBreachRate').textContent = '-';
+
+            document.getElementById('departmentIncidentsTable').innerHTML = `
+                <tr>
+                    <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">Select a department to view incidents</td>
+                </tr>
+            `;
+        }
+
+        // Render Department Charts
+        function renderDepartmentCharts(department) {
+            // Department Incidents by Category Chart (placeholder data)
+            const deptCategoryData = [
+                { name: 'Process', value: 8 },
+                { name: 'People', value: 5 },
+                { name: 'Systems', value: 3 },
+                { name: 'External', value: 2 }
+            ];
+            renderPieChart('deptIncidentsByCategoryChart', deptCategoryData, 'Incidents');
+
+            // Department KRI Breach Trend Chart (placeholder data)
+            const deptBreachTrendData = [
+                { name: 'Jan', value: 2 },
+                { name: 'Feb', value: 1 },
+                { name: 'Mar', value: 3 },
+                { name: 'Apr', value: 0 },
+                { name: 'May', value: 2 },
+                { name: 'Jun', value: 1 }
+            ];
+            renderLineChart('deptKriBreachTrendChart', deptBreachTrendData, 'Breaches');
+        }
+
+        // Load Pending Incidents Table
+        function loadPendingIncidents() {
+            const tableBody = document.getElementById('pendingIncidentsTable');
+            tableBody.innerHTML = '<tr><td colspan="5" class="px-6 py-4 text-center text-sm text-gray-500">Loading incidents...</td></tr>';
+
+            fetch('@Url.Action("GetPendingReviewIncidents", "Home")')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const fetchedTbody = doc.querySelector('tbody');
+
+                    if (fetchedTbody && fetchedTbody.rows.length > 0) {
+                        tableBody.innerHTML = fetchedTbody.innerHTML;
+                    } else {
+                        tableBody.innerHTML = '<tr><td colspan="5" class="px-6 py-4 text-center text-sm text-gray-500">No pending review incidents found.</td></tr>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading pending incidents:', error);
+                    tableBody.innerHTML = '<tr><td colspan="5" class="px-6 py-4 text-center text-sm text-gray-500">Error loading incidents.</td></tr>';
+                });
+        }
+
+        // Load Revision Incidents Table
+        function loadRevisionIncidents() {
+            const tableBody = document.getElementById('revisionIncidentsTable');
+            tableBody.innerHTML = '<tr><td colspan="5" class="px-6 py-4 text-center text-sm text-gray-500">Loading incidents...</td></tr>';
+
+            fetch('@Url.Action("GetRequiringRevisionIncidents", "Home")')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const fetchedTbody = doc.querySelector('tbody');
+
+                    if (fetchedTbody && fetchedTbody.rows.length > 0) {
+                        tableBody.innerHTML = fetchedTbody.innerHTML;
+                    } else {
+                        tableBody.innerHTML = '<tr><td colspan="5" class="px-6 py-4 text-center text-sm text-gray-500">No incidents requiring revision found.</td></tr>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading revision incidents:', error);
+                    tableBody.innerHTML = '<tr><td colspan="5" class="px-6 py-4 text-center text-sm text-gray-500">Error loading incidents.</td></tr>';
+                });
+        }
+
+        // Load KRI Submissions Table
+        function loadKRISubmissions() {
+            const tableBody = document.getElementById('kriSubmissionsTable');
+            tableBody.innerHTML = '<tr><td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">Loading submissions...</td></tr>';
+
+            fetch('@Url.Action("Details", "Home", new { type = "all" })')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    // The table in SubmissionDetails.cshtml is the main table with class 'min-w-full'
+                    const fetchedTable = doc.querySelector('table.min-w-full');
+                    const fetchedTbody = fetchedTable ? fetchedTable.querySelector('tbody') : null;
+
+                    if (fetchedTbody && fetchedTbody.rows.length > 0 && fetchedTbody.rows[0].cells.length > 1) { // check if not "No submissions found"
+                        tableBody.innerHTML = ''; // Clear loading message
+                        let rowsAdded = 0;
+                        for (const row of fetchedTbody.rows) {
+                            if (row.cells.length < 6) continue; // Skip header or malformed rows
+
+                            const indicatorName = row.cells[0].querySelector('div')?.innerText || 'N/A';
+                            const departmentName = row.cells[1].querySelector('div')?.innerText || 'N/A';
+                            // Target and Actual are not directly available in the fetched table in a simple format.
+                            const targetValue = 'N/A';
+                            const actualValue = 'N/A';
+                            const statusHtml = row.cells[3].querySelector('span')?.outerHTML || row.cells[3].innerText || 'N/A';
+                            const actionsLink = row.cells[5].querySelector('a');
+                            const viewLinkHref = actionsLink ? actionsLink.getAttribute('href') || '#' : '#';
+                            // Try to get submissionId if it was embedded, e.g. in a data attribute of the row or link
+                            // For now, assume it's not easily parseable from the current HTML structure of SubmissionDetails
+                            // const submissionId = row.dataset.submissionId || actionsLink?.dataset.submissionId;
+                            // const viewUrl = submissionId ? `@Url.Action("ViewSubmission", "Uploader")?id=${submissionId}` : viewLinkHref;
+
+
+                            const newRow = tableBody.insertRow();
+
+                            const cellIndicator = newRow.insertCell();
+                            cellIndicator.className = "px-6 py-4 whitespace-nowrap text-sm text-gray-900";
+                            cellIndicator.innerText = indicatorName;
+
+                            const cellDepartment = newRow.insertCell();
+                            cellDepartment.className = "px-6 py-4 whitespace-nowrap text-sm text-gray-500";
+                            cellDepartment.innerText = departmentName;
+
+                            const cellTarget = newRow.insertCell();
+                            cellTarget.className = "px-6 py-4 whitespace-nowrap text-sm text-gray-500";
+                            cellTarget.innerText = targetValue;
+
+                            const cellActual = newRow.insertCell();
+                            cellActual.className = "px-6 py-4 whitespace-nowrap text-sm text-gray-500";
+                            cellActual.innerText = actualValue;
+
+                            const cellStatus = newRow.insertCell();
+                            cellStatus.className = "px-6 py-4 whitespace-nowrap text-sm";
+                            cellStatus.innerHTML = statusHtml;
+
+                            const cellActions = newRow.insertCell();
+                            cellActions.className = "px-6 py-4 whitespace-nowrap text-right text-sm font-medium";
+                            cellActions.innerHTML = `<a href="${viewLinkHref}" class="text-indigo-600 hover:text-indigo-900">View</a>`;
+
+                            rowsAdded++;
+                        }
+                        if (rowsAdded === 0) {
+                             tableBody.innerHTML = '<tr><td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">No KRI submissions found.</td></tr>';
+                        }
+                    } else {
+                        tableBody.innerHTML = '<tr><td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">No KRI submissions found.</td></tr>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading KRI submissions:', error);
+                    tableBody.innerHTML = '<tr><td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">Error loading submissions.</td></tr>';
+                });
+        }
+
+        // Render Pie Chart
+        function renderPieChart(elementId, data, seriesName) {
+            const options = {
+                series: data.map(item => item.value),
+                chart: {
+                    type: 'pie',
+                    height: 320,
+                    toolbar: {
+                        show: false
+                    }
+                },
+                labels: data.map(item => item.name),
+                colors: ['#4F46E5', '#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#EC4899'],
+                legend: {
+                    position: 'bottom'
+                },
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            height: 300
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }],
+                tooltip: {
+                    y: {
+                        formatter: function(val) {
+                            return val + " " + seriesName;
+                        }
+                    }
+                }
+            };
+
+            // Clear any existing chart
+            document.getElementById(elementId).innerHTML = '';
+
+            const chart = new ApexCharts(document.getElementById(elementId), options);
+            chart.render();
+        }
+
+        // Render Bar Chart
+        function renderBarChart(elementId, data, seriesName, horizontal = false) {
+            const options = {
+                series: [{
+                    name: seriesName,
+                    data: data.map(item => item.value)
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 320,
+                    toolbar: {
+                        show: false
+                    }
+                },
+                plotOptions: {
+                    bar: {
+                        borderRadius: 4,
+                        horizontal: horizontal,
+                        distributed: true,
+                        dataLabels: {
+                            position: horizontal ? 'top' : 'center'
+                        }
+                    }
+                },
+                colors: ['#4F46E5', '#3B82F6', '#10B981', '#F59E0B', '#EF4444'],
+                dataLabels: {
+                    enabled: true,
+                    formatter: function(val) {
+                        return val;
+                    },
+                    style: {
+                        fontSize: '12px',
+                        colors: ['#fff']
+                    }
+                },
+                xaxis: {
+                    categories: data.map(item => item.name),
+                    labels: {
+                        style: {
+                            fontSize: '12px'
+                        }
+                    }
+                },
+                yaxis: {
+                    labels: {
+                        style: {
+                            fontSize: '12px'
+                        }
+                    }
+                },
+                tooltip: {
+                    y: {
+                        formatter: function(val) {
+                            return val + " " + seriesName;
+                        }
+                    }
+                },
+                legend: {
+                    show: false
+                }
+            };
+
+            // Clear any existing chart
+            document.getElementById(elementId).innerHTML = '';
+
+            const chart = new ApexCharts(document.getElementById(elementId), options);
+            chart.render();
+        }
+
+        // Render Horizontal Bar Chart
+        function renderHorizontalBarChart(elementId, data, seriesName) {
+            renderBarChart(elementId, data, seriesName, true);
+        }
+
+        // Render Line Chart
+        function renderLineChart(elementId, data, seriesName) {
+            const options = {
+                series: [{
+                    name: seriesName,
+                    data: data.map(item => item.value)
+                }],
+                chart: {
+                    height: 320,
+                    type: 'line',
+                    toolbar: {
+                        show: false
+                    },
+                    zoom: {
+                        enabled: false
+                    }
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    curve: 'smooth',
+                    width: 3
+                },
+                colors: ['#4F46E5'],
+                markers: {
+                    size: 5
+                },
+                xaxis: {
+                    categories: data.map(item => item.name)
+                },
+                tooltip: {
+                    y: {
+                        formatter: function(val) {
+                            return val + " " + seriesName;
+                        }
+                    }
+                }
+            };
+
+            // Clear any existing chart
+            document.getElementById(elementId).innerHTML = '';
+
+            const chart = new ApexCharts(document.getElementById(elementId), options);
+            chart.render();
+        }
+
+        // Update Trend Chart based on interval
+        function updateTrendChart(interval) {
+            // In a real implementation, this would fetch data for the selected interval
+            // For now, we'll simulate with an AJAX call to the controller
+            fetch(`@Url.Action("GetIncidentsTrend", "Home")?interval=${interval}&startDate=@ViewBag.StartDate.ToString("yyyy-MM-dd")&endDate=@ViewBag.EndDate.ToString("yyyy-MM-dd")`)
+                .then(response => response.json())
+                .then(data => {
+                    const trendData = Object.entries(data).map(([name, value]) => ({ name, value }));
+                    renderLineChart('incidentsTrendChart', trendData, 'Incidents');
+                })
+                .catch(error => {
+                    console.error('Error fetching trend data:', error);
+                    // Fallback to using existing data
+                    const trendData = [];
+        @foreach (var item in Model.IncidentDashboardDTO.IncidentsTrend)
+        {
+            @:trendData.push({ name: "@item.Key", value: @item.Value });
+        }
+                    renderLineChart('incidentsTrendChart', trendData, 'Incidents');
+                });
+        }
+
+        // Render Breach Percentage Chart
+        function renderBreachPercentageChart() {
+            const totalSubmissions = @Model.KRIDashboardDataDTO.AllSubmissions;
+            const breachedSubmissions = @Model.KRIDashboardDataDTO.BreachedSubmissions;
+            const overdueSubmissions = @Model.KRIDashboardDataDTO.OverDueSubmissions;
+            const revisionSubmissions = @Model.KRIDashboardDataDTO.RevissionSubmissions;
+
+            const breachedPercentage = totalSubmissions > 0 ? (breachedSubmissions / totalSubmissions * 100).toFixed(1) : 0;
+            const overduePercentage = totalSubmissions > 0 ? (overdueSubmissions / totalSubmissions * 100).toFixed(1) : 0;
+            const revisionPercentage = totalSubmissions > 0 ? (revisionSubmissions / totalSubmissions * 100).toFixed(1) : 0;
+            const normalPercentage = (100 - parseFloat(breachedPercentage) - parseFloat(overduePercentage) - parseFloat(revisionPercentage)).toFixed(1);
+
+            const options = {
+                series: [
+                    parseFloat(breachedPercentage),
+                    parseFloat(overduePercentage),
+                    parseFloat(revisionPercentage),
+                    parseFloat(normalPercentage)
+                ],
+                chart: {
+                    height: 320,
+                    type: 'radialBar',
+                },
+                plotOptions: {
+                    radialBar: {
+                        dataLabels: {
+                            name: {
+                                fontSize: '22px',
+                            },
+                            value: {
+                                fontSize: '16px',
+                                formatter: function(val) {
+                                    return val + '%';
+                                }
+                            },
+                            total: {
+                                show: true,
+                                label: 'Total',
+                                formatter: function() {
+                                    return totalSubmissions;
+                                }
+                            }
+                        },
+                        track: {
+                            background: '#f2f2f2',
+                        },
+                        hollow: {
+                            size: '30%'
+                        }
+                    }
+                },
+                labels: ['Breached', 'Overdue', 'Revision', 'Normal'],
+                colors: ['#EF4444', '#F59E0B', '#10B981', '#3B82F6'],
+                legend: {
+                    show: true,
+                    position: 'bottom',
+                    horizontalAlign: 'center',
+                    fontSize: '14px',
+                    markers: {
+                        radius: 12,
+                    },
+                    itemMargin: {
+                        horizontal: 10,
+                        vertical: 8
+                    }
+                },
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }]
+            };
+
+            // Clear any existing chart
+            document.getElementById('breachPercentageChart').innerHTML = '';
+
+            const chart = new ApexCharts(document.getElementById('breachPercentageChart'), options);
+            chart.render();
+        }
+    </script>
+}

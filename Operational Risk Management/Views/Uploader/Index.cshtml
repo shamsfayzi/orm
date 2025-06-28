@@ -1,0 +1,299 @@
+@* @model Operational_Risk_Management.Models.View_Models.Uploader.VM_UploaderDashboard *@
+
+@* @{ *@
+@*     ViewData["Title"] = "My Indicators Dashboard"; *@
+@*     Layout = "~/Views/Shared/_Layout.cshtml"; *@
+@* } *@
+
+@* @section Styles { *@
+@*     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> *@
+
+
+@*     <style> *@
+@*         @@keyframes fadeIn { *@
+@*             from { *@
+@*                 opacity: 0; *@
+@*                 transform: translateY(10px); *@
+@*             } *@
+
+@*             to { *@
+@*                 opacity: 1; *@
+@*                 transform: translateY(0); *@
+@*             } *@
+@*         } *@
+
+@*         @@keyframes pulse { *@
+@*             0% { *@
+@*                 transform: scale(1); *@
+@*             } *@
+
+@*             50% { *@
+@*                 transform: scale(1.02); *@
+@*             } *@
+
+@*             100% { *@
+@*                 transform: scale(1); *@
+@*             } *@
+@*         } *@
+
+@*         .card-hover:hover { *@
+@*             transform: translateY(-2px); *@
+@*             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); *@
+@*         } *@
+
+@*         .status-card { *@
+@*             transition: all 0.3s ease; *@
+@*         } *@
+
+@*         .fade-in { *@
+@*             animation: fadeIn 0.5s ease forwards; *@
+@*         } *@
+
+@*         .pulse-animation { *@
+@*             animation: pulse 2s infinite; *@
+@*         } *@
+
+@*         .rotate-icon { *@
+@*             transition: transform 0.3s ease; *@
+@*         } *@
+@*     </style> *@
+@* } *@
+
+@* <div class="bg-gray-50"> *@
+@*     <div class="container mx-auto px-4 py-8 max-w-7xl"> *@
+@*         <!-- Header Section --> *@
+@*         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4"> *@
+@*             <div class="space-y-2"> *@
+@*                 <h1 class="text-3xl font-bold text-gray-800 flex items-center gap-3"> *@
+@*                     <i class="fas fa-chart-line text-blue-600"></i> My Indicators Dashboard *@
+@*                 </h1> *@
+@*                 <p class="text-gray-600">Manage your assigned risk indicators and submissions</p> *@
+@*             </div> *@
+
+@*             <div class="flex flex-col sm:flex-row gap-4 items-center"> *@
+@*                 <div class="bg-gradient-to-r from-blue-50 to-blue-100 p-4 rounded-xl shadow-sm border border-blue-200 min-w-[200px]"> *@
+@*                     <p class="text-sm text-blue-800 font-medium flex items-center gap-2"> *@
+@*                         <i class="fas fa-layer-group"></i> Total Indicators *@
+@*                     </p> *@
+@*                     <p class="text-2xl font-bold text-blue-900 mt-1">@Model.Templates.Sum(t => t.Indicators.Count)</p> *@
+@*                 </div> *@
+
+@*                 <a asp-action="GetDueSoonIndicators" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center gap-2 shadow-sm"> *@
+@*                     <i class="fas fa-plus"></i> New Submission *@
+@*                 </a> *@
+@*             </div> *@
+@*         </div> *@
+
+@*         @if (!Model.Templates.Any()) *@
+@*         { *@
+@*             <div class="bg-white rounded-xl shadow-sm p-8 text-center fade-in"> *@
+@*                 <div class="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6"> *@
+@*                     <i class="fas fa-chart-pie text-3xl text-gray-400"></i> *@
+@*                 </div> *@
+@*                 <h3 class="text-xl font-medium text-gray-900 mb-3">No indicators assigned</h3> *@
+@*                 <p class="text-gray-500 mb-6 max-w-md mx-auto">You don't have any indicators assigned to you yet. Please contact your administrator to get started.</p> *@
+@*                 <button class="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center mx-auto gap-2"> *@
+@*                     <i class="fas fa-envelope"></i> Contact Administrator *@
+@*                 </button> *@
+@*             </div> *@
+@*         } *@
+@*         else *@
+@*         { *@
+@*             <!-- Status Summary Cards --> *@
+@*             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8"> *@
+@*                 @{ *@
+@*                     var statusList = new[] *@
+@*                     { *@
+@*             new { Status = "Approved", Color = "blue", Icon = "fa-check-circle", Count = @Model.Templates.Sum(t => t.Indicators.Count(i => i.LastSubmissionStatus?.ToLower() == "approved")) }, *@
+@*             new { Status = "Pending", Color = "yellow", Icon = "fa-clock", Count = @Model.Templates.Sum(t => t.Indicators.Count(i => i.LastSubmissionStatus?.ToLower() == "pending" || i.LastSubmissionStatus?.ToLower() == "submitted")) }, *@
+@*             new { Status = "Rejected", Color = "red", Icon = "fa-times-circle", Count = @Model.Templates.Sum(t => t.Indicators.Count(i => i.LastSubmissionStatus?.ToLower() == "rejected")) }, *@
+@*             new { Status = "Due Soon", Color = "purple", Icon = "fa-exclamation-circle", Count = @Model.Templates.Sum(t => t.Indicators.Count(i => i.IsDueSoon)) } *@
+@*             }; *@
+@*                 } *@
+
+@*                 @for (int i = 0; i < statusList.Length; i++) *@
+@*                 { *@
+@*                     var s = statusList[i]; *@
+@*                     <a asp-action="FilteredSubmissions" asp-route-status="@s.Status" class="status-card bg-white p-5 rounded-xl shadow-sm border-l-4 border-@s.Color-500 hover:border-@s.Color-600 card-hover fade-in h-full flex flex-col justify-between" style="animation-delay: 0.@(i + 1)s"> *@
+@*                         <div class="flex items-center gap-4"> *@
+@*                             <div class="p-3 rounded-full bg-@s.Color-50 text-@s.Color-600"> *@
+@*                                 <i class="fas @s.Icon text-xl"></i> *@
+@*                             </div> *@
+@*                             <div> *@
+@*                                 <p class="text-sm font-medium text-gray-500">@s.Status</p> *@
+@*                                 <p class="text-2xl font-semibold text-gray-800">@s.Count</p> *@
+@*                             </div> *@
+@*                         </div> *@
+@*                         <div class="mt-3 text-xs text-@s.Color-600 flex items-center gap-1"> *@
+@*                             <span>View all @s.Status.ToLower()</span> *@
+@*                             <i class="fas fa-chevron-right"></i> *@
+@*                         </div> *@
+@*                     </a> *@
+@*                 } *@
+@*             </div> *@
+
+@*             <!-- Recent Activity Section --> *@
+@*             <div class="bg-white rounded-xl shadow-sm p-6 mb-8 fade-in" style="animation-delay: 0.5s"> *@
+@*                 <div class="flex justify-between items-center mb-6"> *@
+@*                     <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-3"> *@
+@*                         <i class="fas fa-history text-blue-600"></i> Recent Activity *@
+@*                     </h2> *@
+@*                     <a href="#" class="text-sm text-blue-600 hover:text-blue-800">View All</a> *@
+@*                 </div> *@
+
+@*                 <div class="space-y-4"> *@
+@*                     <div class="flex items-start pb-4 border-b border-gray-100"> *@
+@*                         <div class="bg-green-100 p-2 rounded-full mr-4"> *@
+@*                             <i class="fas fa-check text-green-600"></i> *@
+@*                         </div> *@
+@*                         <div class="flex-1"> *@
+@*                             <p class="font-medium">Indicator #RMI-042 approved</p> *@
+@*                             <p class="text-sm text-gray-500">2 hours ago by John Smith</p> *@
+@*                         </div> *@
+@*                         <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Approved</span> *@
+@*                     </div> *@
+
+@*                     <div class="flex items-start pb-4 border-b border-gray-100"> *@
+@*                         <div class="bg-yellow-100 p-2 rounded-full mr-4"> *@
+@*                             <i class="fas fa-clock text-yellow-600"></i> *@
+@*                         </div> *@
+@*                         <div class="flex-1"> *@
+@*                             <p class="font-medium">Indicator #RMI-015 submitted for review</p> *@
+@*                             <p class="text-sm text-gray-500">Yesterday at 4:30 PM</p> *@
+@*                         </div> *@
+@*                         <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">Pending</span> *@
+@*                     </div> *@
+
+@*                     <div class="flex items-start"> *@
+@*                         <div class="bg-red-100 p-2 rounded-full mr-4"> *@
+@*                             <i class="fas fa-times text-red-600"></i> *@
+@*                         </div> *@
+@*                         <div class="flex-1"> *@
+@*                             <p class="font-medium">Indicator #RMI-008 requires revision</p> *@
+@*                             <p class="text-sm text-gray-500">2 days ago by Sarah Johnson</p> *@
+@*                         </div> *@
+@*                         <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Rejected</span> *@
+@*                     </div> *@
+@*                 </div> *@
+@*             </div> *@
+
+@*             <!-- Indicator Groups Section --> *@
+@*             <div class="bg-white rounded-xl shadow-sm overflow-hidden fade-in" style="animation-delay: 0.6s"> *@
+@*                 <div class="border-b border-gray-200 px-6 py-4 flex justify-between items-center bg-gray-50"> *@
+@*                     <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-3"> *@
+@*                         <i class="fas fa-folder-open text-blue-600"></i> Indicator Groups *@
+@*                     </h2> *@
+@*                     <div class="relative"> *@
+@*                         <button class="px-3 py-1.5 text-sm bg-white border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center gap-2"> *@
+@*                             <i class="fas fa-filter"></i> Filter *@
+@*                         </button> *@
+@*                     </div> *@
+@*                 </div> *@
+
+@*                 <div class="divide-y divide-gray-200"> *@
+@*                     <!-- Improved Table like structure for indicators --> *@
+@*                     @foreach (var template in Model.Templates) *@
+@*                     { *@
+@*                         <div class="group"> *@
+@*                             <button onclick="toggleAccordion('group-@template.TemplateId')" class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition-colors"> *@
+@*                                 <div class="flex items-center gap-4"> *@
+@*                                     <div class="bg-blue-100 p-2 rounded-lg"> *@
+@*                                         <i class="fas fa-shield-alt text-blue-600"></i> *@
+@*                                     </div> *@
+@*                                     <div> *@
+@*                                         <h3 class="font-medium">@template.TemplateFocalPoint</h3> *@
+@*                                         <p class="text-sm text-gray-500">@template.Indicators.Count indicators � Next review: @DateTime.Now.AddDays(7).ToString("MMM dd")</p> *@
+@*                                     </div> *@
+@*                                 </div> *@
+@*                                 <i id="icon-group-@template.TemplateId" class="fas fa-chevron-down rotate-icon text-gray-400 group-hover:text-gray-600"></i> *@
+@*                             </button> *@
+
+@*                             <div id="group-@template.TemplateId" class="hidden px-6 pb-4 bg-gray-50"> *@
+@*                                 <div class="ml-12 space-y-3"> *@
+@*                                     @foreach (var indicator in template.Indicators) *@
+@*                                     { *@
+@*                                 <div class="grid grid-cols-12 gap-x-4 items-center py-4 px-6 hover:bg-gray-50 transition-colors duration-150"> *@
+@*                                     <div class="col-span-12 sm:col-span-4"> *@
+@*                                         <p class="font-semibold text-gray-800">@indicator.IndicatorName</p> *@
+@*                                         <p class="text-xs text-gray-500">Frequency: @indicator.FrequencyOfReview</p> *@
+@*                                     </div> *@
+@*                                     <div class="col-span-6 sm:col-span-2 mt-2 sm:mt-0"> *@
+@*                                         <span class="text-xs px-2 py-1 rounded-full  *@
+@*                                             @(!string.IsNullOrEmpty(indicator.LastSubmissionStatus) ?  *@
+@*                                                 (indicator.LastSubmissionStatus.ToLower() == "approved" ? "bg-green-100 text-green-700" :  *@
+@*                                                 indicator.LastSubmissionStatus.ToLower() == "rejected" ? "bg-red-100 text-red-700" :  *@
+@*                                                 (indicator.LastSubmissionStatus.ToLower() == "pending" || indicator.LastSubmissionStatus.ToLower() == "submitted") ? "bg-yellow-100 text-yellow-700" : "bg-gray-100 text-gray-700")  *@
+@*                                             : "bg-gray-100 text-gray-700")"> *@
+@*                                             @(string.IsNullOrEmpty(indicator.LastSubmissionStatus) ? "Not Submitted" : indicator.LastSubmissionStatus) *@
+@*                                         </span> *@
+@*                                     </div> *@
+@*                                     <div class="col-span-6 sm:col-span-3 mt-2 sm:mt-0"> *@
+@*                                         <p class="text-sm text-gray-700 flex items-center"> *@
+@*                                             <i class="far fa-calendar-alt mr-1.5 text-gray-500"></i> *@
+@*                                             @(indicator.DueDate?.ToString("dd MMM yyyy") ?? "N/A") *@
+@*                                         </p> *@
+@*                                         @if (indicator.IsDueSoon && indicator.DueDate.HasValue) *@
+@*                                         { *@
+@*                                             var daysDue = (indicator.DueDate.Value - DateTime.Today).Days; *@
+@*                                             <p class="text-xs @(daysDue <= 0 ? "text-red-600 font-semibold" : "text-orange-600")"> *@
+@*                                                 @(daysDue <= 0 ? "Overdue" : $"Due in {daysDue} day{(daysDue == 1 ? "" : "s")}") *@
+@*                                             </p> *@
+@*                                         } *@
+@*                                     </div> *@
+@*                                     <div class="col-span-12 sm:col-span-3 mt-3 sm:mt-0 flex flex-row sm:flex-col md:flex-row gap-2 items-start sm:items-end justify-start sm:justify-end"> *@
+@*                                         @if (!string.IsNullOrEmpty(indicator.LastSubmissionId.ToString())) *@
+@*                                         { *@
+@*                                             <a asp-action="ViewSubmission" asp-route-id="@indicator.LastSubmissionId" class="inline-flex items-center text-xs px-3 py-1.5 bg-white border border-gray-300 rounded-md hover:bg-gray-100 text-gray-700 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"> *@
+@*                                                 <i class="far fa-eye mr-1.5"></i>View Last *@
+@*                                             </a> *@
+@*                                         } *@
+@*                                         @if (indicator.CanSubmitNewReport) *@
+@*                                         { *@
+@*                                             <a asp-action="ManageSubmission" asp-route-indicatorId="@indicator.IndicatorId" class="inline-flex items-center text-xs px-3 py-1.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"> *@
+@*                                                <i class="fas fa-paper-plane mr-1.5"></i>Submit New *@
+@*                                             </a> *@
+@*                                         } *@
+@*                                         else *@
+@*                                         { *@
+@*                                             <button disabled class="inline-flex items-center text-xs px-3 py-1.5 bg-gray-200 text-gray-500 rounded-md cursor-not-allowed whitespace-nowrap"> *@
+@*                                                 <i class="fas fa-paper-plane mr-1.5"></i>Submit New *@
+@*                                             </button> *@
+@*                                         } *@
+@*                                     </div> *@
+@*                                 </div> *@
+@*                                     } *@
+@*                                 </div> *@
+@*                             </div> *@
+@*                         </div> *@
+@*                     } *@
+@*                 </div> *@
+@*             </div> *@
+@*         } *@
+@*     </div> *@
+@* </div> *@
+
+@*     @section Scripts { *@
+
+@*         <script> *@
+@*             function toggleAccordion(id) { *@
+@*                 const element = document.getElementById(id); *@
+@*                 const icon = document.getElementById(`icon-${id}`); *@
+
+@*                 if (element.classList.contains('hidden')) { *@
+@*                     element.classList.remove('hidden'); *@
+@*                     icon.classList.add('rotate-180'); *@
+@*                 } else { *@
+@*                     element.classList.add('hidden'); *@
+@*                     icon.classList.remove('rotate-180'); *@
+@*                 } *@
+@*             } *@
+
+@*             // Initialize tooltips *@
+@*             document.addEventListener('DOMContentLoaded', function() { *@
+@*                 // Example: Open first group by default *@
+@*                 // toggleAccordion('group1'); *@
+
+@*                 // Add any other initialization code here *@
+@*             }); *@
+@*         </script> *@
+@*         } *@

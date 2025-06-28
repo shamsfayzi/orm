@@ -1,0 +1,556 @@
+﻿@using Operational_Risk_Management.Models.View_Models.Incident;
+@using Operational_Risk_Management.Models.Incident
+@model List<IncidentListDTO>
+@{
+    ViewData["Title"] = "Incident List";
+    var filterModel = ViewBag.FilterModel as IncidentFilterDTO ?? new IncidentFilterDTO();
+    var departments = ViewBag.Departments as List<string> ?? new List<string>();
+    var incidentTypes = Enum.GetValues(typeof(IncidentType)).Cast<IncidentType>().ToList();
+    var categoryLevels = Enum.GetValues(typeof(IncidentCategoryLevel)).Cast<IncidentCategoryLevel>().ToList();
+    var riskLevels = Enum.GetValues(typeof(RiskAssessment)).Cast<RiskAssessment>().ToList();
+    var incidentType = ViewBag.IncidentType as string ?? "all";
+}
+@section Styles {
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome -->
+}
+
+<!-- Header -->
+<header class="bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4 md:justify-start md:space-x-10">
+            <div class="flex justify-start lg:w-0 lg:flex-1">
+                <h1 class="text-2xl font-bold text-gray-800">
+                    @{
+                        var title = incidentType switch
+                        {
+                            "pending" => "Pending Review Incidents",
+                            "revision" => "Incidents Requiring Revision",
+                            "open" => "Open Incidents",
+                            "closed" => "Closed Incidents",
+                            _ => "All Incidents"
+                        };
+                    }
+                    @title
+                </h1>
+            </div>
+            <div class="flex items-center">
+                <a href="@Url.Action("Dashboard", "IncidentManagement")" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                    <i class="fas fa-arrow-left mr-2"></i> Back to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div id="incidentApp">
+        <!-- Filter Section -->
+        <div class="mb-6 bg-white rounded-lg shadow p-4">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-medium text-gray-900">Advanced Filters</h2>
+                <button type="button" v-on:click="toggleFilters" class="text-sm font-medium text-indigo-600 hover:text-indigo-500 flex items-center">
+                    <i class="fas" :class="showFilters ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                    <span class="ml-1">{{ showFilters ? 'Hide Filters' : 'Show Filters' }}</span>
+                </button>
+            </div>
+
+            <div v-show="showFilters">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+                    <!-- Search Term -->
+                    <div>
+                        <label for="searchTerm" class="block text-sm font-medium text-gray-700 mb-1">Search</label>
+                        <div class="relative rounded-md shadow-sm">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </div>
+                            <input type="text" id="searchTerm" v-model="filters.searchTerm"
+                                   class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 pr-12 sm:text-sm border-gray-300 rounded-md"
+                                   placeholder="Search by title...">
+                        </div>
+                    </div>
+
+                    <!-- Department Filter -->
+                    <div>
+                        <label for="department" class="block text-sm font-medium text-gray-700 mb-1">Department</label>
+                        <select id="department" v-model="filters.branchDepartmentUnit"
+                                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            <option value="">All Departments</option>
+                            <option v-for="dept in departments" :key="dept" :value="dept">{{ dept }}</option>
+                        </select>
+                    </div>
+
+                    <!-- Status Filter -->
+                    <div>
+                        <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                        <select id="status" v-model="filters.status"
+                                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            <option value="">All Statuses</option>
+                            <option value="Open">Open</option>
+                            <option value="Closed">Closed</option>
+                        </select>
+                    </div>
+
+                    <!-- Incident Type Filter -->
+                    <div>
+                        <label for="incidentType" class="block text-sm font-medium text-gray-700 mb-1">Incident Type</label>
+                        <select id="incidentType" v-model="filters.type"
+                                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            <option value="">All Types</option>
+                            <option v-for="type in incidentTypes" :key="type" :value="type">{{ type }}</option>
+                        </select>
+                    </div>
+
+                    <!-- Category Level Filter -->
+                    <div>
+                        <label for="categoryLevel" class="block text-sm font-medium text-gray-700 mb-1">Category Level</label>
+                        <select id="categoryLevel" v-model="filters.category"
+                                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            <option value="">All Categories</option>
+                            <option v-for="category in categoryLevels" :key="category" :value="category">{{ category }}</option>
+                        </select>
+                    </div>
+
+                    <!-- Risk Level Filter -->
+                    <div>
+                        <label for="riskLevel" class="block text-sm font-medium text-gray-700 mb-1">Risk Level</label>
+                        <select id="riskLevel" v-model="filters.riskLevel"
+                                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            <option value="">All Risk Levels</option>
+                            <option v-for="risk in riskLevels" :key="risk" :value="risk">{{ risk }}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <!-- Date Range -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Report Date Range</label>
+                        <div class="flex space-x-2">
+                            <div class="w-1/2">
+                                <label for="startDate" class="sr-only">Start Date</label>
+                                <input type="date" id="startDate" v-model="filters.startDate"
+                                       class="focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                            </div>
+                            <div class="w-1/2">
+                                <label for="endDate" class="sr-only">End Date</label>
+                                <input type="date" id="endDate" v-model="filters.endDate"
+                                       class="focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Requires Revision Filter -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Revision Status</label>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center">
+                                <input type="radio" id="revisionAll" v-model="filters.requiresRevision" :value="null"
+                                       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                <label for="revisionAll" class="ml-2 block text-sm text-gray-700">All</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="revisionYes" v-model="filters.requiresRevision" :value="true"
+                                       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                <label for="revisionYes" class="ml-2 block text-sm text-gray-700">Requires Revision</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="revisionNo" v-model="filters.requiresRevision" :value="false"
+                                       class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                <label for="revisionNo" class="ml-2 block text-sm text-gray-700">No Revision</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-end space-x-3">
+                    <button type="button" v-on:click="resetFilters"
+                            class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Reset
+                    </button>
+                    <button @@click="applyFilters()"
+                            class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                        Apply Filters
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Count -->
+        <div class="mb-4 flex justify-between items-center">
+            <p class="text-sm text-gray-600">
+                Showing <span class="font-medium">{{ incidents.length }}</span> results
+            </p>
+            <div class="flex space-x-2">
+                <button v-on:click="exportToCsv" class="inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                    <i class="fas fa-file-csv mr-2"></i> Export CSV
+                </button>
+                <button v-on:click="printList" class="inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                    <i class="fas fa-print mr-2"></i> Print
+                </button>
+            </div>
+        </div>
+
+        <!-- Incidents Table -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer" v-on:click="sortBy('id')">
+                                ID
+                                <i v-if="sortColumn === 'id'" class="fas" :class="sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down'"></i>
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer" v-on:click="sortBy('titleOfIncident')">
+                                Title
+                                <i v-if="sortColumn === 'titleOfIncident'" class="fas" :class="sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down'"></i>
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer" v-on:click="sortBy('branchDepartmentUnit')">
+                                Department
+                                <i v-if="sortColumn === 'branchDepartmentUnit'" class="fas" :class="sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down'"></i>
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer" v-on:click="sortBy('reportDate')">
+                                Report Date
+                                <i v-if="sortColumn === 'reportDate'" class="fas" :class="sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down'"></i>
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer" v-on:click="sortBy('riskAssessment')">
+                                Risk Level
+                                <i v-if="sortColumn === 'riskAssessment'" class="fas" :class="sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down'"></i>
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer" v-on:click="sortBy('incidentStatus')">
+                                Status
+                                <i v-if="sortColumn === 'incidentStatus'" class="fas" :class="sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down'"></i>
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr v-if="loading">
+                            <td colspan="7" class="px-6 py-4 text-center text-sm text-gray-500">
+                                <i class="fas fa-spinner fa-spin mr-2"></i> Loading incidents...
+                            </td>
+                        </tr>
+                        <tr v-else-if="incidents.length === 0">
+                            <td colspan="7" class="px-6 py-4 text-center text-sm text-gray-500">
+                                No incidents found matching your criteria
+                            </td>
+                        </tr>
+                        <tr v-for="incident in sortedIncidents" :key="incident.id" class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ formatId(incident.id) }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">{{ incident.titleOfIncident }}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ incident.branchDepartmentUnit }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ formatDate(incident.reportDate) }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span :class="getRiskLevelClass(incident.riskAssessment)" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">
+                                    {{ incident.riskAssessment }}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span :class="getStatusClass(incident.incidentStatus)" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">
+                                    {{ incident.incidentStatus }}
+                                </span>
+                                <span v-if="incident.requiresRevision" class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                    Revision
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a :href="'@Url.Action("GetIncidentDetails", "Home")/' + incident.id" class="text-indigo-600 hover:text-indigo-900 mr-3">View</a>
+                                <a :href="'@Url.Action("EditIncident", "Home")/' + incident.id" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center">
+                        <label for="pageSize" class="text-sm text-gray-700 mr-2">Show:</label>
+                        <select id="pageSize" v-model="pageSize" class="border-gray-300 rounded-md text-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+                    <div>
+                        <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                            <button v-on:click="prevPage" :disabled="currentPage === 1"
+                                    class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                                    :class="{ 'opacity-50 cursor-not-allowed': currentPage === 1 }">
+                                <span class="sr-only">Previous</span>
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+
+                            <template v-for="page in displayedPages">
+                                <span v-if="page === '...'" :key="'ellipsis-' + page" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
+                                    ...
+                                </span>
+                                <button v-else :key="page" v-on:click="goToPage(page)"
+                                        class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium"
+                                        :class="currentPage === page ? 'bg-indigo-50 text-indigo-600 z-10' : 'bg-white text-gray-700 hover:bg-gray-50'">
+                                    {{ page }}
+                                </button>
+                            </template>
+
+                            <button v-on:click="nextPage" :disabled="currentPage === totalPages"
+                                    class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                                    :class="{ 'opacity-50 cursor-not-allowed': currentPage === totalPages }">
+                                <span class="sr-only">Next</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+    </div>
+@section Scripts {
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    incidents: @Html.Raw(Json.Serialize(Model)),
+                    departments: @Html.Raw(Json.Serialize(departments)),
+                    incidentTypes: @Html.Raw(Json.Serialize(incidentTypes.Select(t => t.ToString()))),
+                    categoryLevels: @Html.Raw(Json.Serialize(categoryLevels.Select(c => c.ToString()))),
+                    riskLevels: @Html.Raw(Json.Serialize(riskLevels.Select(r => r.ToString()))),
+                    filters: {
+                        searchTerm: '@filterModel.SearchTerm',
+                        startDate: '@(filterModel.StartDate?.ToString("yyyy-MM-dd"))',
+                        endDate: '@(filterModel.EndDate?.ToString("yyyy-MM-dd"))',
+                        branchDepartmentUnit: '@filterModel.BranchDepartmentUnit',
+                        status: '@(filterModel.Status?.ToString() ?? "")',
+                        type: '@(filterModel.Type?.ToString() ?? "")',
+                        category: '@(filterModel.Category?.ToString() ?? "")',
+                        riskLevel: '@(filterModel.RiskLevel?.ToString() ?? "")',
+                        requiresRevision: @(filterModel.RequiresRevision.HasValue ? (filterModel.RequiresRevision.Value ? "true" : "false") : "null")
+                    },
+                    showFilters: false,
+                    loading: false,
+                    sortColumn: 'reportDate',
+                    sortDirection: 'desc',
+                    currentPage: @(ViewBag.CurrentPage ?? 1),
+                    pageSize: @(ViewBag.PageSize ?? 10),
+                    totalItems: @(ViewBag.TotalItems ?? Model.Count),
+                };
+            },
+            computed: {
+                totalPages() {
+                    return Math.ceil(this.totalItems / this.pageSize);
+                },
+                displayedPages() {
+                    const pages = [];
+                    const maxPagesToShow = 5;
+
+                    if (this.totalPages <= maxPagesToShow) {
+                        for (let i = 1; i <= this.totalPages; i++) {
+                            pages.push(i);
+                        }
+                    } else {
+                        pages.push(1);
+                        let startPage = Math.max(2, this.currentPage - 1);
+                        let endPage = Math.min(this.totalPages - 1, this.currentPage + 1);
+
+                        if (this.currentPage <= 2) {
+                            endPage = 3;
+                        }
+
+                        if (this.currentPage >= this.totalPages - 1) {
+                            startPage = this.totalPages - 2;
+                        }
+
+                        if (startPage > 2) {
+                            pages.push('...');
+                        }
+
+                        for (let i = startPage; i <= endPage; i++) {
+                            pages.push(i);
+                        }
+
+                        if (endPage < this.totalPages - 1) {
+                            pages.push('...');
+                        }
+
+                        pages.push(this.totalPages);
+                    }
+
+                    return pages;
+                },
+                sortedIncidents() {
+                    const sorted = [...this.incidents];
+
+                    sorted.sort((a, b) => {
+                        let valueA = a[this.sortColumn];
+                        let valueB = b[this.sortColumn];
+
+                        if (this.sortColumn === 'reportDate') {
+                            valueA = new Date(valueA);
+                            valueB = new Date(valueB);
+                        }
+
+                        if (typeof valueA === 'string' && typeof valueB === 'string') {
+                            valueA = valueA.toLowerCase();
+                            valueB = valueB.toLowerCase();
+                        }
+
+                        if (this.sortDirection === 'asc') {
+                            return valueA > valueB ? 1 : -1;
+                        } else {
+                            return valueA < valueB ? 1 : -1;
+                        }
+                    });
+
+                    return sorted;
+                }
+            },
+            methods: {
+                toggleFilters() {
+                    this.showFilters = !this.showFilters;
+                },
+                resetFilters() {
+                    this.filters = {
+                        searchTerm: '',
+                        startDate: '',
+                        endDate: '',
+                        branchDepartmentUnit: '',
+                        status: '',
+                        type: '',
+                        category: '',
+                        riskLevel: '',
+                        requiresRevision: null
+                    };
+                },
+                applyFilters() {
+                    this.loading = true;
+                    const queryParams = new URLSearchParams();
+
+                    if (this.filters.searchTerm) queryParams.append('SearchTerm', this.filters.searchTerm);
+                    if (this.filters.startDate) queryParams.append('StartDate', this.filters.startDate);
+                    if (this.filters.endDate) queryParams.append('EndDate', this.filters.endDate);
+                    if (this.filters.branchDepartmentUnit) queryParams.append('BranchDepartmentUnit', this.filters.branchDepartmentUnit);
+                    if (this.filters.status) queryParams.append('Status', this.filters.status);
+                    if (this.filters.type) queryParams.append('Type', this.filters.type);
+                    if (this.filters.category) queryParams.append('Category', this.filters.category);
+                    if (this.filters.riskLevel) queryParams.append('RiskLevel', this.filters.riskLevel);
+                    if (this.filters.requiresRevision !== null) queryParams.append('RequiresRevision', this.filters.requiresRevision);
+
+                    queryParams.append('PageNumber', this.currentPage);
+                    queryParams.append('PageSize', this.pageSize);
+
+                    window.location.href = `${window.location.pathname}?${queryParams.toString()}`;
+                },
+                sortBy(column) {
+                    if (this.sortColumn === column) {
+                        this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+                    } else {
+                        this.sortColumn = column;
+                        this.sortDirection = 'asc';
+                    }
+                },
+                prevPage() {
+                    if (this.currentPage > 1) {
+                        this.goToPage(this.currentPage - 1);
+                    }
+                },
+                nextPage() {
+                    if (this.currentPage < this.totalPages) {
+                        this.goToPage(this.currentPage + 1);
+                    }
+                },
+                goToPage(page) {
+                    this.currentPage = page;
+                    this.applyFilters();
+                },
+                formatDate(dateString) {
+                    const date = new Date(dateString);
+                    return date.toLocaleDateString();
+                },
+                formatId(id) {
+                    return 'INC-' + id.substring(0, 8);
+                },
+                getRiskLevelClass(riskLevel) {
+                    switch (riskLevel) {
+                        case 'Critical':
+                            return 'bg-red-100 text-red-800';
+                        case 'High':
+                            return 'bg-orange-100 text-orange-800';
+                        case 'Medium':
+                            return 'bg-yellow-100 text-yellow-800';
+                        case 'Low':
+                            return 'bg-green-100 text-green-800';
+                        default:
+                            return 'bg-gray-100 text-gray-800';
+                    }
+                },
+                getStatusClass(status) {
+                    switch (status) {
+                        case 'Open':
+                            return 'bg-blue-100 text-blue-800';
+                        case 'Closed':
+                            return 'bg-green-100 text-green-800';
+                        default:
+                            return 'bg-gray-100 text-gray-800';
+                    }
+                },
+                exportToCsv() {
+                    let csvContent = 'ID,Title,Department,Report Date,Risk Level,Status,Requires Revision\n';
+
+                    this.sortedIncidents.forEach(incident => {
+                        const row = [
+                            this.formatId(incident.id),
+                            `"${incident.titleOfIncident.replace(/"/g, '""')}"`,
+                            `"${incident.branchDepartmentUnit.replace(/"/g, '""')}"`,
+                            this.formatDate(incident.reportDate),
+                            incident.riskAssessment,
+                            incident.incidentStatus,
+                            incident.requiresRevision ? 'Yes' : 'No'
+                        ];
+                        csvContent += row.join(',') + '\n';
+                    });
+
+                    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.setAttribute('href', url);
+                    link.setAttribute('download', 'incidents_export.csv');
+                    link.style.visibility = 'hidden';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                },
+                printList() {
+                    window.print();
+                }
+            },
+            mounted() {
+                const hasActiveFilters =
+                    this.filters.searchTerm ||
+                    this.filters.startDate ||
+                    this.filters.endDate ||
+                    this.filters.branchDepartmentUnit ||
+                    this.filters.status ||
+                    this.filters.type ||
+                    this.filters.category ||
+                    this.filters.riskLevel ||
+                    this.filters.requiresRevision !== null;
+
+                this.showFilters = hasActiveFilters;
+            }
+        });
+
+        app.mount('#incidentApp');
+    </script>
+
+
+}

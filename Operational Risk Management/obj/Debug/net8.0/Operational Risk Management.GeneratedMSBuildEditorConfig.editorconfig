@@ -1,0 +1,317 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Operational_Risk_Management
+build_property.RootNamespace = Operational_Risk_Management
+build_property.ProjectDir = C:\Users\Shamsullah Fayzi\Source\Repos\Operational-Risk-Management\Operational Risk Management\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Shamsullah Fayzi\Source\Repos\Operational-Risk-Management\Operational Risk Management
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Department/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Department/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Department/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Home/IncidentDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmNpZGVudERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Home/IncidentList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmNpZGVudExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Home/SubmissionDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdWJtaXNzaW9uRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Home/SubmissionList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdWJtaXNzaW9uTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/IncidentManagement/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5jaWRlbnRNYW5hZ2VtZW50XERhc2hib2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Incident/CreateIncident.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5jaWRlbnRcQ3JlYXRlSW5jaWRlbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Incident/EditIncident.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5jaWRlbnRcRWRpdEluY2lkZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/IndicatorSubmissions/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5kaWNhdG9yU3VibWlzc2lvbnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/KriIndicator/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3JpSW5kaWNhdG9yXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/KriIndicator/_AnalyticsTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3JpSW5kaWNhdG9yXF9BbmFseXRpY3NUYWIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/KriIndicator/_IndicatorsTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3JpSW5kaWNhdG9yXF9JbmRpY2F0b3JzVGFiLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/KriIndicator/_SubmissionsTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3JpSW5kaWNhdG9yXF9TdWJtaXNzaW9uc1RhYi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/KriManagement/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3JpTWFuYWdlbWVudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/DisplayTemplates/Attachement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXERpc3BsYXlUZW1wbGF0ZXNcQXR0YWNoZW1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/DisplayTemplates/bool_value.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXERpc3BsYXlUZW1wbGF0ZXNcYm9vbF92YWx1ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/DisplayTemplates/dateOnly_value.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXERpc3BsYXlUZW1wbGF0ZXNcZGF0ZU9ubHlfdmFsdWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/DisplayTemplates/datetime_date_value.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXERpc3BsYXlUZW1wbGF0ZXNcZGF0ZXRpbWVfZGF0ZV92YWx1ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/DisplayTemplates/datetime_value.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXERpc3BsYXlUZW1wbGF0ZXNcZGF0ZXRpbWVfdmFsdWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/DisplayTemplates/decimal_value.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXERpc3BsYXlUZW1wbGF0ZXNcZGVjaW1hbF92YWx1ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/DisplayTemplates/enum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXERpc3BsYXlUZW1wbGF0ZXNcZW51bS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/DisplayTemplates/Int32.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXERpc3BsYXlUZW1wbGF0ZXNcSW50MzIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/DisplayTemplates/string.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXERpc3BsYXlUZW1wbGF0ZXNcc3RyaW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/DisplayTemplates/string_file.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXERpc3BsYXlUZW1wbGF0ZXNcc3RyaW5nX2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/DisplayTemplates/string_value.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXERpc3BsYXlUZW1wbGF0ZXNcc3RyaW5nX3ZhbHVlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/DisplayTemplates/string_value_limit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXERpc3BsYXlUZW1wbGF0ZXNcc3RyaW5nX3ZhbHVlX2xpbWl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/EditorTemplates/DateOnly.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVkaXRvclRlbXBsYXRlc1xEYXRlT25seS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/EditorTemplates/Datetime-Date.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVkaXRvclRlbXBsYXRlc1xEYXRldGltZS1EYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/EditorTemplates/Datetime-Month.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVkaXRvclRlbXBsYXRlc1xEYXRldGltZS1Nb250aC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/EditorTemplates/Datetime.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVkaXRvclRlbXBsYXRlc1xEYXRldGltZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/EditorTemplates/Decimal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVkaXRvclRlbXBsYXRlc1xEZWNpbWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/EditorTemplates/Enum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVkaXRvclRlbXBsYXRlc1xFbnVtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/EditorTemplates/EnumAll.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVkaXRvclRlbXBsYXRlc1xFbnVtQWxsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/EditorTemplates/IFormFile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVkaXRvclRlbXBsYXRlc1xJRm9ybUZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/EditorTemplates/IFormFileCollection.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVkaXRvclRlbXBsYXRlc1xJRm9ybUZpbGVDb2xsZWN0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/EditorTemplates/Int32.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVkaXRvclRlbXBsYXRlc1xJbnQzMi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/EditorTemplates/String.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVkaXRvclRlbXBsYXRlc1xTdHJpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/EditorTemplates/TextArea.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVkaXRvclRlbXBsYXRlc1xUZXh0QXJlYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/EditorTemplates/Toggle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVkaXRvclRlbXBsYXRlc1xUb2dnbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/_DisplayTuple.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9EaXNwbGF5VHVwbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/_EmptyLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9FbXB0eUxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/_HeaderPageButtons.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXJQYWdlQnV0dG9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/_loader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9sb2FkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/_Pagination.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QYWdpbmF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/_Sidebar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaWRlYmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/_SimpleAlert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaW1wbGVBbGVydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/TemplateIndicator/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVJbmRpY2F0b3JcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/TemplateIndicator/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVJbmRpY2F0b3JcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/TemplateIndicator/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVJbmRpY2F0b3JcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/TemplateIndicator/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVJbmRpY2F0b3JcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/TemplateIndicator/ManageIndicators.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVJbmRpY2F0b3JcTWFuYWdlSW5kaWNhdG9ycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Template/CreateTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVcQ3JlYXRlVGVtcGxhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Template/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Template/EditTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVcRWRpdFRlbXBsYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Template/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Uploader/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXBsb2FkZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Uploader/IndicatorDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXBsb2FkZXJcSW5kaWNhdG9yRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Uploader/Indicators.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXBsb2FkZXJcSW5kaWNhdG9ycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Uploader/ManageSubmission.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXBsb2FkZXJcTWFuYWdlU3VibWlzc2lvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Uploader/Submissions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXBsb2FkZXJcU3VibWlzc2lvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Uploader/SubmissionsList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXBsb2FkZXJcU3VibWlzc2lvbnNMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Uploader/ViewSubmission.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXBsb2FkZXJcVmlld1N1Ym1pc3Npb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Users/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Users/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Shamsullah Fayzi/Source/Repos/Operational-Risk-Management/Operational Risk Management/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-w1qukpnmua

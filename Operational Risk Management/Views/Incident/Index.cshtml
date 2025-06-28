@@ -1,0 +1,461 @@
+@model IEnumerable<Operational_Risk_Management.Models.View_Models.Incident.IncidentListDTO>
+
+@{
+    ViewData["Title"] = "Incident Reports";
+}
+
+<div id="incidentApp" class="min-h-screen bg-gray-50">
+    <!-- Header Section -->
+    <div class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Incident Reports</h1>
+                    <p class="mt-2 text-gray-600">Manage and track operational risk incidents</p>
+                </div>
+                <div class="flex space-x-3">
+                    <a href="@Url.Action("CreateIncident", "Incident")" 
+                       class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                        </svg>
+                        New Incident
+                    </a>
+                    <button @click="exportData" 
+                            class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        Export
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="bg-white rounded-lg shadow-sm border p-6 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Search -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Search</label>
+                    <input v-model="filters.searchTerm" 
+                           @input="applyFilters"
+                           type="text" 
+                           placeholder="Search incidents..."
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+
+                <!-- Status Filter -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                    <select v-model="filters.status" 
+                            @change="applyFilters"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="">All Statuses</option>
+                        <option value="Open">Open</option>
+                        <option value="InReview">In Review</option>
+                        <option value="Closed">Closed</option>
+                        <option value="RequiresRevision">Requires Revision</option>
+                    </select>
+                </div>
+
+                <!-- Type Filter -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Type</label>
+                    <select v-model="filters.type" 
+                            @change="applyFilters"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="">All Types</option>
+                        <option value="Operational">Operational</option>
+                        <option value="Financial">Financial</option>
+                        <option value="Compliance">Compliance</option>
+                        <option value="Technology">Technology</option>
+                        <option value="External">External</option>
+                    </select>
+                </div>
+
+                <!-- Risk Level Filter -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Risk Level</label>
+                    <select v-model="filters.riskLevel" 
+                            @change="applyFilters"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="">All Levels</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                        <option value="Critical">Critical</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Date Range -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Start Date</label>
+                    <input v-model="filters.startDate" 
+                           @change="applyFilters"
+                           type="date" 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">End Date</label>
+                    <input v-model="filters.endDate" 
+                           @change="applyFilters"
+                           type="date" 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+            </div>
+
+            <!-- Clear Filters -->
+            <div class="mt-4">
+                <button @click="clearFilters" 
+                        class="text-blue-600 hover:text-blue-800 font-medium">
+                    Clear All Filters
+                </button>
+            </div>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <div class="flex items-center">
+                    <div class="p-2 bg-blue-100 rounded-lg">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Total Incidents</p>
+                        <p class="text-2xl font-bold text-gray-900">{{ statistics.total }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <div class="flex items-center">
+                    <div class="p-2 bg-yellow-100 rounded-lg">
+                        <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Open</p>
+                        <p class="text-2xl font-bold text-gray-900">{{ statistics.open }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <div class="flex items-center">
+                    <div class="p-2 bg-red-100 rounded-lg">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">High Risk</p>
+                        <p class="text-2xl font-bold text-gray-900">{{ statistics.highRisk }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <div class="flex items-center">
+                    <div class="p-2 bg-green-100 rounded-lg">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Resolved</p>
+                        <p class="text-2xl font-bold text-gray-900">{{ statistics.resolved }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Incidents Table -->
+        <div class="bg-white rounded-lg shadow-sm border overflow-hidden">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h3 class="text-lg font-medium text-gray-900">Incident Reports</h3>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Incident
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Department
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Type
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Risk Level
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Status
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Report Date
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr v-for="incident in filteredIncidents" :key="incident.id" class="hover:bg-gray-50 transition-colors duration-150">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">{{ incident.titleOfIncident }}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">{{ incident.branchDepartmentUnit }}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full"
+                                      :class="getTypeClass(incident.incidentType)">
+                                    {{ incident.incidentType }}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full"
+                                      :class="getRiskClass(incident.riskAssessment)">
+                                    {{ incident.riskAssessment }}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full"
+                                      :class="getStatusClass(incident.incidentStatus)">
+                                    {{ incident.incidentStatus }}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {{ formatDate(incident.reportDate) }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a :href="`/Home/IncidentDetails/${incident.id}`" 
+                                   class="text-blue-600 hover:text-blue-900 mr-3">View</a>
+                                <a :href="`/Incident/Edit/${incident.id}`" 
+                                   class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Empty State -->
+                <div v-if="filteredIncidents.length === 0" class="text-center py-12">
+                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    <h3 class="mt-2 text-sm font-medium text-gray-900">No incidents found</h3>
+                    <p class="mt-1 text-sm text-gray-500">Try adjusting your search criteria or create a new incident report.</p>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+                <div class="flex-1 flex justify-between sm:hidden">
+                    <button @click="previousPage" 
+                            :disabled="currentPage === 1"
+                            class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50">
+                        Previous
+                    </button>
+                    <button @click="nextPage" 
+                            :disabled="currentPage === totalPages"
+                            class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50">
+                        Next
+                    </button>
+                </div>
+                <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                    <div>
+                        <p class="text-sm text-gray-700">
+                            Showing {{ ((currentPage - 1) * pageSize) + 1 }} to {{ Math.min(currentPage * pageSize, totalItems) }} of {{ totalItems }} results
+                        </p>
+                    </div>
+                    <div>
+                        <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
+                            <button @click="previousPage" 
+                                    :disabled="currentPage === 1"
+                                    class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50">
+                                Previous
+                            </button>
+                            <button v-for="page in visiblePages" 
+                                    :key="page"
+                                    @click="goToPage(page)"
+                                    :class="page === currentPage ? 'bg-blue-50 border-blue-500 text-blue-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'"
+                                    class="relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                {{ page }}
+                            </button>
+                            <button @click="nextPage" 
+                                    :disabled="currentPage === totalPages"
+                                    class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50">
+                                Next
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+const { createApp } = Vue;
+
+createApp({
+    data() {
+        return {
+            incidents: @Html.Raw(Json.Serialize(Model ?? new List<object>())),
+            filteredIncidents: [],
+            filters: {
+                searchTerm: '',
+                status: '',
+                type: '',
+                riskLevel: '',
+                startDate: '',
+                endDate: ''
+            },
+            currentPage: 1,
+            pageSize: 10,
+            statistics: {
+                total: 0,
+                open: 0,
+                highRisk: 0,
+                resolved: 0
+            }
+        }
+    },
+    computed: {
+        totalItems() {
+            return this.filteredIncidents.length;
+        },
+        totalPages() {
+            return Math.ceil(this.totalItems / this.pageSize);
+        },
+        visiblePages() {
+            const pages = [];
+            const start = Math.max(1, this.currentPage - 2);
+            const end = Math.min(this.totalPages, this.currentPage + 2);
+            
+            for (let i = start; i <= end; i++) {
+                pages.push(i);
+            }
+            return pages;
+        }
+    },
+    mounted() {
+        this.applyFilters();
+        this.calculateStatistics();
+    },
+    methods: {
+        applyFilters() {
+            let filtered = [...this.incidents];
+
+            if (this.filters.searchTerm) {
+                const term = this.filters.searchTerm.toLowerCase();
+                filtered = filtered.filter(incident => 
+                    incident.titleOfIncident.toLowerCase().includes(term) ||
+                    incident.branchDepartmentUnit.toLowerCase().includes(term)
+                );
+            }
+
+            if (this.filters.status) {
+                filtered = filtered.filter(incident => incident.incidentStatus === this.filters.status);
+            }
+
+            if (this.filters.type) {
+                filtered = filtered.filter(incident => incident.incidentType === this.filters.type);
+            }
+
+            if (this.filters.riskLevel) {
+                filtered = filtered.filter(incident => incident.riskAssessment === this.filters.riskLevel);
+            }
+
+            if (this.filters.startDate) {
+                filtered = filtered.filter(incident => new Date(incident.reportDate) >= new Date(this.filters.startDate));
+            }
+
+            if (this.filters.endDate) {
+                filtered = filtered.filter(incident => new Date(incident.reportDate) <= new Date(this.filters.endDate));
+            }
+
+            this.filteredIncidents = filtered;
+            this.currentPage = 1;
+        },
+        clearFilters() {
+            this.filters = {
+                searchTerm: '',
+                status: '',
+                type: '',
+                riskLevel: '',
+                startDate: '',
+                endDate: ''
+            };
+            this.applyFilters();
+        },
+        calculateStatistics() {
+            this.statistics.total = this.incidents.length;
+            this.statistics.open = this.incidents.filter(i => i.incidentStatus === 'Open').length;
+            this.statistics.highRisk = this.incidents.filter(i => i.riskAssessment === 'High' || i.riskAssessment === 'Critical').length;
+            this.statistics.resolved = this.incidents.filter(i => i.incidentStatus === 'Closed').length;
+        },
+        getStatusClass(status) {
+            const classes = {
+                'Open': 'bg-yellow-100 text-yellow-800',
+                'InReview': 'bg-blue-100 text-blue-800',
+                'Closed': 'bg-green-100 text-green-800',
+                'RequiresRevision': 'bg-red-100 text-red-800'
+            };
+            return classes[status] || 'bg-gray-100 text-gray-800';
+        },
+        getTypeClass(type) {
+            const classes = {
+                'Operational': 'bg-purple-100 text-purple-800',
+                'Financial': 'bg-green-100 text-green-800',
+                'Compliance': 'bg-blue-100 text-blue-800',
+                'Technology': 'bg-indigo-100 text-indigo-800',
+                'External': 'bg-orange-100 text-orange-800'
+            };
+            return classes[type] || 'bg-gray-100 text-gray-800';
+        },
+        getRiskClass(risk) {
+            const classes = {
+                'Low': 'bg-green-100 text-green-800',
+                'Medium': 'bg-yellow-100 text-yellow-800',
+                'High': 'bg-orange-100 text-orange-800',
+                'Critical': 'bg-red-100 text-red-800'
+            };
+            return classes[risk] || 'bg-gray-100 text-gray-800';
+        },
+        formatDate(dateString) {
+            return new Date(dateString).toLocaleDateString();
+        },
+        previousPage() {
+            if (this.currentPage > 1) {
+                this.currentPage--;
+            }
+        },
+        nextPage() {
+            if (this.currentPage < this.totalPages) {
+                this.currentPage++;
+            }
+        },
+        goToPage(page) {
+            this.currentPage = page;
+        },
+        exportData() {
+            // Implementation for data export
+            console.log('Exporting data...');
+        }
+    }
+}).mount('#incidentApp');
+</script>
+

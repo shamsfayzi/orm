@@ -1,0 +1,101 @@
+﻿@using Operational_Risk_Management.Models.Common;
+@using Operational_Risk_Management.Models.Entities;
+@model PaginatedModel<ApplicationUser>
+<div class="flex justify-between mb-1.5">
+    <span class="font-semibold">Application Users</span>
+    <span>
+        <a asp-action="create" asp-controller="users" class="btn btn-fill-blue btn-sm">
+            <svg class="btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5" />
+            </svg>
+            Add New User
+        </a>
+    </span>
+</div>
+<div class="card">
+    <!--table toolbar-->
+    <div class="flex justify-between">
+        <div id="searchbox" class="w-22">
+            <form asp-action="index" asp-controller="users" method="post">
+                <input hidden name="IsFiltered" value="false" />
+                <div class="flex rounded-lg">
+                    <button type="submit" class="bg-white border disabled:opacity-50 disabled:pointer-events-none focus:bg-blue-700 focus:outline-hidden font-semibold gap-x-2 hover:bg-gray-200 inline-flex items-center justify-center rounded-s-md shrink-0 text-sm w-11">
+                        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                        </svg>
+                    </button>
+                    <input type="text" id="search" placeholder="Search...." asp-for="Search" class="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-e-lg sm:text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--start table-->
+    <div class="overflow-hidden pb-5">
+        <div class="-m-1.5 overflow-x-auto">
+            <div class="p-1.5 min-w-full inline-block align-middle">
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="table-header-name"> @Html.DisplayNameFor(a => a.Filter.FullName)</th>
+                                <th scope="col" class="table-header-name"> @Html.DisplayNameFor(a => a.Filter.UserName)</th>
+                                <th scope="col" class="table-header-name"> @Html.DisplayNameFor(a => a.Filter.Department.DepartmentName)</th>
+                                <th scope="col" class="table-header-name"> @Html.DisplayNameFor(a => a.Filter.KriSubmissionAccess)</th>
+                                <th scope="col" class="table-header-name"> @Html.DisplayNameFor(a => a.Filter.Disabled)</th>
+                                <th scope="col" class="table-header-name"> @Html.DisplayNameFor(a => a.Filter.CreateDate)</th>
+                                <th scope="col" class="table-header-name">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-body no-data">
+                            @foreach (var item in Model.Items)
+                            {
+                                <tr class="table-row" id="row_@item.Id">
+                                    <td class="table-data">
+                                        @item.FullName
+                                    </td>
+                                    <td class="table-data">
+                                        @item.UserName
+                                    </td>
+                                   
+                                    <td class="table-data">
+                                        @item.Department.DepartmentName
+                                    </td>
+                                    <td class="table-data">
+                                        @Html.DisplayFor(_ => item.KriSubmissionAccess, "bool_value")
+                                    </td>
+                                    <td class="table-data">
+                                        @Html.DisplayFor(_ => item.Disabled,"bool_value")
+                                    </td>
+                                    <td class="table-data">
+                                        @Html.DisplayFor(_ => item.CreateDate,"datetime_value")
+                                    </td>
+                                    <td class="table-data">
+                                        <div class="table-btn-group">
+                                            <a asp-action="edit" asp-controller="users" data-tippy title="Edit" asp-route-id="@item.Id" class="table-btn-group-btn btn-hover-yellow">
+                                                <svg class="table-btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
+                                                </svg>
+                                            </a>
+                                            <button data-tippy title="Delete" data-delete-url="@Url.Action("delete", "users", new { id = item.Id })" data-delete-elementId="row_@item.Id" class="table-btn-group-btn btn-hover-red btn-delete">
+                                                <svg class="table-btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                    
+                </div>
+                <div>
+                    @await Html.PartialAsync("_Pagination", Model.Pagination)
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end table-->
+</div>

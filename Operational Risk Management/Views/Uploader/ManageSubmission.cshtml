@@ -1,0 +1,328 @@
+ @model Operational_Risk_Management.Models.View_Models.Uploader.ManageSubmissionViewModel
+@{
+    ViewData["Title"] = "Submit Report for " + Model.IndicatorName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+    <div class="bg-white shadow-xl rounded-xl overflow-hidden">
+        <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-5">
+            <h2 class="text-2xl font-bold text-white flex items-center"><i class="fas fa-file-alt mr-3"></i>@ViewData["Title"]</h2>
+        </div>
+
+        <div class="p-6 sm:p-8">
+            <form asp-action="ManageSubmission" method="post" enctype="multipart/form-data" class="space-y-6">
+                <input type="hidden" asp-for="IndicatorId" />
+
+                <!-- Indicator Details -->
+                <div class="p-6 bg-gray-50 rounded-lg border border-gray-200 mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center"><i class="fas fa-info-circle mr-2 text-blue-500"></i>Indicator Details</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Indicator Name</p>
+                            <p class="mt-1 text-base text-gray-900 font-semibold">@Model.IndicatorName</p>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Frequency</p>
+                            <p class="mt-1 text-base text-gray-900">@Model.FrequencyOfReview</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Breaches -->
+                <div class="mb-6">
+                    @Html.EditorFor(_ => Model.Breaches, "Int32")
+                </div>
+
+                <!-- Comments -->
+                <div class="mb-6">
+                    @Html.EditorFor(_ => Model.Comments, "TextArea")
+                </div>
+                <!-- File Upload with Preview -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2 flex items-center">
+                        <i class="fas fa-paperclip mr-2 text-gray-500"></i>Attachments
+                    </label>
+                    <div id="dropzone" class="mt-1 flex flex-col items-center justify-center px-6 pt-10 pb-10 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer hover:border-blue-500 transition-colors duration-200 bg-gray-50 hover:bg-gray-100">
+                        <div class="space-y-1 text-center">
+                            <i class="fas fa-cloud-upload-alt fa-3x text-gray-400 group-hover:text-blue-500 transition-colors duration-200"></i>
+                            <div class="flex text-sm text-gray-600 mt-2">
+                                <label for="attachments" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-700 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500 px-2 py-1 border border-transparent hover:border-blue-400">
+                                    <span>Upload files</span>
+                                    <input id="attachments" name="attachments" type="file" multiple class="sr-only" />
+                                </label>
+                                <p class="pl-1 self-center">or drag and drop</p>
+                            </div>
+                            <p class="text-xs text-gray-500">PDF, DOCX, XLSX, JPG, PNG up to 10MB each</p>
+                        </div>
+                    </div>
+                    <!-- File Preview Container -->
+                    <div id="file-preview" class="mt-4 space-y-3 hidden">
+                        <!-- Preview items will be injected here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="flex justify-end space-x-3 pt-6 border-t border-gray-200 mt-8">
+                    <a asp-action="GetDueSoonIndicators" class="inline-flex items-center px-6 py-2.5 border border-gray-300 shadow-sm text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-150">
+                        <i class="fas fa-times mr-2"></i>Cancel
+                    </a>
+                    <button type="submit" class="inline-flex items-center px-6 py-2.5 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-150">
+                        <i class="fas fa-paper-plane mr-2"></i>Submit Report
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const fileInput = document.getElementById('attachments');
+            const filePreviewContainer = document.getElementById('file-preview');
+            const dropzone = document.getElementById('dropzone');
+            let currentFiles = []; // To keep track of the files
+
+            function displayFilePreview(fileList) {
+                filePreviewContainer.innerHTML = ''; // Clear existing previews
+                currentFiles = Array.from(fileList); // Update current files array
+
+                if (currentFiles.length > 0) {
+                    filePreviewContainer.classList.remove('hidden');
+                    filePreviewContainer.classList.add('space-y-3'); // Ensure vertical spacing for list items
+
+                    currentFiles.forEach((file, index) => {
+                        const previewItem = document.createElement('div');
+                        previewItem.className = 'flex items-center p-3 border border-gray-200 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow duration-150';
+
+                        const fileIcon = document.createElement('div');
+                        fileIcon.className = 'flex-shrink-0 w-10 h-10 flex items-center justify-center';
+
+                        // Using Font Awesome icons for a more modern look
+                        if (file.type.startsWith('image/')) {
+                            fileIcon.innerHTML = `<i class="fas fa-file-image fa-2x text-blue-500"></i>`;
+                        } else if (file.type === 'application/pdf') {
+                            fileIcon.innerHTML = `<i class="fas fa-file-pdf fa-2x text-red-500"></i>`;
+                        } else if (file.type.includes('wordprocessingml') || file.type.includes('msword')) {
+                            fileIcon.innerHTML = `<i class="fas fa-file-word fa-2x text-blue-600"></i>`;
+                        } else if (file.type.includes('spreadsheetml') || file.type.includes('excel')) {
+                            fileIcon.innerHTML = `<i class="fas fa-file-excel fa-2x text-green-500"></i>`;
+                        } else {
+                            fileIcon.innerHTML = `<i class="fas fa-file fa-2x text-gray-400"></i>`;
+                        }
+
+                        const fileInfo = document.createElement('div');
+                        fileInfo.className = 'ml-3 overflow-hidden flex-grow';
+                        fileInfo.innerHTML = `
+                            <p class="text-sm font-medium text-gray-800 truncate">${file.name}</p>
+                            <p class="text-xs text-gray-500">${(file.size / 1024).toFixed(1)} KB</p>
+                        `;
+
+                        const removeBtn = document.createElement('button');
+                        removeBtn.type = 'button';
+                        removeBtn.className = 'ml-auto p-1 rounded-full text-gray-400 hover:text-red-600 hover:bg-red-100 focus:outline-none transition-colors duration-150';
+                        removeBtn.innerHTML = `
+                            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        `;
+                        removeBtn.addEventListener('click', () => {
+                            currentFiles.splice(index, 1); // Remove file from our array
+                            // Create a new FileList and assign it to the input
+                            const dt = new DataTransfer();
+                            currentFiles.forEach(f => dt.items.add(f));
+                            fileInput.files = dt.files; // This updates the FileList on the input
+                            displayFilePreview(fileInput.files); // Re-render previews
+                        });
+
+                        previewItem.appendChild(fileIcon);
+                        previewItem.appendChild(fileInfo);
+                        previewItem.appendChild(removeBtn);
+                        filePreviewContainer.appendChild(previewItem);
+                    });
+                } else {
+                    filePreviewContainer.classList.add('hidden');
+                    filePreviewContainer.classList.remove('space-y-3');
+                }
+            }
+
+            fileInput.addEventListener('change', function (e) {
+                displayFilePreview(this.files);
+            });
+
+            // Drag and drop functionality
+            dropzone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropzone.classList.add('border-blue-500', 'bg-blue-50'); // Enhanced visual feedback
+            });
+
+            dropzone.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                dropzone.classList.remove('border-blue-500', 'bg-blue-50');
+            });
+
+            dropzone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropzone.classList.remove('border-blue-500', 'bg-blue-50');
+                const files = e.dataTransfer.files;
+                if (files.length) {
+                    fileInput.files = files; // Assign dropped files to the input
+                    displayFilePreview(files);
+                }
+            });
+
+            // Clicking dropzone also triggers file input (if not clicking on the label inside)
+            dropzone.addEventListener('click', (e) => {
+                // Prevent triggering if the click is on the label for 'attachments' or its children
+                if (e.target.closest('label[for="attachments"]')) {
+                    return;
+                }
+                fileInput.click();
+            });
+        });
+    </script>
+} 
+@* @model Operational_Risk_Management.Models.View_Models.Uploader.ManageSubmissionViewModel *@
+@* @{ *@
+@*     ViewData["Title"] = "Submit Report for " + Model.IndicatorName; *@
+@*     Layout = "~/Views/Shared/_Layout.cshtml"; *@
+@* } *@
+
+@* <div class="max-w-4xl mx-auto py-8"> *@
+@*     <div class="bg-white shadow rounded-xl overflow-hidden"> *@
+@*         <div class="bg-blue-600 px-6 py-4"> *@
+@*             <h2 class="text-xl font-semibold text-white">@ViewData["Title"]</h2> *@
+@*         </div> *@
+
+@*         <div class="p-6"> *@
+@*             <form asp-action="ManageSubmission" method="post" enctype="multipart/form-data" class="space-y-6"> *@
+@*                 <input type="hidden" asp-for="IndicatorId" /> *@
+
+@*                 <!-- Indicator Details --> *@
+@*                 <div class="space-y-2"> *@
+@*                     <h3 class="text-lg font-medium text-gray-900">Indicator Details</h3> *@
+@*                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> *@
+@*                         <div> *@
+@*                             <p class="text-sm font-medium text-gray-500">Indicator Name</p> *@
+@*                             <p class="mt-1 text-sm text-gray-900">@Model.IndicatorName</p> *@
+@*                         </div> *@
+@*                         <div> *@
+@*                             <p class="text-sm font-medium text-gray-500">Frequency</p> *@
+@*                             <p class="mt-1 text-sm text-gray-900">@Model.FrequencyOfReview</p> *@
+@*                         </div> *@
+@*                     </div> *@
+@*                 </div> *@
+
+@*                 <!-- Comments --> *@
+@*                     @Html.EditorFor(_ => Model.Breaches, "Int32") *@
+@*                     @Html.EditorFor(_ => Model.Comments, "TextArea") *@
+@*                 <!-- File Upload with Preview --> *@
+@*                 <div> *@
+@*                     <label class="block text-sm font-medium text-gray-700 mb-1">Attachments</label> *@
+@*                     <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"> *@
+@*                         <div class="space-y-1 text-center w-full"> *@
+@*                             <div class="flex flex-col items-center justify-center text-sm text-gray-600"> *@
+@*                                 <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true"> *@
+@*                                     <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> *@
+@*                                 </svg> *@
+@*                                 <div class="flex text-sm text-gray-600"> *@
+@*                                     <label for="attachments" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none"> *@
+@*                                         <span>Upload files</span> *@
+@*                                         <input id="attachments" name="attachments" type="file" multiple class="sr-only" /> *@
+@*                                     </label> *@
+@*                                     <p class="pl-1">or drag and drop</p> *@
+@*                                 </div> *@
+@*                                 <p class="text-xs text-gray-500">PDF, DOCX, XLSX, JPG, PNG up to 10MB</p> *@
+@*                             </div> *@
+@*                         </div> *@
+@*                     </div> *@
+                    
+@*                     <!-- File Preview Container --> *@
+@*                     <div id="file-preview" class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 hidden"></div> *@
+@*                 </div> *@
+
+@*                 <!-- Form Actions --> *@
+@*                 <div class="flex justify-end space-x-3 pt-4"> *@
+@*                     <a asp-action="GetDueSoonIndicators" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"> *@
+@*                         Cancel *@
+@*                     </a> *@
+@*                     <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"> *@
+@*                         Submit Report *@
+@*                     </button> *@
+@*                 </div> *@
+@*             </form> *@
+@*         </div> *@
+@*     </div> *@
+@* </div> *@
+
+@* @section Scripts { *@
+@*     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} *@
+@*     <script> *@
+@*         document.addEventListener('DOMContentLoaded', function() { *@
+@*             const fileInput = document.getElementById('attachments'); *@
+@*             const filePreview = document.getElementById('file-preview'); *@
+            
+@*             fileInput.addEventListener('change', function(e) { *@
+@*                 filePreview.innerHTML = ''; *@
+                
+@*                 if (this.files.length > 0) { *@
+@*                     filePreview.classList.remove('hidden'); *@
+                    
+@*                     Array.from(this.files).forEach(file => { *@
+@*                         const previewItem = document.createElement('div'); *@
+@*                         previewItem.className = 'flex items-center p-3 border rounded-lg bg-gray-50'; *@
+                        
+@*                         const fileIcon = document.createElement('div'); *@
+@*                         fileIcon.className = 'flex-shrink-0'; *@
+                        
+@*                         // Simple file type icon (you could enhance this with more file types) *@
+@*                         if (file.type.startsWith('image/')) { *@
+@*                             fileIcon.innerHTML = ` *@
+@*                                 <svg class="h-10 w-10 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"> *@
+@*                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /> *@
+@*                                 </svg> *@
+@*                             `; *@
+@*                         } else { *@
+@*                             fileIcon.innerHTML = ` *@
+@*                                 <svg class="h-10 w-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"> *@
+@*                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /> *@
+@*                                 </svg> *@
+@*                             `; *@
+@*                         } *@
+                        
+@*                         const fileInfo = document.createElement('div'); *@
+@*                         fileInfo.className = 'ml-3 overflow-hidden'; *@
+@*                         fileInfo.innerHTML = ` *@
+@*                             <p class="text-sm font-medium text-gray-900 truncate">${file.name}</p> *@
+@*                             <p class="text-xs text-gray-500">${(file.size / 1024 / 1024).toFixed(2)} MB</p> *@
+@*                         `; *@
+                        
+@*                         const removeBtn = document.createElement('button'); *@
+@*                         removeBtn.type = 'button'; *@
+@*                         removeBtn.className = 'ml-auto text-red-500 hover:text-red-700'; *@
+@*                         removeBtn.innerHTML = ` *@
+@*                             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> *@
+@*                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /> *@
+@*                             </svg> *@
+@*                         `; *@
+@*                         removeBtn.addEventListener('click', () => { *@
+@*                             previewItem.remove(); *@
+@*                             if (filePreview.children.length === 0) { *@
+@*                                 filePreview.classList.add('hidden'); *@
+@*                             } *@
+@*                         }); *@
+                        
+@*                         previewItem.appendChild(fileIcon); *@
+@*                         previewItem.appendChild(fileInfo); *@
+@*                         previewItem.appendChild(removeBtn); *@
+@*                         filePreview.appendChild(previewItem); *@
+@*                     }); *@
+@*                 } else { *@
+@*                     filePreview.classList.add('hidden'); *@
+@*                 } *@
+@*             }); *@
+@*         }); *@
+@*     </script> *@
+@* } *@

@@ -1,0 +1,95 @@
+@model Operational_Risk_Management.Models.View_Models.KRIIndicator.VM_IndicatorEdit
+
+@{
+    ViewData["Title"] = "Edit Indicator";
+    var templateId = ViewBag.TemplateId ?? Model.TemplateId; // Ensure templateId is available
+}
+
+<div class="container mx-auto px-4">
+    <h1 class="text-3xl font-bold text-gray-900 dark:text-dark mb-6">Edit Indicator: @Model.IndicatorName</h1>
+
+    <div class="bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 rounded-xl shadow-sm p-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-red-600 dark:text-red-400 mb-4"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="TemplateId" /> <!-- Keep TemplateId association -->
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <div>
+                    @* KRIType - Uses Display Name from VM *@
+                    @Html.EditorFor(model => model.KRIType, new { htmlAttributes = new { @class = "py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" } })
+                    @Html.ValidationMessageFor(model => model.KRIType, "", new { @class = "text-xs text-red-600 mt-2" })
+                </div>
+
+                <div>
+                    @* RfNo - Uses Display Name from VM *@
+                    @Html.EditorFor(model => model.RfNo, new { htmlAttributes = new { @class = "py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" } })
+                    @Html.ValidationMessageFor(model => model.RfNo, "", new { @class = "text-xs text-red-600 mt-2" })
+                </div>
+
+                <div class="md:col-span-2">
+                    @* Process - Uses Display Name from VM *@
+                    @Html.EditorFor(model => model.Process, new { htmlAttributes = new { @class = "py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" } })
+                    @Html.ValidationMessageFor(model => model.Process, "", new { @class = "text-xs text-red-600 mt-2" })
+                </div>
+
+                <div class="md:col-span-2">
+                    @* RiskArea - Uses Display Name from VM *@
+                    @Html.EditorFor(model => model.RiskArea, new { htmlAttributes = new { @class = "py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" } })
+                    @Html.ValidationMessageFor(model => model.RiskArea, "", new { @class = "text-xs text-red-600 mt-2" })
+                </div>
+
+                <div class="md:col-span-2">
+                    @* IndicatorName - Uses Display Name from VM *@
+                    @Html.EditorFor(model => model.IndicatorName, new { htmlAttributes = new { @class = "py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" } })
+                    @Html.ValidationMessageFor(model => model.IndicatorName, "", new { @class = "text-xs text-red-600 mt-2" })
+                </div>
+
+                <div>
+                    @* FrequencyOfReview - Uses Display Name from VM *@
+                    @Html.EditorFor(model => model.FrequencyOfReview, new { htmlAttributes = new { @class = "py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" } })
+                    @Html.ValidationMessageFor(model => model.FrequencyOfReview, "", new { @class = "text-xs text-red-600 mt-2" })
+                </div>
+
+                <div>
+                    @* TotalProcess - Uses Display Name from VM *@
+                    @Html.EditorFor(model => model.TotalProcess, new { htmlAttributes = new { @class = "py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" } })
+                    @Html.ValidationMessageFor(model => model.TotalProcess, "", new { @class = "text-xs text-red-600 mt-2" })
+                </div>
+
+                <div>
+                    @* TolerableBreaches - Uses Display Name from VM *@
+                    @Html.EditorFor(model => model.TolerableBreaches, new { htmlAttributes = new { @class = "py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" } })
+                    @Html.ValidationMessageFor(model => model.TolerableBreaches, "", new { @class = "text-xs text-red-600 mt-2" })
+                </div>
+
+                @* <div class="flex items-center"> *@
+                @*     @Html.EditorFor(model => model.IsActive) *@
+                @*     @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-xs text-red-600 ml-2" }) *@
+                @* </div> *@
+
+            </div>
+
+            @* Display non-editable fields if necessary - Fetch from DB or pass via ViewBag if not in VM *
+            <div class="mt-6 space-y-2 text-sm text-gray-500 dark:text-neutral-500">
+                @* Assuming CreateDate and UpdatedAt are not part of VM_IndicatorEdit, fetch if needed or remove *
+                @* <div>Created: @Model.CreateDate.ToString("g")</div> *@
+                @* @if(Model.UpdatedAt.HasValue) { <div>Last Updated: @Model.UpdatedAt.Value.ToString("g")</div> } *@
+            @* </div> *@
+
+            <div class="flex items-center justify-end space-x-4 mt-6">
+                <a asp-action="ManageIndicators" asp-route-templateId="@Model.TemplateId" class="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
+                    Back to List
+                </a>
+                <button type="submit" class="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-green-600 text-white hover:bg-green-700 disabled:opacity-50 disabled:pointer-events-none">
+                    Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

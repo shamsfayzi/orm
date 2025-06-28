@@ -1,0 +1,426 @@
+@using Operational_Risk_Management.Models.View_Models.Uploader;
+@model List<VM_Submission>
+@{
+    ViewData["Title"] = "KRI Submissions Details";
+    var filterModel = ViewBag.FilterModel as FilterModelForSubmissions ?? new FilterModelForSubmissions();
+    var departments = ViewBag.Departments as List<string> ?? new List<string>();
+    var indicators = ViewBag.Indicators as List<dynamic> ?? new List<dynamic>();
+    var years = ViewBag.Years as List<int> ?? Enumerable.Range(DateTime.Now.Year - 5, 6).ToList();
+    var months = new List<(int Value, string Name)>
+    {
+        (1, "January"), (2, "February"), (3, "March"), (4, "April"),
+        (5, "May"), (6, "June"), (7, "July"), (8, "August"),
+        (9, "September"), (10, "October"), (11, "November"), (12, "December")
+    };
+    var statuses = new List<string> { "Draft", "Submitted", "Overdue", "Requires Resubmission" };
+    var submissionType = ViewBag.SubmissionType as string ?? "all";
+}
+
+<div class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <div class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900">
+                        @{
+                            var title = submissionType switch
+                            {
+                                "breached" => "Breached Submissions",
+                                "overdue" => "Overdue Submissions",
+                                "revision" => "Revision Submissions",
+                                _ => "All Submissions"
+                            };
+                        }
+                        @title
+                    </h1>
+                    <p class="mt-1 text-sm text-gray-500">
+                        <a href="@Url.Action("Index", "Home")" class="text-blue-600 hover:text-blue-800">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                            </svg>
+                            Back to Dashboard
+                        </a>
+                    </p>
+                </div>
+                <div>
+                    <button id="toggleFilters" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                        </svg>
+                        Filters
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Panel -->
+    <div id="filterPanel" class="bg-white shadow mb-6 @(ViewBag.ShowFilters == true ? "" : "hidden")">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <form id="filterForm" method="get" action="@Url.Action("Details", "Home")">
+                <input type="hidden" name="type" value="@submissionType" />
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Department Filter -->
+                    <div>
+                        <label for="departmentSelect" class="block text-sm font-medium text-gray-700 mb-1">Department</label>
+                        <select id="departmentSelect" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">All Departments</option>
+                            @foreach (var dept in departments)
+                            {
+                                <option value="@dept">@dept</option>
+                            }
+                        </select>
+                    </div>
+
+                    <!-- Indicators Filter -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Indicators</label>
+                        <div class="relative">
+                            <div class="flex flex-wrap gap-2 p-2 border border-gray-300 rounded-md min-h-[42px] max-h-32 overflow-y-auto" id="selectedIndicators">
+                                <!-- Selected indicators will be displayed here -->
+                            </div>
+                            <div class="mt-1">
+                                <button type="button" id="showIndicatorSelector" class="text-sm text-blue-600 hover:text-blue-800">
+                                    + Select Indicators
+                                </button>
+                            </div>
+                            <!-- Hidden inputs for selected indicators -->
+                            <div id="indicatorInputs"></div>
+                        </div>
+                    </div>
+
+                    <!-- Status Filter -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                        <div class="flex flex-wrap gap-2">
+                            @foreach (var status in statuses)
+                            {
+                                <div class="flex items-center">
+                                    <input type="checkbox" name="Statuses" value="@status" id="status_@status" 
+                                           class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                                           @(filterModel.Statuses.Contains(status) ? "checked" : "")>
+                                    <label for="status_@status" class="ml-2 text-sm text-gray-700">@status</label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Search Term -->
+                    <div>
+                        <label for="searchTerm" class="block text-sm font-medium text-gray-700 mb-1">Search</label>
+                        <input type="text" id="searchTerm" name="SearchTerm" value="@filterModel.SearchTerm"
+                               class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                               placeholder="Search in notes...">
+                    </div>
+
+                    <!-- Date From -->
+                    <div>
+                        <label for="dateFrom" class="block text-sm font-medium text-gray-700 mb-1">Date From</label>
+                        <input type="date" id="dateFrom" name="DateFrom" value="@(filterModel.DateFrom?.ToString("yyyy-MM-dd"))"
+                               class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+                    <!-- Date To -->
+                    <div>
+                        <label for="dateTo" class="block text-sm font-medium text-gray-700 mb-1">Date To</label>
+                        <input type="date" id="dateTo" name="DateTo" value="@(filterModel.DateTo?.ToString("yyyy-MM-dd"))"
+                               class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+
+                <div class="mt-6 flex justify-end space-x-3">
+                    <button type="button" id="resetFilters" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        Reset
+                    </button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        Apply Filters
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Indicator Selector Modal -->
+    <div id="indicatorModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[80vh] flex flex-col">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-medium text-gray-900">Select Indicators</h3>
+                    <button type="button" id="closeIndicatorModal" class="text-gray-400 hover:text-gray-500">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="mt-2">
+                    <input type="text" id="indicatorSearch" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="Search indicators...">
+                </div>
+            </div>
+            <div class="px-6 py-4 flex-1 overflow-y-auto">
+                <div id="indicatorList" class="space-y-2">
+                    @foreach (var indicator in indicators)
+                    {
+                        <div class="flex items-center indicator-item" data-department="@(indicator.Template?.Department?.DepartmentName ?? "")" data-name="@indicator.IndicatorName">
+                            <input type="checkbox" id="ind_@indicator.Id" value="@indicator.Id" data-name="@indicator.IndicatorName" 
+                                   class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded indicator-checkbox"
+                                   @(filterModel.IndicatorIds.Contains(Guid.Parse(indicator.Id.ToString())) ? "checked" : "")>
+                            <label for="ind_@indicator.Id" class="ml-2 text-sm text-gray-700">
+                                <span class="font-medium">@indicator.IndicatorName</span>
+                                <span class="text-gray-500 text-xs ml-1">(@(indicator.Template?.Department?.DepartmentName ?? "No Dept"))</span>
+                            </label>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="px-6 py-4 border-t border-gray-200 flex justify-end">
+                <button type="button" id="applyIndicatorSelection" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Apply Selection
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Results Count -->
+        <div class="mb-4">
+            <p class="text-sm text-gray-600">Showing <span class="font-medium">@Model.Count</span> results</p>
+        </div>
+
+        <!-- Submissions Table -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-md">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Indicator</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Reporting Period</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Breaches</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    @if (Model.Any())
+                    {
+                        foreach (var submission in Model)
+                        {
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm font-medium text-gray-900">@submission.Indicator.IndicatorName</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-500">@submission.Indicator.Template.Department.DepartmentName</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-500">@submission.ReportingMonth.ToString("MMM yyyy")</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    @{
+                                        var statusClass = submission.Status switch
+                                        {
+                                            "Overdue" => "bg-red-100 text-red-800",
+                                            "Submitted" => "bg-green-100 text-green-800",
+                                            "Draft" => "bg-gray-100 text-gray-800",
+                                            "Requires Resubmission" => "bg-yellow-100 text-yellow-800",
+                                            _ => "bg-blue-100 text-blue-800"
+                                        };
+                                    }
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full @statusClass">
+                                        @submission.Status
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    @{
+                                        var breachClass = submission.Breaches > submission.Indicator.TolerableBreaches
+                                            ? "text-red-600 font-medium"
+                                            : "text-gray-500";
+                                    }
+                                    <div class="text-sm @breachClass">@submission.Breaches / @submission.Indicator.TolerableBreaches</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <a href="@Url.Action("ViewSubmission", "Uploader", new { id = submission.Id })" class="text-blue-600 hover:text-blue-900">View</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                                No submissions found matching the current filters.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle filter panel
+            const toggleFilters = document.getElementById('toggleFilters');
+            const filterPanel = document.getElementById('filterPanel');
+            
+            toggleFilters.addEventListener('click', function() {
+                filterPanel.classList.toggle('hidden');
+            });
+            
+            // Reset filters
+            const resetFilters = document.getElementById('resetFilters');
+            resetFilters.addEventListener('click', function() {
+                document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                document.getElementById('searchTerm').value = '';
+                document.getElementById('selectedIndicators').innerHTML = '';
+                document.getElementById('indicatorInputs').innerHTML = '';
+            });
+            
+            // Department filter affecting indicators
+            const departmentSelect = document.getElementById('departmentSelect');
+            departmentSelect.addEventListener('change', function() {
+                const selectedDepartment = this.value;
+                const indicatorItems = document.querySelectorAll('.indicator-item');
+                
+                indicatorItems.forEach(item => {
+                    if (!selectedDepartment || item.dataset.department === selectedDepartment) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+            
+            // Indicator selector modal
+            const showIndicatorSelector = document.getElementById('showIndicatorSelector');
+            const indicatorModal = document.getElementById('indicatorModal');
+            const closeIndicatorModal = document.getElementById('closeIndicatorModal');
+            const applyIndicatorSelection = document.getElementById('applyIndicatorSelection');
+            
+            showIndicatorSelector.addEventListener('click', function() {
+                indicatorModal.classList.remove('hidden');
+            });
+            
+            closeIndicatorModal.addEventListener('click', function() {
+                indicatorModal.classList.add('hidden');
+            });
+            
+            // Indicator search
+            const indicatorSearch = document.getElementById('indicatorSearch');
+            indicatorSearch.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const indicatorItems = document.querySelectorAll('.indicator-item');
+                
+                indicatorItems.forEach(item => {
+                    const indicatorName = item.dataset.name.toLowerCase();
+                    const department = item.dataset.department.toLowerCase();
+                    
+                    if (indicatorName.includes(searchTerm) || department.includes(searchTerm)) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+            
+            // Apply indicator selection
+            applyIndicatorSelection.addEventListener('click', function() {
+                const selectedIndicators = document.getElementById('selectedIndicators');
+                const indicatorInputs = document.getElementById('indicatorInputs');
+                
+                // Clear previous selections
+                selectedIndicators.innerHTML = '';
+                indicatorInputs.innerHTML = '';
+                
+                // Get all checked indicators
+                const checkedIndicators = document.querySelectorAll('.indicator-checkbox:checked');
+                
+                checkedIndicators.forEach(checkbox => {
+                    const indicatorId = checkbox.value;
+                    const indicatorName = checkbox.dataset.name;
+                    
+                    // Create tag for selected indicator
+                    const tag = document.createElement('div');
+                    tag.className = 'bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded flex items-center';
+                    tag.innerHTML = `
+                        ${indicatorName}
+                        <button type="button" class="ml-1 text-blue-600 hover:text-blue-800" data-id="${indicatorId}">
+                            <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    `;
+                    
+                    // Add remove event
+                    tag.querySelector('button').addEventListener('click', function() {
+                        const id = this.dataset.id;
+                        document.getElementById(`ind_${id}`).checked = false;
+                        tag.remove();
+                        document.querySelector(`input[name="IndicatorIds"][value="${id}"]`).remove();
+                    });
+                    
+                    selectedIndicators.appendChild(tag);
+                    
+                    // Create hidden input for form submission
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'IndicatorIds';
+                    input.value = indicatorId;
+                    indicatorInputs.appendChild(input);
+                });
+                
+                indicatorModal.classList.add('hidden');
+            });
+            
+            // Initialize selected indicators
+            const initSelectedIndicators = function() {
+                const checkedIndicators = document.querySelectorAll('.indicator-checkbox:checked');
+                const selectedIndicators = document.getElementById('selectedIndicators');
+                const indicatorInputs = document.getElementById('indicatorInputs');
+                
+                checkedIndicators.forEach(checkbox => {
+                    const indicatorId = checkbox.value;
+                    const indicatorName = checkbox.dataset.name;
+                    
+                    // Create tag for selected indicator
+                    const tag = document.createElement('div');
+                    tag.className = 'bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded flex items-center';
+                    tag.innerHTML = `
+                        ${indicatorName}
+                        <button type="button" class="ml-1 text-blue-600 hover:text-blue-800" data-id="${indicatorId}">
+                            <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    `;
+                    
+                    // Add remove event
+                    tag.querySelector('button').addEventListener('click', function() {
+                        const id = this.dataset.id;
+                        document.getElementById(`ind_${id}`).checked = false;
+                        tag.remove();
+                        document.querySelector(`input[name="IndicatorIds"][value="${id}"]`).remove();
+                    });
+                    
+                    selectedIndicators.appendChild(tag);
+                    
+                    // Create hidden input for form submission
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'IndicatorIds';
+                    input.value = indicatorId;
+                    indicatorInputs.appendChild(input);
+                });
+            };
+            
+            // Initialize on page load
+            initSelectedIndicators();
+        });
+    </script>
+}

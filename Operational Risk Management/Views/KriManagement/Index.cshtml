@@ -1,0 +1,352 @@
+@using Operational_Risk_Management.Models.View_Models.KRIIndicator
+@model KRIDashboardDataDTO
+@{
+    ViewData["Title"] = "KRI Risk Management Dashboard";
+}
+
+<div class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <div class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-gray-900">KRI Risk Management Dashboard</h1>
+                <!-- Date Range Picker -->
+                <form id="dateFilterForm" method="get" action="@Url.Action("Index", "Dashboard")" class="flex space-x-4">
+                    <div class="relative">
+                        <input type="date" id="startDate" name="startDate" value="@(ViewBag.StartDate?.ToString("yyyy-MM-dd"))" 
+                               class="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <label for="startDate" class="absolute -top-6 left-0 text-sm text-gray-600">Start Date</label>
+                    </div>
+                    <div class="relative">
+                        <input type="date" id="endDate" name="endDate" value="@(ViewBag.EndDate?.ToString("yyyy-MM-dd"))" 
+                               class="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <label for="endDate" class="absolute -top-6 left-0 text-sm text-gray-600">End Date</label>
+                    </div>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        Apply
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Summary Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- All Submissions Card -->
+            <a href="@Url.Action("Details", "KriManagement", new { type = "all" })"
+               class="bg-white rounded-lg shadow p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-blue-100 text-blue-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <h2 class="text-sm font-medium text-gray-600">All Submissions</h2>
+                        <p class="text-3xl font-bold text-gray-900">@Model.AllSubmissions</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Breached Submissions Card -->
+            <a href="@Url.Action("Details", "KriManagement", new { type = "breached" })"
+               class="bg-white rounded-lg shadow p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-red-100 text-red-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <h2 class="text-sm font-medium text-gray-600">Breached Submissions</h2>
+                        <p class="text-3xl font-bold text-gray-900">@Model.BreachedSubmissions</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Overdue Submissions Card -->
+            <a href="@Url.Action("Details", "KriManagement", new { type = "overdue" })"
+               class="bg-white rounded-lg shadow p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-yellow-100 text-yellow-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <h2 class="text-sm font-medium text-gray-600">Overdue Submissions</h2>
+                        <p class="text-3xl font-bold text-gray-900">@Model.OverDueSubmissions</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Revision Submissions Card -->
+            <a href="@Url.Action("Details", "KriManagement", new { type = "revision" })"
+               class="bg-white rounded-lg shadow p-6 transition-transform duration-200 hover:scale-105 hover:shadow-lg">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-green-100 text-green-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <h2 class="text-sm font-medium text-gray-600">Revision Submissions</h2>
+                        <p class="text-3xl font-bold text-gray-900">@Model.RevissionSubmissions</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Most Breached by Department -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">Most Breached by Department</h2>
+                <div id="departmentBreachChart" class="h-80"></div>
+            </div>
+
+            <!-- Most Breached by Indicator -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">Most Breached by Indicator</h2>
+                <div id="indicatorBreachChart" class="h-80"></div>
+            </div>
+        </div>
+
+        <!-- Additional Charts Section -->
+        <div class="mt-8 bg-white rounded-lg shadow p-6">
+            <h2 class="text-lg font-semibold text-gray-800 mb-4">Breach Percentage Overview</h2>
+            <div id="breachPercentageChart" class="h-80"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Department Breach Chart
+            const departmentData = @Html.Raw(Json.Serialize(Model.MostBreachedByDepartment));
+            renderDepartmentBreachChart(departmentData);
+            
+            // Indicator Breach Chart
+            const indicatorData = @Html.Raw(Json.Serialize(Model.MostBreachedByIndicator));
+            renderIndicatorBreachChart(indicatorData);
+            
+            // Breach Percentage Chart
+            renderBreachPercentageChart(@Model.AllSubmissions, @Model.BreachedSubmissions, 
+                                       @Model.OverDueSubmissions, @Model.RevissionSubmissions);
+        });
+        
+        function renderDepartmentBreachChart(departmentData) {
+            const departments = departmentData.map(item => item.department);
+            const counts = departmentData.map(item => item.count);
+            
+            const options = {
+                series: [{
+                    name: 'Breaches',
+                    data: counts
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 320,
+                    toolbar: {
+                        show: false
+                    }
+                },
+                plotOptions: {
+                    bar: {
+                        borderRadius: 4,
+                        horizontal: true,
+                        distributed: true,
+                        dataLabels: {
+                            position: 'top'
+                        }
+                    }
+                },
+                colors: ['#3B82F6', '#2563EB'],
+                dataLabels: {
+                    enabled: true,
+                    formatter: function(val) {
+                        return val;
+                    },
+                    offsetX: 20,
+                    style: {
+                        fontSize: '12px',
+                        colors: ['#304758']
+                    }
+                },
+                xaxis: {
+                    categories: departments,
+                    labels: {
+                        style: {
+                            fontSize: '12px'
+                        }
+                    }
+                },
+                yaxis: {
+                    labels: {
+                        style: {
+                            fontSize: '12px'
+                        }
+                    }
+                },
+                tooltip: {
+                    y: {
+                        formatter: function(val) {
+                            return val + " breaches";
+                        }
+                    }
+                },
+                legend: {
+                    show: false
+                }
+            };
+            
+            const chart = new ApexCharts(document.querySelector("#departmentBreachChart"), options);
+            chart.render();
+        }
+        
+        function renderIndicatorBreachChart(indicatorData) {
+            const indicators = indicatorData.map(item => item.indicatorName);
+            const counts = indicatorData.map(item => item.count);
+            
+            const options = {
+                series: [{
+                    name: 'Breaches',
+                    data: counts
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 320,
+                    toolbar: {
+                        show: false
+                    }
+                },
+                plotOptions: {
+                    bar: {
+                        borderRadius: 4,
+                        columnWidth: '60%',
+                        dataLabels: {
+                            position: 'top'
+                        }
+                    }
+                },
+                colors: ['#EF4444', '#DC2626', '#B91C1C'],
+                dataLabels: {
+                    enabled: true,
+                    formatter: function(val) {
+                        return val;
+                    },
+                    offsetY: -20,
+                    style: {
+                        fontSize: '12px',
+                        colors: ['#304758']
+                    }
+                },
+                xaxis: {
+                    categories: indicators,
+                    labels: {
+                        style: {
+                            fontSize: '12px'
+                        },
+                        rotate: -45,
+                        rotateAlways: false,
+                        trim: false
+                    }
+                },
+                yaxis: {
+                    labels: {
+                        style: {
+                            fontSize: '12px'
+                        }
+                    }
+                },
+                tooltip: {
+                    y: {
+                        formatter: function(val) {
+                            return val + " breaches";
+                        }
+                    }
+                },
+                legend: {
+                    show: false
+                }
+            };
+            
+            const chart = new ApexCharts(document.querySelector("#indicatorBreachChart"), options);
+            chart.render();
+        }
+        
+        function renderBreachPercentageChart(totalSubmissions, breachedSubmissions, overdueSubmissions, revisionSubmissions) {
+            const breachedPercentage = totalSubmissions > 0 ? (breachedSubmissions / totalSubmissions * 100).toFixed(1) : 0;
+            const overduePercentage = totalSubmissions > 0 ? (overdueSubmissions / totalSubmissions * 100).toFixed(1) : 0;
+            const revisionPercentage = totalSubmissions > 0 ? (revisionSubmissions / totalSubmissions * 100).toFixed(1) : 0;
+            const normalPercentage = (100 - breachedPercentage - overduePercentage - revisionPercentage).toFixed(1);
+            
+            const options = {
+                series: [
+                    parseFloat(breachedPercentage),
+                    parseFloat(overduePercentage),
+                    parseFloat(revisionPercentage),
+                    parseFloat(normalPercentage)
+                ],
+                chart: {
+                    height: 320,
+                    type: 'radialBar',
+                },
+                plotOptions: {
+                    radialBar: {
+                        dataLabels: {
+                            name: {
+                                fontSize: '22px',
+                            },
+                            value: {
+                                fontSize: '16px',
+                            },
+                            total: {
+                                show: true,
+                                label: 'Total',
+                                formatter: function() {
+                                    return totalSubmissions;
+                                }
+                            }
+                        },
+                        track: {
+                            background: '#f2f2f2',
+                        },
+                        hollow: {
+                            size: '30%'
+                        }
+                    }
+                },
+                labels: ['Breached', 'Overdue', 'Revision', 'Normal'],
+                colors: ['#EF4444', '#F59E0B', '#10B981', '#3B82F6'],
+                legend: {
+                    show: true,
+                    position: 'bottom',
+                    horizontalAlign: 'center',
+                    fontSize: '14px',
+                    markers: {
+                        radius: 12,
+                    },
+                    itemMargin: {
+                        horizontal: 10,
+                        vertical: 8
+                    }
+                },
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }]
+            };
+            
+            const chart = new ApexCharts(document.querySelector("#breachPercentageChart"), options);
+            chart.render();
+        }
+    </script>
+}

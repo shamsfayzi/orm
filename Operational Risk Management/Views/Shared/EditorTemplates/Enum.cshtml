@@ -1,0 +1,42 @@
+﻿@model Enum
+@using System.ComponentModel.DataAnnotations
+@using System.Reflection
+@{
+    var modelType = ViewData.ModelMetadata.ContainerType;
+    var propertyName = ViewData.ModelMetadata.PropertyName;
+    var propertyInfo = modelType.GetProperty(propertyName);
+
+    var isRequired = propertyInfo.GetCustomAttributes(typeof(RequiredAttribute), false).Any();
+    var enumType = Model.GetType();
+    var enumValues = Enum.GetValues(enumType).Cast<Enum>().SkipLast(1).Select(e => new SelectListItem
+            {
+                Text = e.ToString().Replace('_', ' '), // show string
+                Value = ((int)(object)e).ToString(), // show int value
+                Selected = e.Equals(Model)
+            }).ToList();
+    var displayName = ViewData.ModelMetadata.DisplayName ?? propertyName;
+    bool isValueSelected = enumValues.Any(e => e.Selected);
+    var htmlAttributes = ViewData["htmlAttributes"] as IDictionary<string, object> ?? new Dictionary<string, object>();
+}
+<div>
+    <label for="@ViewData.TemplateInfo.HtmlFieldPrefix" class="block font-medium mb-1.5 pl-1 text-sm">
+        @displayName
+        @if (isRequired)
+        {
+            <span class="text-red-400">*</span>
+        }
+    </label>
+    <select id="@ViewData.TemplateInfo.HtmlFieldPrefix" name="@propertyName" class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+        @foreach (var attr in htmlAttributes)
+        {
+            @Html.Raw($" {attr.Key}=\"{attr.Value}\"")
+        }>
+        <option value="" disabled selected="@(isValueSelected ? null : "selected")">---- select option ----</option>
+        @foreach (var item in enumValues)
+        {
+            <option value="@item.Value" selected="@(item.Selected ? "selected" : null)">@item.Text</option>
+        }
+
+    </select>
+     @Html.ValidationMessageFor(a => a)
+</div>

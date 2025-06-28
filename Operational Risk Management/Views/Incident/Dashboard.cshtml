@@ -1,0 +1,528 @@
+@{
+    ViewData["Title"] = "Incident Dashboard";
+}
+
+<div id="dashboardApp" class="min-h-screen bg-gray-50">
+    <!-- Header Section -->
+    <div class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Incident Dashboard</h1>
+                    <p class="mt-2 text-gray-600">Real-time insights and analytics for operational risk management</p>
+                </div>
+                <div class="flex space-x-3">
+                    <select v-model="selectedPeriod" @change="loadDashboardData" 
+                            class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="7">Last 7 days</option>
+                        <option value="30">Last 30 days</option>
+                        <option value="90">Last 3 months</option>
+                        <option value="365">Last year</option>
+                    </select>
+                    <button @click="refreshData" 
+                            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                        </svg>
+                        Refresh
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <!-- Key Metrics Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <div class="flex items-center">
+                    <div class="p-3 bg-blue-100 rounded-lg">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Total Incidents</p>
+                        <p class="text-3xl font-bold text-gray-900">{{ metrics.totalIncidents }}</p>
+                        <p class="text-sm" :class="metrics.totalIncidentsChange >= 0 ? 'text-red-600' : 'text-green-600'">
+                            {{ metrics.totalIncidentsChange >= 0 ? '+' : '' }}{{ metrics.totalIncidentsChange }}% from last period
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <div class="flex items-center">
+                    <div class="p-3 bg-yellow-100 rounded-lg">
+                        <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Open Incidents</p>
+                        <p class="text-3xl font-bold text-gray-900">{{ metrics.openIncidents }}</p>
+                        <p class="text-sm text-gray-600">{{ ((metrics.openIncidents / metrics.totalIncidents) * 100).toFixed(1) }}% of total</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <div class="flex items-center">
+                    <div class="p-3 bg-red-100 rounded-lg">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">High Risk</p>
+                        <p class="text-3xl font-bold text-gray-900">{{ metrics.highRiskIncidents }}</p>
+                        <p class="text-sm text-gray-600">Requires immediate attention</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <div class="flex items-center">
+                    <div class="p-3 bg-green-100 rounded-lg">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-gray-600">Financial Impact</p>
+                        <p class="text-3xl font-bold text-gray-900">${{ formatCurrency(metrics.totalFinancialImpact) }}</p>
+                        <p class="text-sm text-gray-600">Total losses reported</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row 1 -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <!-- Incident Trends Chart -->
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold text-gray-900">Incident Trends</h3>
+                    <div class="flex space-x-2">
+                        <button @click="trendChartType = 'line'" 
+                                :class="trendChartType === 'line' ? 'bg-blue-100 text-blue-600' : 'text-gray-600'"
+                                class="px-3 py-1 rounded text-sm font-medium">Line</button>
+                        <button @click="trendChartType = 'bar'" 
+                                :class="trendChartType === 'bar' ? 'bg-blue-100 text-blue-600' : 'text-gray-600'"
+                                class="px-3 py-1 rounded text-sm font-medium">Bar</button>
+                    </div>
+                </div>
+                <div id="trendsChart" class="h-80"></div>
+            </div>
+
+            <!-- Risk Assessment Distribution -->
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Risk Assessment Distribution</h3>
+                <div id="riskChart" class="h-80"></div>
+            </div>
+        </div>
+
+        <!-- Charts Row 2 -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <!-- Incident Types -->
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Incident Types</h3>
+                <div id="typesChart" class="h-80"></div>
+            </div>
+
+            <!-- Department Analysis -->
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Incidents by Department</h3>
+                <div id="departmentChart" class="h-80"></div>
+            </div>
+        </div>
+
+        <!-- Status Overview and Recent Activity -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <!-- Status Overview -->
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Status Overview</h3>
+                <div id="statusChart" class="h-64"></div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="lg:col-span-2 bg-white rounded-lg shadow-sm border p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
+                <div class="space-y-4 max-h-64 overflow-y-auto">
+                    <div v-for="activity in recentActivity" :key="activity.id" 
+                         class="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+                        <div class="flex-shrink-0">
+                            <div class="w-2 h-2 rounded-full mt-2" 
+                                 :class="getActivityColor(activity.type)"></div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-gray-900">{{ activity.title }}</p>
+                            <p class="text-sm text-gray-600">{{ activity.description }}</p>
+                            <p class="text-xs text-gray-500 mt-1">{{ formatDate(activity.date) }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Financial Impact Analysis -->
+        <div class="bg-white rounded-lg shadow-sm border p-6 mb-8">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Financial Impact Analysis</h3>
+            <div id="financialChart" class="h-80"></div>
+        </div>
+
+        <!-- Top Risk Areas -->
+        <div class="bg-white rounded-lg shadow-sm border p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Top Risk Areas</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div v-for="area in topRiskAreas" :key="area.name" 
+                     class="p-4 border rounded-lg hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-medium text-gray-900">{{ area.name }}</h4>
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full"
+                              :class="getRiskLevelClass(area.riskLevel)">
+                            {{ area.riskLevel }}
+                        </span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2">{{ area.incidentCount }} incidents</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-red-600 h-2 rounded-full" 
+                             :style="{ width: area.percentage + '%' }"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">{{ area.percentage }}% of total incidents</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+const { createApp } = Vue;
+
+createApp({
+    data() {
+        return {
+            selectedPeriod: 30,
+            trendChartType: 'line',
+            metrics: {
+                totalIncidents: 0,
+                totalIncidentsChange: 0,
+                openIncidents: 0,
+                highRiskIncidents: 0,
+                totalFinancialImpact: 0
+            },
+            recentActivity: [],
+            topRiskAreas: [],
+            charts: {}
+        }
+    },
+    mounted() {
+        this.loadDashboardData();
+    },
+    watch: {
+        trendChartType() {
+            this.updateTrendsChart();
+        }
+    },
+    methods: {
+        async loadDashboardData() {
+            try {
+                // Simulate API call - replace with actual API endpoint
+                const response = await fetch(`/api/incidents/dashboard?period=${this.selectedPeriod}`);
+                const data = await response.json();
+                
+                this.metrics = data.metrics || this.generateMockMetrics();
+                this.recentActivity = data.recentActivity || this.generateMockActivity();
+                this.topRiskAreas = data.topRiskAreas || this.generateMockRiskAreas();
+                
+                this.initializeCharts();
+            } catch (error) {
+                console.error('Error loading dashboard data:', error);
+                // Use mock data as fallback
+                this.loadMockData();
+            }
+        },
+        
+        loadMockData() {
+            this.metrics = this.generateMockMetrics();
+            this.recentActivity = this.generateMockActivity();
+            this.topRiskAreas = this.generateMockRiskAreas();
+            this.initializeCharts();
+        },
+        
+        generateMockMetrics() {
+            return {
+                totalIncidents: 127,
+                totalIncidentsChange: 12,
+                openIncidents: 23,
+                highRiskIncidents: 8,
+                totalFinancialImpact: 2450000
+            };
+        },
+        
+        generateMockActivity() {
+            return [
+                {
+                    id: 1,
+                    type: 'new',
+                    title: 'New High-Risk Incident Reported',
+                    description: 'Operational failure in Trading Department',
+                    date: new Date(Date.now() - 2 * 60 * 60 * 1000)
+                },
+                {
+                    id: 2,
+                    type: 'update',
+                    title: 'Incident Status Updated',
+                    description: 'INC-2024-001 moved to In Review',
+                    date: new Date(Date.now() - 4 * 60 * 60 * 1000)
+                },
+                {
+                    id: 3,
+                    type: 'resolved',
+                    title: 'Incident Resolved',
+                    description: 'Technology incident in IT Department closed',
+                    date: new Date(Date.now() - 6 * 60 * 60 * 1000)
+                }
+            ];
+        },
+        
+        generateMockRiskAreas() {
+            return [
+                { name: 'Trading Operations', incidentCount: 15, percentage: 35, riskLevel: 'High' },
+                { name: 'IT Systems', incidentCount: 12, percentage: 28, riskLevel: 'Medium' },
+                { name: 'Compliance', incidentCount: 8, percentage: 19, riskLevel: 'High' },
+                { name: 'Human Resources', incidentCount: 5, percentage: 12, riskLevel: 'Low' },
+                { name: 'Finance', incidentCount: 3, percentage: 7, riskLevel: 'Medium' }
+            ];
+        },
+        
+        initializeCharts() {
+            this.createTrendsChart();
+            this.createRiskChart();
+            this.createTypesChart();
+            this.createDepartmentChart();
+            this.createStatusChart();
+            this.createFinancialChart();
+        },
+        
+        createTrendsChart() {
+            const options = {
+                series: [{
+                    name: 'Incidents',
+                    data: [12, 15, 8, 22, 18, 25, 19, 14, 28, 16, 21, 13]
+                }],
+                chart: {
+                    type: this.trendChartType,
+                    height: 320,
+                    toolbar: { show: false }
+                },
+                colors: ['#3B82F6'],
+                xaxis: {
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                },
+                yaxis: {
+                    title: { text: 'Number of Incidents' }
+                },
+                grid: {
+                    borderColor: '#E5E7EB'
+                }
+            };
+            
+            if (this.charts.trends) {
+                this.charts.trends.destroy();
+            }
+            this.charts.trends = new ApexCharts(document.querySelector("#trendsChart"), options);
+            this.charts.trends.render();
+        },
+        
+        createRiskChart() {
+            const options = {
+                series: [15, 35, 28, 22],
+                chart: {
+                    type: 'donut',
+                    height: 320
+                },
+                labels: ['Low', 'Medium', 'High', 'Critical'],
+                colors: ['#10B981', '#F59E0B', '#F97316', '#DC2626'],
+                legend: {
+                    position: 'bottom'
+                },
+                plotOptions: {
+                    pie: {
+                        donut: {
+                            size: '70%'
+                        }
+                    }
+                }
+            };
+            
+            this.charts.risk = new ApexCharts(document.querySelector("#riskChart"), options);
+            this.charts.risk.render();
+        },
+        
+        createTypesChart() {
+            const options = {
+                series: [{
+                    data: [25, 18, 15, 12, 8]
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 320,
+                    horizontal: true,
+                    toolbar: { show: false }
+                },
+                colors: ['#8B5CF6'],
+                xaxis: {
+                    categories: ['Operational', 'Technology', 'Financial', 'Compliance', 'External']
+                },
+                grid: {
+                    borderColor: '#E5E7EB'
+                }
+            };
+            
+            this.charts.types = new ApexCharts(document.querySelector("#typesChart"), options);
+            this.charts.types.render();
+        },
+        
+        createDepartmentChart() {
+            const options = {
+                series: [{
+                    name: 'Incidents',
+                    data: [15, 12, 8, 6, 5, 4]
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 320,
+                    toolbar: { show: false }
+                },
+                colors: ['#06B6D4'],
+                xaxis: {
+                    categories: ['Trading', 'IT', 'Operations', 'HR', 'Finance', 'Legal'],
+                    labels: {
+                        rotate: -45
+                    }
+                },
+                grid: {
+                    borderColor: '#E5E7EB'
+                }
+            };
+            
+            this.charts.department = new ApexCharts(document.querySelector("#departmentChart"), options);
+            this.charts.department.render();
+        },
+        
+        createStatusChart() {
+            const options = {
+                series: [23, 15, 12, 8],
+                chart: {
+                    type: 'pie',
+                    height: 256
+                },
+                labels: ['Open', 'In Review', 'Closed', 'Revision Required'],
+                colors: ['#F59E0B', '#3B82F6', '#10B981', '#DC2626'],
+                legend: {
+                    position: 'bottom',
+                    fontSize: '12px'
+                }
+            };
+            
+            this.charts.status = new ApexCharts(document.querySelector("#statusChart"), options);
+            this.charts.status.render();
+        },
+        
+        createFinancialChart() {
+            const options = {
+                series: [{
+                    name: 'Financial Loss',
+                    data: [150000, 280000, 95000, 420000, 180000, 350000, 220000, 160000, 480000, 120000, 290000, 200000]
+                }],
+                chart: {
+                    type: 'area',
+                    height: 320,
+                    toolbar: { show: false }
+                },
+                colors: ['#DC2626'],
+                fill: {
+                    type: 'gradient',
+                    gradient: {
+                        shadeIntensity: 1,
+                        opacityFrom: 0.7,
+                        opacityTo: 0.3
+                    }
+                },
+                xaxis: {
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                },
+                yaxis: {
+                    title: { text: 'Amount ($)' },
+                    labels: {
+                        formatter: function (val) {
+                            return '$' + (val / 1000) + 'K';
+                        }
+                    }
+                },
+                grid: {
+                    borderColor: '#E5E7EB'
+                }
+            };
+            
+            this.charts.financial = new ApexCharts(document.querySelector("#financialChart"), options);
+            this.charts.financial.render();
+        },
+        
+        updateTrendsChart() {
+            if (this.charts.trends) {
+                this.charts.trends.updateOptions({
+                    chart: {
+                        type: this.trendChartType
+                    }
+                });
+            }
+        },
+        
+        refreshData() {
+            this.loadDashboardData();
+        },
+        
+        formatCurrency(amount) {
+            return (amount / 1000000).toFixed(1) + 'M';
+        },
+        
+        formatDate(date) {
+            const now = new Date();
+            const diff = now - date;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            
+            if (hours < 1) {
+                return 'Just now';
+            } else if (hours < 24) {
+                return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+            } else {
+                return date.toLocaleDateString();
+            }
+        },
+        
+        getActivityColor(type) {
+            const colors = {
+                'new': 'bg-red-500',
+                'update': 'bg-blue-500',
+                'resolved': 'bg-green-500'
+            };
+            return colors[type] || 'bg-gray-500';
+        },
+        
+        getRiskLevelClass(level) {
+            const classes = {
+                'Low': 'bg-green-100 text-green-800',
+                'Medium': 'bg-yellow-100 text-yellow-800',
+                'High': 'bg-orange-100 text-orange-800',
+                'Critical': 'bg-red-100 text-red-800'
+            };
+            return classes[level] || 'bg-gray-100 text-gray-800';
+        }
+    }
+}).mount('#dashboardApp');
+</script>
+

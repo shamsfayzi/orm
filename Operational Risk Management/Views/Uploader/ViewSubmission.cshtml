@@ -1,0 +1,463 @@
+﻿@using Operational_Risk_Management.Models.View_Models.Uploader;
+@model Update_DetailVM
+
+@{
+    ViewData["Title"] = "View Submission: " + Model.Submission.Indicator.IndicatorName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var statusClass = Model.Submission.Status == "Submitted" ? "bg-green-100 text-green-800 border-green-300" :
+                      Model.Submission.Status == "Closed" ? "bg-red-100 text-red-800 border-red-300" :
+                      Model.Submission.Status == "Due" ? "bg-yellow-100 text-yellow-800 border-yellow-300" :
+                      "bg-gray-100 text-gray-800 border-gray-300";
+
+    var statusIcon = Model.Submission.Status == "Submitted" ? "fas fa-check-circle text-green-500" :
+                     Model.Submission.Status == "Closed" ? "fas fa-times-circle text-red-500" :
+                     Model.Submission.Status == "Due" ? "fas fa-hourglass-half text-yellow-500" :
+                     "fas fa-info-circle text-gray-500";
+
+}
+
+<div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+    <!-- Header Section -->
+    <div class="mb-8 p-6 bg-white shadow-xl rounded-xl border border-gray-200">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div class="flex-1">
+                <h1 class="text-3xl font-bold text-gray-800 flex items-center">
+                    <i class="fas fa-file-contract mr-3 text-blue-600"></i> @Model.Submission.Indicator.IndicatorName
+                </h1>
+                <p class="text-sm text-gray-500 mt-1">Submitted on: @Html.DisplayFor(_ => @Model.Submission.UpdatedDate,"datetime_date_value")</p>
+                <p class="text-sm text-gray-500">Indicator Code: @Model.Submission.Indicator.RfNo</p>
+            </div>
+            <div class="flex items-center px-4 py-2 rounded-lg border text-sm font-semibold @statusClass"> 
+                <i class="@statusIcon mr-2"></i> 
+               <span>@Model.Submission.Status</span>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Left Column: Submission Data & Attachments -->
+        <div class="lg:col-span-2 space-y-8">
+            <!-- Indicator Details Card -->
+            <div class="bg-white shadow-xl rounded-xl overflow-hidden border border-gray-200">
+                <div class="bg-gradient-to-r from-blue-700 to-blue-800 px-6 py-4">
+                    <h3 class="text-lg font-semibold text-white flex items-center">
+                        <i class="fas fa-info-circle mr-2"></i>Indicator Details
+                    </h3>
+                </div>
+                <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-500 mb-1">KRI Type</h4>
+                        <p class="text-gray-800">@Model.Submission.Indicator.KRIType</p>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-500 mb-1">Risk Area</h4>
+                        <p class="text-gray-800">@Model.Submission.Indicator.RiskArea</p>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-500 mb-1">Department</h4>
+                        <p class="text-gray-800">@Model.Submission.Indicator.Template.Department.DepartmentName</p>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-500 mb-1">Frequency</h4>
+                        <p class="text-gray-800">@Model.Submission.Indicator.FrequencyOfReview</p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <h4 class="text-sm font-medium text-gray-500 mb-1">Process</h4>
+                        <p class="text-gray-800">@Model.Submission.Indicator.Process</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submission Details Card -->
+            <div class="bg-white shadow-xl rounded-xl overflow-hidden border border-gray-200">
+                <div class="bg-gradient-to-r from-gray-700 to-gray-800 px-6 py-4">
+                    <h3 class="text-lg font-semibold text-white flex items-center">
+                        <i class="fas fa-list-alt mr-2"></i>Submission Details
+                    </h3>
+                </div>
+                <form asp-action="UpdateSubmission" method="post" class="p-6 space-y-6">
+                    <input type="hidden" name="Id" asp-for="UpdateModel.Id" />
+
+                    <div>
+                        <label asp-for="UpdateModel.Breaches" class="block text-sm font-medium text-gray-700 mb-1">Total Breaches</label>
+                        @if (!Model.Submission.WindowLocked)
+                        {
+                            <input name="Breaches" asp-for="UpdateModel.Breaches" min="0"
+                                   class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-colors" />
+                            <span asp-validation-for="UpdateModel.Breaches" class="text-xs text-red-600 mt-1"></span>
+                        }
+                        else
+                        {
+                            <p class="mt-1 text-base text-gray-900 bg-gray-50 p-3 rounded-lg border border-gray-200">@Model.Submission.Breaches</p>
+                        }
+                    </div>
+
+                    <div>
+                        <label asp-for="UpdateModel.Notes" class="block text-sm font-medium text-gray-700 mb-1">Comments / Notes</label>
+                        @if (!Model.Submission.WindowLocked)
+                        {
+                            <textarea name="Notes" asp-for="UpdateModel.Notes" rows="6"
+                                      class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-colors">@Model.UpdateModel.Notes</textarea>
+                            <span asp-validation-for="UpdateModel.Notes" class="text-xs text-red-600 mt-1"></span>
+                        }
+                        else
+                        {
+                            <div class="mt-1 text-base text-gray-900 bg-gray-50 p-3 rounded-lg border border-gray-200 whitespace-pre-wrap min-h-[100px]">
+                                @Model.Submission.Notes
+                            </div>
+                        }
+                    </div>
+
+                    @if (!Model.Submission.WindowLocked)
+                    {
+                        <div class="flex justify-end pt-4 border-t border-gray-200">
+                            <button type="submit" class="inline-flex items-center px-6 py-2.5 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
+                                <i class="fas fa-save mr-2"></i>Save Changes
+                            </button>
+                        </div>
+                    }
+                </form>
+            </div>
+
+            <!-- Override Request Section (Visible when submission is locked) -->
+            @if (Model.Submission.WindowLocked)
+            {
+                <div id="vue-override-access">
+                    <div v-if="notRequested" class="bg-white shadow-xl rounded-xl overflow-hidden border border-yellow-200">
+                        <div class="bg-gradient-to-r from-yellow-600 to-yellow-700 px-6 py-4">
+                            <h3 class="text-lg font-semibold text-white flex items-center">
+                                <i class="fas fa-lock-open mr-2"></i>Request Override
+                            </h3>
+                        </div>
+                        <div class="p-6">
+                            <div v-if="pendingRequest" class="text-red-600 mb-4 text-sm">
+                                Your override request is pending. You cannot request again until it's resolved.
+                            </div>
+                            <div v-else>
+                                <p class="text-sm text-gray-600 mb-4">
+                                    This submission is locked for editing. If you need to make changes, please submit an override request with justification.
+                                </p>
+                                <textarea v-model="overrideReason" rows="4"
+                                          class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-colors"
+                                          placeholder="Justification for override"></textarea>
+
+                                <div class="flex justify-end mt-4">
+                                    <button @@click ="overrideAccessReq"
+                                            :disabled="pendingRequest"
+                                            class="inline-flex items-center px-6 py-2.5 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors">
+                                        <i class="fas fa-paper-plane mr-2"></i>Submit Override Request
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div v-if="hasOverrideAccess" class="mt-4">
+                        <p>You have active override access for this submission.</p>
+                    </div>
+                </div>
+            }
+
+
+            <!-- Attachments Card -->
+            <div class="bg-white shadow-xl rounded-xl overflow-hidden border border-gray-200">
+                <div class="bg-gradient-to-r from-gray-700 to-gray-800 px-6 py-4">
+                    <h3 class="text-lg font-semibold text-white flex items-center">
+                        <i class="fas fa-paperclip mr-2"></i>Attachments
+                    </h3>
+                </div>
+                <div class="p-6 space-y-4">
+                    @if (Model.Submission.Attachments.Any())
+                    {
+                        foreach (var attachment in Model.Submission.Attachments)
+                        {
+                            <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg bg-gray-50 hover:shadow-sm transition-shadow">
+                                <div class="flex items-center overflow-hidden">
+                                    <i class="fas fa-file-alt fa-lg text-blue-500 mr-3 flex-shrink-0"></i>
+                                    <div class="overflow-hidden">
+                                        <a href="@Url.Action("DownloadAttachment", new { id = attachment.Id })"
+                                           class="text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline truncate block" title="@attachment.FileName">
+                                            @attachment.FileName
+                                        </a>
+                                        <span class="text-xs text-gray-500">@attachment.Size</span>
+                                    </div>
+                                </div>
+                                @if (!Model.Submission.WindowLocked)
+                                {
+                                    <a href="@Url.Action("DeleteAttachment", new { id = attachment.Id })"
+                                       class="text-red-500 hover:text-red-700 ml-2 p-1 rounded-full hover:bg-red-100 transition-colors"
+                                       onclick="return confirm('Are you sure you want to delete this attachment?');">
+                                        <i class="fas fa-trash-alt fa-sm"></i>
+                                    </a>
+                                }
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p class="text-sm text-gray-500 italic text-center py-4">No attachments uploaded for this submission.</p>
+                    }
+
+                    @if (!Model.Submission.WindowLocked)
+                    {
+                        <div id="vue-uploader" class="mt-6 pt-6 border-t border-gray-200">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Add More Attachments</label>
+                            <div class="mt-1 flex flex-col items-center justify-center px-6 py-10 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer hover:border-blue-500 transition-colors duration-200 bg-gray-50 hover:bg-gray-100 relative"
+                                 @@dragover.prevent="isDragging = true"
+                                 @@dragleave.prevent="isDragging = false"
+                                 @@drop.prevent="handleDrop($event)"
+                                 :class="{ 'border-blue-500 bg-blue-50 scale-105 shadow-lg': isDragging, 'bg-gray-50': !isDragging }">
+                                <div class="space-y-1 text-center">
+                                    <i class="fas fa-cloud-upload-alt fa-3x text-gray-400 group-hover:text-blue-500 transition-colors duration-200"
+                                       :class="{'text-blue-500': isDragging}"></i>
+                                    <div class="flex text-sm text-gray-600 mt-2">
+                                        <label class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-700 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500 px-3 py-1.5 border border-gray-300 hover:border-blue-400 transition-colors duration-200">
+                                            <span>Choose files</span>
+                                            <input type="file" class="sr-only" multiple
+                                                   accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx,.txt,.zip,.rar"
+                                                   @@change="handleFileSelect">
+                                        </label>
+                                        <p class="pl-2 self-center">or drag and drop</p>
+                                    </div>
+                                    <p class="text-xs text-gray-500">{{ uploadProgressPercentage }}% complete</p>
+                                </div>
+                            </div>
+
+                            <!-- Files to upload list -->
+                            <div v-if="filesToUpload.length > 0" class="mt-4 space-y-3">
+                                <h4 class="text-sm font-medium text-gray-700">Selected files:</h4>
+                                <ul class="divide-y divide-gray-200 border border-gray-200 rounded-md">
+                                    <li v-for="(file, index) in filesToUpload" :key="index" class="px-4 py-3 flex items-center justify-between text-sm">
+                                        <div class="flex items-center overflow-hidden">
+                                            <i class="fas fa-file-alt text-gray-500 mr-2 flex-shrink-0"></i>
+                                            <span class="truncate" :title="file.name">{{ file.name }}</span>
+                                            <span class="text-xs text-gray-500 ml-2 flex-shrink-0">({{ (file.size / 1024).toFixed(1) }} KB)</span>
+                                        </div>
+                                        <button @@click="removeFile(index)" type="button" class="ml-2 p-1 rounded-full text-red-500 hover:text-red-700 hover:bg-red-100 transition-colors" title="Remove file">
+                                            <i class="fas fa-times-circle fa-sm"></i>
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="flex justify-end">
+                                    <button @@click="triggerFileUpload" type="button"
+                                            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors"
+                                            :disabled="isUploading">
+                                        <i class="fas fa-upload mr-2"></i>
+                                        {{ isUploading ? 'Uploading...' : 'Upload Selected Files' }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Review & Actions -->
+        <div class="lg:col-span-1 space-y-8">
+            @* <!-- Submission Summary Card --> *@
+           
+
+            @* <!-- Review & Actions Card --> *@
+            @* <div class="bg-white shadow-xl rounded-xl overflow-hidden border border-gray-200"> *@
+            @*     <div class="bg-gradient-to-r from-gray-700 to-gray-800 px-6 py-4"> *@
+            @*         <h3 class="text-lg font-semibold text-white flex items-center"> *@
+            @*             <i class="fas fa-user-shield mr-2"></i>Review & Actions *@
+            @*         </h3> *@
+            @*     </div> *@
+            @* </div> *@
+
+            <!-- Feedback History -->
+            @if (Model.Submission.Feedbacks != null && Model.Submission.Feedbacks.Any())
+            {
+                <div class="bg-white shadow-xl rounded-xl overflow-hidden border border-gray-200">
+                    <div class="bg-gradient-to-r from-gray-700 to-gray-800 px-6 py-4">
+                        <h3 class="text-lg font-semibold text-white flex items-center">
+                            <i class="fas fa-comments mr-2"></i>Feedback History
+                        </h3>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        @foreach (var feedback in Model.Submission.Feedbacks.OrderByDescending(f => f.CreateDate))
+                        {
+                            <div class="border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">@feedback.CreateBy</p>
+                                        <p class="text-xs text-gray-500">@feedback.CreateDate.ToString("dd MMM yyyy, hh:mm tt")</p>
+                                    </div>
+                                </div>
+                                <p class="mt-2 text-sm text-gray-600 whitespace-pre-wrap">@feedback.FeedbackContent</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    isDragging: false,
+                    isUploading: false,
+                    filesToUpload: [],
+                    uploadProgressPercentage: 0,
+                    submissionId: '@Model.Submission.Id',
+                    maxFileSize: 10 * 1024 * 1024, // 10MB
+                    allowedFileTypes: [
+                        'application/pdf',
+                        'image/jpeg', 'image/png',
+                        'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                        'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                        'text/plain',
+                        'application/zip', 'application/x-rar-compressed',
+                        'application/x-zip-compressed',
+                        'application/octet-stream'
+                    ]
+                };
+            },
+            methods: {
+                handleFileSelect(event) {
+                    this.addFiles(event.target.files);
+                    event.target.value = null;
+                },
+                handleDrop(event) {
+                    event.preventDefault();
+                    this.isDragging = false;
+                    this.addFiles(event.dataTransfer.files);
+                },
+                addFiles(files) {
+                    for (let i = 0; i < files.length; i++) {
+                        const file = files[i];
+                        if (file.size > this.maxFileSize) {
+                            alert(`"${file.name}" is too large. Max: ${(this.maxFileSize / 1024 / 1024)}MB`);
+                            continue;
+                        }
+                        if (!this.allowedFileTypes.includes(file.type)) {
+                            alert(`"${file.name}" is not an allowed file type.`);
+                            continue;
+                        }
+                        this.filesToUpload.push(file);
+                    }
+                },
+                removeFile(index) {
+                    this.filesToUpload.splice(index, 1);
+                },
+                triggerFileUpload() {
+                    if (this.filesToUpload.length === 0) {
+                        alert('Please select files first.');
+                        return;
+                    }
+                    this.uploadFiles();
+                },
+                async uploadFiles() {
+                    this.isUploading = true;
+                    this.uploadProgressPercentage = 0;
+
+                    const formData = new FormData();
+                    formData.append('submissionId', this.submissionId);
+                    this.filesToUpload.forEach(file => {
+                        formData.append('files', file);
+                    });
+
+                    try {
+                        const response = await fetch('@Url.Action("UploadAttachments", "Uploader")', {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+
+                        const result = await response.json();
+                        if (result.success) {
+                            alert('Files uploaded successfully!');
+                            window.location.reload();
+                        } else {
+                            alert(result.message || 'Upload failed');
+                        }
+                    } catch (error) {
+                        console.error('Upload error:', error);
+                        alert('An error occurred during upload: ' + error.message);
+                    } finally {
+                        this.isUploading = false;
+                        this.uploadProgressPercentage = 0;
+                    }
+                }
+            }
+        }).mount("#vue-uploader");
+        const overrideAccess = Vue.createApp({
+            data() {
+                return {
+                    notRequested: true,
+                    pendingRequest: false,
+                    hasOverrideAccess: false,
+                    overrideReason: '',
+                    submissionId: '@Model.Submission.Id'
+                };
+            },
+            methods: {
+                overrideAccessReq() {
+                    if (this.pendingRequest || !this.notRequested) return;
+
+                    axios.post('/Uploader/RequestOverride', {
+                        submissionId: this.submissionId,
+                        reason: this.overrideReason,
+                        CreatedByFullName:"Shamsullah"
+                    }).then(res => {
+                        alert("Request submitted.");
+                        this.pendingRequest = true;
+                    }).catch(error => {
+                        alert("Error: " + error.message);
+                    });
+                },
+                alreadyRequested() {
+                    axios.get(`/Uploader/CheckOverrideStatus/${this.submissionId}`)
+                        .then(res => {
+                            const data = res.data;
+                            this.pendingRequest = data.isPending;
+                            this.hasOverrideAccess = data.hasAccess;
+                            this.notRequested = !(data.isPending || data.hasAccess);
+                        }).catch(err => {
+                            console.error("Error checking request status:", err);
+                        });
+                }
+            },
+            mounted() {
+                this.alreadyRequested();
+
+                const connection = new signalR.HubConnectionBuilder()
+                    .withUrl("/overrideHub")
+                    .build();
+
+                connection.on("RequestApproved", data => {
+                    if (data.submissionId === this.submissionId) {
+                        alert("Your override request has been approved.");
+                        location.reload();
+                    }
+                });
+
+                connection.on("RequestRejected", data => {
+                    if (data.submissionId === this.submissionId) {
+                        alert("Your override request was rejected.");
+                        this.pendingRequest = false;
+                        this.notRequested = true;
+                    }
+                });
+
+                connection.start().catch(err => console.error("SignalR connection error:", err));
+            }
+        }).mount("#vue-override-access");
+
+    </script>
+}

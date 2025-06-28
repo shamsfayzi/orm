@@ -1,0 +1,67 @@
+﻿@using Operational_Risk_Management.Models.Common
+@using Operational_Risk_Management.Models.Enums
+@using Operational_Risk_Management.Models.Extensions
+@using Operational_Risk_Management.Models.View_Models.Templates
+@model VM_KRITemplateUpdate
+@{
+    var deps = ViewBag.Departments;
+    var users = ViewBag.users;
+
+}
+<div class="flex justify-between mb-1.5">
+    <span class="font-semibold">New Template form</span>
+    @await Html.PartialAsync("_HeaderPageButtons")
+</div>
+<div class="card">
+    <form asp-action="EditTemplate" method="post" id="appCreate">
+        @Html.AntiForgeryToken()
+        <div class="grid-input grid-cols-2">
+            <div>
+                <label for="FocalPoint" class="block font-medium mb-1.5 pl-1 text-sm">
+                    Focal Point
+                    <span class="text-red-400">*</span>
+
+                </label>
+                <select asp-for="@Model.ApplicationUserId" id="FocalPoint" name="ApplicationUserId" class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+
+                    @foreach (var item in users)
+                    {
+                        <option value="@item.Id">@item.FullName</option>
+                    }
+
+                </select>
+                @Html.ValidationMessageFor(a => a.ApplicationUserId)
+            </div>
+
+
+
+            <div>
+                <label for="departmentId" class="block font-medium mb-1.5 pl-1 text-sm">
+                    Department
+                    <span class="text-red-400">*</span>
+
+                </label>
+                <select asp-for="@Model.DepartmentId" id="departmentId" name="DepartmentId" class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+
+                    @foreach (var item in deps)
+                    {
+                        <option value="@item.Id">@item.DepartmentName</option>
+                    }
+
+                </select>
+                @Html.ValidationMessageFor(a => a.DepartmentId)
+            </div>
+            @* @Html.EditorFor(a => a.Phone1) *@
+        </div>
+        <div>
+            @* @Html.EditorFor(a => a.DatabaseVAAccess, "Toggle") *@
+            @* @Html.EditorFor(a => a.NetworkVAAccess, "Toggle") *@
+            @* @Html.EditorFor(a => a.CanReAssign, "Toggle") *@
+            @* @Html.EditorFor(a => a.IsAdmin, "Toggle") *@
+        </div>
+        <div class="flex justify-end mt-1">
+            <button type="submit" class="btn btn-fill-green btn-md">Save</button>
+        </div>
+    </form>
+
+</div>

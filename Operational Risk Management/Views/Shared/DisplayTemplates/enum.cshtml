@@ -1,0 +1,17 @@
+﻿@model object
+@using System.ComponentModel.DataAnnotations
+@using System.Reflection
+
+@{
+    var modelType = ViewData.ModelMetadata.ContainerType;
+    var propertyName = ViewData.ModelMetadata.PropertyName;
+    var propertyInfo = modelType.GetProperty(propertyName);
+    var isRequired = propertyInfo.GetCustomAttributes(typeof(RequiredAttribute), false).Any();
+    var displayName = ViewData.ModelMetadata.DisplayName ?? propertyName;
+}
+<label for="@ViewData.TemplateInfo.HtmlFieldPrefix" class="block font-medium mb-1.5 pl-1 text-sm">
+    @displayName @if (isRequired)
+    {
+        <span class="text-red-400">*</span>
+    }
+</label>

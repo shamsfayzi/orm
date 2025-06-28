@@ -1,0 +1,1863 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\home\\incidentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\home\\incidentlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\common\\customassemblyloadcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\common\\customassemblyloadcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\home\\submissionlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\home\\submissionlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\home\\submissiondetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\home\\submissiondetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\services\\dashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\services\\dashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\controllers\\incidentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\controllers\\incidentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\services\\incidentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\services\\incidentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\services\\pdfreportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\services\\pdfreportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\controllers\\indicatorsubmissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\controllers\\indicatorsubmissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\services\\serviceshome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\services\\serviceshome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\interfaces\\repositories\\iincidentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\interfaces\\repositories\\iincidentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\interfaces\\services\\iincidentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\interfaces\\services\\iincidentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\services\\repository\\incidentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\services\\repository\\incidentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\home\\incidentdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\home\\incidentdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\context\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\context\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\entities\\incident.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\entities\\incident.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\view models\\incident\\incidentvms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\view models\\incident\\incidentvms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\services\\repository\\applicationuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\services\\repository\\applicationuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\interfaces\\iapplicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\interfaces\\iapplicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\controllers\\uploadercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\controllers\\uploadercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\wwwroot\\js\\apexcharts\\apexcharts.min.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\wwwroot\\js\\apexcharts\\apexcharts.min.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\entities\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\entities\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\common\\defaultwindowsauthorization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\common\\defaultwindowsauthorization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\services\\repository\\departmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\services\\repository\\departmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\entities\\incidentreviewcomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\entities\\incidentreviewcomment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\extensions\\claimsextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\extensions\\claimsextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\context\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\context\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\services\\repository\\indicatorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\services\\repository\\indicatorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\common\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\common\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\services\\emailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\services\\emailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\interfaces\\services\\ikridashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\interfaces\\services\\ikridashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\view models\\dashboarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\view models\\dashboarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\view models\\uploader\\filtermodelforsubmissions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\view models\\uploader\\filtermodelforsubmissions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\incidentmanagement\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\incidentmanagement\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\controllers\\krimanagementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\controllers\\krimanagementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\controllers\\incidentmanagementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\controllers\\incidentmanagementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\krimanagement\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\krimanagement\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\interfaces\\services\\idashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\interfaces\\services\\idashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\services\\excelreportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\services\\excelreportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\interfaces\\services\\ipdfreportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\interfaces\\services\\ipdfreportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\interfaces\\services\\iexcelreportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\interfaces\\services\\iexcelreportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\shared\\displaytemplates\\string_value.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\shared\\displaytemplates\\string_value.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\shared\\displaytemplates\\string_file.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\shared\\displaytemplates\\string_file.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\shared\\displaytemplates\\string_value_limit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\shared\\displaytemplates\\string_value_limit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\shared\\displaytemplates\\string.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\shared\\displaytemplates\\string.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\uploader\\submissions.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\uploader\\submissions.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\services\\kridashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\services\\kridashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\view models\\uploader\\indicator\\vm_indicator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\view models\\uploader\\indicator\\vm_indicator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\view models\\uploader\\vm_submissions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\view models\\uploader\\vm_submissions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\entities\\indicator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\entities\\indicator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\view models\\submission\\adminsubmissionfiltermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\view models\\submission\\adminsubmissionfiltermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\view models\\kriindicator\\vm_indicatoredit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\view models\\kriindicator\\vm_indicatoredit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\view models\\kriindicator\\vm_indicatorcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\view models\\kriindicator\\vm_indicatorcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\view models\\uploader\\indicator\\vm_indicatordetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\view models\\uploader\\indicator\\vm_indicatordetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\services\\uploaderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\services\\uploaderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\view models\\kriindicator\\vm_indicatordetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\view models\\kriindicator\\vm_indicatordetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\controllers\\templateindicatorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\controllers\\templateindicatorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\templateindicator\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\templateindicator\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\interfaces\\services\\iuploaderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\interfaces\\services\\iuploaderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\extensions\\submissionfilterextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\extensions\\submissionfilterextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\context\\commadelimitedmodelbinder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\context\\commadelimitedmodelbinder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\view models\\kritemplates\\vm_kritemplatecreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\view models\\kritemplates\\vm_kritemplatecreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\enums\\submissionstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\enums\\submissionstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\entities\\template.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\entities\\template.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\common\\abstractvalidatorwithdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\common\\abstractvalidatorwithdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\services\\repository\\submissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\services\\repository\\submissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\jobs\\monthlykrireminderjob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\jobs\\monthlykrireminderjob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\interfaces\\services\\inotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\interfaces\\services\\inotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\services\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\services\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\jobs\\jobscheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\jobs\\jobscheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\entities\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\entities\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\hub\\overridehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\hub\\overridehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\services\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\services\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\interfaces\\ivalidationmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\interfaces\\ivalidationmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\services\\repository\\templaterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\services\\repository\\templaterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\interfaces\\repositories\\itemplaterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\interfaces\\repositories\\itemplaterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\interfaces\\isoftdelete.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\interfaces\\isoftdelete.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\entities\\incidentdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\entities\\incidentdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\entities\\staffconcerned.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\entities\\staffconcerned.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\entities\\submissionwindows.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\entities\\submissionwindows.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\view models\\uploader\\vm_cr_overrideaccessrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\view models\\uploader\\vm_cr_overrideaccessrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\uploader\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\uploader\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\interfaces\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\interfaces\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\uploader\\viewsubmission.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\uploader\\viewsubmission.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\entities\\activitylog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\entities\\activitylog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\entities\\overrideaccessrequests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\entities\\overrideaccessrequests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\entities\\submission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\entities\\submission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\uploader\\managesubmission.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\uploader\\managesubmission.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\uploader\\indicatordetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\uploader\\indicatordetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\uploader\\indicators.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\uploader\\indicators.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\interfaces\\repositories\\iattachmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\interfaces\\repositories\\iattachmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\interfaces\\repositories\\idepartmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\interfaces\\repositories\\idepartmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\services\\repository\\attachmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\services\\repository\\attachmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\providers\\commadelimitedmodelbinderprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\providers\\commadelimitedmodelbinderprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\context\\filterdatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\context\\filterdatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\interfaces\\repositories\\iindicatorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\interfaces\\repositories\\iindicatorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\uploader\\submissionslist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\uploader\\submissionslist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\view models\\kritemplates\\vm_template.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\view models\\kritemplates\\vm_template.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\view models\\uploader\\filteredsubmissions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\view models\\uploader\\filteredsubmissions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\extensions\\expressionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\extensions\\expressionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\models\\view models\\uploader\\managesubmissionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\models\\view models\\uploader\\managesubmissionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\template\\createtemplate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\template\\createtemplate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\template\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\template\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\template\\edittemplate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\template\\edittemplate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\template\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\template\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\shared\\_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\shared\\_sidebar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|c:\\users\\shamsullah fayzi\\source\\repos\\operational-risk-management\\operational risk management\\views\\shared\\_loader.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1BBED21D-540E-48C9-9ABD-8B5A016B99E1}|Operational Risk Management\\Operational Risk Management.csproj|solutionrelative:operational risk management\\views\\shared\\_loader.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SubmissionList.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Home\\SubmissionList.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Home\\SubmissionList.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Home\\SubmissionList.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Home\\SubmissionList.cshtml",
+              "ViewState": "AgIAABABAAAAAAAAAAAawCoBAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-15T13:52:43.301Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DashboardService.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\DashboardService.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Services\\DashboardService.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\DashboardService.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Services\\DashboardService.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAmwDcAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T18:41:16.957Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IncidentController.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Controllers\\IncidentController.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Controllers\\IncidentController.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Controllers\\IncidentController.cs",
+              "RelativeToolTip": "Operational Risk Management\\Controllers\\IncidentController.cs",
+              "ViewState": "AgIAAF4BAAAAAAAAAAAvwIoBAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T15:58:43.157Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IncidentService.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\IncidentService.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Services\\IncidentService.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\IncidentService.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Services\\IncidentService.cs",
+              "ViewState": "AgIAAN4AAAAAAAAAAAAvwO4AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:45:00.846Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PdfReportService.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\PdfReportService.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Services\\PdfReportService.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\PdfReportService.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Services\\PdfReportService.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAMwB4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T10:04:43.961Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IndicatorSubmissionsController.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Controllers\\IndicatorSubmissionsController.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Controllers\\IndicatorSubmissionsController.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Controllers\\IndicatorSubmissionsController.cs",
+              "RelativeToolTip": "Operational Risk Management\\Controllers\\IndicatorSubmissionsController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAADwvxEAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T15:07:19.794Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Program.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Program.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Program.cs",
+              "RelativeToolTip": "Operational Risk Management\\Program.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAuwGkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T08:02:04.112Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAPEAAAAAAAAAAAAYwP4AAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-06T06:25:25.908Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ServicesHome.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\ServicesHome.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Services\\ServicesHome.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\ServicesHome.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Services\\ServicesHome.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAADgvxgAAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T19:23:22.787Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CustomAssemblyLoadContext.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Common\\CustomAssemblyLoadContext.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Common\\CustomAssemblyLoadContext.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Common\\CustomAssemblyLoadContext.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Common\\CustomAssemblyLoadContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-15T12:15:26.292Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IncidentList.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Home\\IncidentList.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Home\\IncidentList.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Home\\IncidentList.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Home\\IncidentList.cshtml",
+              "ViewState": "AgIAAPgBAAAAAAAAAAAqwBYCAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-03T07:00:37.333Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Operational Risk Management\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAALoAAAAAAAAAAAA6wMYAAAB5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T10:18:22.092Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SubmissionDetails.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Home\\SubmissionDetails.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Home\\SubmissionDetails.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Home\\SubmissionDetails.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Home\\SubmissionDetails.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-03T05:59:11.504Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IIncidentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Repositories\\IIncidentRepository.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Interfaces\\Repositories\\IIncidentRepository.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Repositories\\IIncidentRepository.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Interfaces\\Repositories\\IIncidentRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAIBJwAoAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T15:36:09.255Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IIncidentService.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Services\\IIncidentService.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Interfaces\\Services\\IIncidentService.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Services\\IIncidentService.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Interfaces\\Services\\IIncidentService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAIBJwBIAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T17:43:44.443Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IncidentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\Repository\\IncidentRepository.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Services\\Repository\\IncidentRepository.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\Repository\\IncidentRepository.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Services\\Repository\\IncidentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T15:41:37.205Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IncidentDetails.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Home\\IncidentDetails.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Home\\IncidentDetails.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Home\\IncidentDetails.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Home\\IncidentDetails.cshtml",
+              "ViewState": "AgIAAAQBAAAAAAAAAIBJwBYBAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-03T10:04:06.981Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ApplicationDBContext.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Context\\ApplicationDBContext.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Context\\ApplicationDBContext.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Context\\ApplicationDBContext.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Context\\ApplicationDBContext.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwA4AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T15:02:26.052Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Incident.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\Incident.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Entities\\Incident.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\Incident.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Entities\\Incident.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAIA9wGgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-14T11:27:46.774Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "IncidentVMs.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\Incident\\IncidentVMs.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\View Models\\Incident\\IncidentVMs.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\Incident\\IncidentVMs.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\View Models\\Incident\\IncidentVMs.cs",
+              "ViewState": "AgIAAGsAAAAAAAAAAAA6wHMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-14T13:48:57.163Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ApplicationDBContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Migrations\\ApplicationDBContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Migrations\\ApplicationDBContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Migrations\\ApplicationDBContextModelSnapshot.cs",
+              "RelativeToolTip": "Operational Risk Management\\Migrations\\ApplicationDBContextModelSnapshot.cs",
+              "ViewState": "AgIAALAAAAAAAAAAAIBZwEABAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-14T13:50:53.843Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ApplicationUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\Repository\\ApplicationUserRepository.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Services\\Repository\\ApplicationUserRepository.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\Repository\\ApplicationUserRepository.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Services\\Repository\\ApplicationUserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-14T13:46:22.79Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "IApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\IApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Interfaces\\IApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\IApplicationDbContext.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Interfaces\\IApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T19:28:54.544Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "UploaderController.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Controllers\\UploaderController.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Controllers\\UploaderController.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Controllers\\UploaderController.cs",
+              "RelativeToolTip": "Operational Risk Management\\Controllers\\UploaderController.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAADgvzUAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T16:04:01.658Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "apexcharts.min.js",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\apexcharts\\apexcharts.min.js",
+              "RelativeDocumentMoniker": "Operational Risk Management\\wwwroot\\js\\apexcharts\\apexcharts.min.js",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\wwwroot\\js\\apexcharts\\apexcharts.min.js",
+              "RelativeToolTip": "Operational Risk Management\\wwwroot\\js\\apexcharts\\apexcharts.min.js",
+              "ViewState": "AgIAAAMAAAAAAAAAAIBZwA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-06-14T13:08:52.526Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Entities\\ApplicationUser.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\ApplicationUser.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Entities\\ApplicationUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAIBZwBQAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T19:50:36.315Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "DefaultWindowsAuthorization.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Common\\DefaultWindowsAuthorization.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Common\\DefaultWindowsAuthorization.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Common\\DefaultWindowsAuthorization.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Common\\DefaultWindowsAuthorization.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA3wCMAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T06:50:31.21Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "DepartmentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\Repository\\DepartmentRepository.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Services\\Repository\\DepartmentRepository.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\Repository\\DepartmentRepository.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Services\\Repository\\DepartmentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T11:44:14.075Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "IncidentReviewComment.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\IncidentReviewComment.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Entities\\IncidentReviewComment.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\IncidentReviewComment.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Entities\\IncidentReviewComment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA0AAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-14T11:28:07.126Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "ClaimsExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Extensions\\ClaimsExtensions.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Extensions\\ClaimsExtensions.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Extensions\\ClaimsExtensions.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Extensions\\ClaimsExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T07:25:07.37Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "BaseEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Context\\BaseEntity.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Context\\BaseEntity.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Context\\BaseEntity.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Context\\BaseEntity.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAqwAgAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T06:12:59.657Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "IndicatorRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\Repository\\IndicatorRepository.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Services\\Repository\\IndicatorRepository.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\Repository\\IndicatorRepository.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Services\\Repository\\IndicatorRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T12:16:10.889Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "Operational Risk Management\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\appsettings.Development.json",
+              "RelativeToolTip": "Operational Risk Management\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-21T00:54:01.878Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "AutoMapperProfile.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Common\\AutoMapperProfile.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Common\\AutoMapperProfile.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Common\\AutoMapperProfile.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Common\\AutoMapperProfile.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAhwHUAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T09:14:29.548Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "EmailSender.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\EmailSender.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Services\\EmailSender.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\EmailSender.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Services\\EmailSender.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T14:17:17.72Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "IKRIDashboardService.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Services\\IKRIDashboardService.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Interfaces\\Services\\IKRIDashboardService.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Services\\IKRIDashboardService.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Interfaces\\Services\\IKRIDashboardService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAowBAAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T03:57:25.972Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "DashboardDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\DashboardDTO.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\View Models\\DashboardDTO.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\DashboardDTO.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\View Models\\DashboardDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T10:16:04.033Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "FilterModelForSubmissions.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\Uploader\\FilterModelForSubmissions.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\View Models\\Uploader\\FilterModelForSubmissions.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\Uploader\\FilterModelForSubmissions.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\View Models\\Uploader\\FilterModelForSubmissions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T12:26:12.399Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\IncidentManagement\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\IncidentManagement\\Dashboard.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\IncidentManagement\\Dashboard.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\IncidentManagement\\Dashboard.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-03T06:58:39.512Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "KriManagementController.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Controllers\\KriManagementController.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Controllers\\KriManagementController.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Controllers\\KriManagementController.cs",
+              "RelativeToolTip": "Operational Risk Management\\Controllers\\KriManagementController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAIBZwDoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T04:33:16.792Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "IncidentManagementController.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Controllers\\IncidentManagementController.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Controllers\\IncidentManagementController.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Controllers\\IncidentManagementController.cs",
+              "RelativeToolTip": "Operational Risk Management\\Controllers\\IncidentManagementController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T16:01:03.845Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\KriManagement\\Index.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\KriManagement\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\KriManagement\\Index.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\KriManagement\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-03T05:38:00.878Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "IDashboardService.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Services\\IDashboardService.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Interfaces\\Services\\IDashboardService.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Services\\IDashboardService.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Interfaces\\Services\\IDashboardService.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAiwB8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T12:54:13.456Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "ExcelReportService.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\ExcelReportService.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Services\\ExcelReportService.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\ExcelReportService.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Services\\ExcelReportService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T10:48:35.347Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "IPdfReportService.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Services\\IPdfReportService.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Interfaces\\Services\\IPdfReportService.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Services\\IPdfReportService.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Interfaces\\Services\\IPdfReportService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T10:50:42.822Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "IExcelReportService.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Services\\IExcelReportService.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Interfaces\\Services\\IExcelReportService.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Services\\IExcelReportService.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Interfaces\\Services\\IExcelReportService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T10:52:11.159Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "string_value.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Shared\\DisplayTemplates\\string_value.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Shared\\DisplayTemplates\\string_value.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Shared\\DisplayTemplates\\string_value.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Shared\\DisplayTemplates\\string_value.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-03T10:08:02.47Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "string_file.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Shared\\DisplayTemplates\\string_file.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Shared\\DisplayTemplates\\string_file.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Shared\\DisplayTemplates\\string_file.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Shared\\DisplayTemplates\\string_file.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-03T10:08:06.27Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "string_value_limit.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Shared\\DisplayTemplates\\string_value_limit.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Shared\\DisplayTemplates\\string_value_limit.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Shared\\DisplayTemplates\\string_value_limit.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Shared\\DisplayTemplates\\string_value_limit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-03T10:08:04.434Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "string.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Shared\\DisplayTemplates\\string.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Shared\\DisplayTemplates\\string.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Shared\\DisplayTemplates\\string.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Shared\\DisplayTemplates\\string.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-03T10:07:36.49Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "Submissions.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Uploader\\Submissions.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Uploader\\Submissions.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Uploader\\Submissions.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Uploader\\Submissions.cshtml",
+              "ViewState": "AgIAAEUBAAAAAAAAAIBZwF8BAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-22T18:00:07.201Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAALoAAAAAAAAAAIBZwN4AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-21T01:07:31.508Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "KRIDashboardService.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\KRIDashboardService.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Services\\KRIDashboardService.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\KRIDashboardService.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Services\\KRIDashboardService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAIwCAAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T03:56:08.558Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "VM_Indicator.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\Uploader\\Indicator\\VM_Indicator.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\View Models\\Uploader\\Indicator\\VM_Indicator.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\Uploader\\Indicator\\VM_Indicator.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\View Models\\Uploader\\Indicator\\VM_Indicator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T06:01:34.934Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "VM_Submissions.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\Uploader\\VM_Submissions.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\View Models\\Uploader\\VM_Submissions.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\Uploader\\VM_Submissions.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\View Models\\Uploader\\VM_Submissions.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAUwBkAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T12:31:59.515Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "Indicator.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\Indicator.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Entities\\Indicator.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\Indicator.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Entities\\Indicator.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAowBcAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T09:12:37.759Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "AdminSubmissionFilterModel.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\Submission\\AdminSubmissionFilterModel.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\View Models\\Submission\\AdminSubmissionFilterModel.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\Submission\\AdminSubmissionFilterModel.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\View Models\\Submission\\AdminSubmissionFilterModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T07:35:18.405Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "VM_IndicatorEdit.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\KRIIndicator\\VM_IndicatorEdit.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\View Models\\KRIIndicator\\VM_IndicatorEdit.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\KRIIndicator\\VM_IndicatorEdit.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\View Models\\KRIIndicator\\VM_IndicatorEdit.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T03:45:12.336Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "VM_IndicatorCreate.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\KRIIndicator\\VM_IndicatorCreate.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\View Models\\KRIIndicator\\VM_IndicatorCreate.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\KRIIndicator\\VM_IndicatorCreate.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\View Models\\KRIIndicator\\VM_IndicatorCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T19:48:31.752Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "VM_IndicatorDetails.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\Uploader\\Indicator\\VM_IndicatorDetails.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\View Models\\Uploader\\Indicator\\VM_IndicatorDetails.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\Uploader\\Indicator\\VM_IndicatorDetails.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\View Models\\Uploader\\Indicator\\VM_IndicatorDetails.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T15:25:07.88Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "UploaderService.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\UploaderService.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Services\\UploaderService.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\UploaderService.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Services\\UploaderService.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAowD8AAABaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T11:52:18.691Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "VM_IndicatorDetails.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\KRIIndicator\\VM_IndicatorDetails.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\View Models\\KRIIndicator\\VM_IndicatorDetails.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\KRIIndicator\\VM_IndicatorDetails.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\View Models\\KRIIndicator\\VM_IndicatorDetails.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBQAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T11:32:19.825Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "TemplateIndicatorController.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Controllers\\TemplateIndicatorController.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Controllers\\TemplateIndicatorController.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Controllers\\TemplateIndicatorController.cs",
+              "RelativeToolTip": "Operational Risk Management\\Controllers\\TemplateIndicatorController.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAIBZwHcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T15:07:23.685Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\TemplateIndicator\\Details.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\TemplateIndicator\\Details.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\TemplateIndicator\\Details.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\TemplateIndicator\\Details.cshtml",
+              "ViewState": "AgIAAKEAAAAAAAAAAAAqwMoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-02T12:50:55.319Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "IUploaderService.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Services\\IUploaderService.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Interfaces\\Services\\IUploaderService.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Services\\IUploaderService.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Interfaces\\Services\\IUploaderService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T19:25:28.925Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "SubmissionFilterExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Extensions\\SubmissionFilterExtensions.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Extensions\\SubmissionFilterExtensions.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Extensions\\SubmissionFilterExtensions.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Extensions\\SubmissionFilterExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T19:51:45.006Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "CommaDelimitedModelBinder.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Context\\CommaDelimitedModelBinder.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Context\\CommaDelimitedModelBinder.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Context\\CommaDelimitedModelBinder.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Context\\CommaDelimitedModelBinder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T08:01:45.834Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "VM_KRITemplateCreate.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\KRITemplates\\VM_KRITemplateCreate.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\View Models\\KRITemplates\\VM_KRITemplateCreate.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\KRITemplates\\VM_KRITemplateCreate.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\View Models\\KRITemplates\\VM_KRITemplateCreate.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAwwBkAAAB2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T06:52:20.612Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "SubmissionStatus.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Enums\\SubmissionStatus.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Enums\\SubmissionStatus.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Enums\\SubmissionStatus.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Enums\\SubmissionStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T13:55:11.072Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "Template.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\Template.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Entities\\Template.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\Template.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Entities\\Template.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T11:57:22.242Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "AbstractValidatorWithDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Common\\AbstractValidatorWithDbContext.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Common\\AbstractValidatorWithDbContext.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Common\\AbstractValidatorWithDbContext.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Common\\AbstractValidatorWithDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T10:33:32.571Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
+              "Title": "SubmissionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\Repository\\SubmissionRepository.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Services\\Repository\\SubmissionRepository.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\Repository\\SubmissionRepository.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Services\\Repository\\SubmissionRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAIBJwCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T12:14:57.723Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 72,
+              "Title": "MonthlyKriReminderJob.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Jobs\\MonthlyKriReminderJob.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Jobs\\MonthlyKriReminderJob.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Jobs\\MonthlyKriReminderJob.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Jobs\\MonthlyKriReminderJob.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAEwCsAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T12:43:51.788Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 73,
+              "Title": "INotificationService.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Services\\INotificationService.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Interfaces\\Services\\INotificationService.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Services\\INotificationService.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Interfaces\\Services\\INotificationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T12:51:44.275Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 74,
+              "Title": "NotificationService.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\NotificationService.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Services\\NotificationService.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\NotificationService.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Services\\NotificationService.cs",
+              "ViewState": "AgIAAIwAAAAAAAAAAAAwwJoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T12:55:08.209Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 75,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\appsettings.json",
+              "RelativeDocumentMoniker": "Operational Risk Management\\appsettings.json",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\appsettings.json",
+              "RelativeToolTip": "Operational Risk Management\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-21T00:53:56.098Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 76,
+              "Title": "JobScheduler.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Jobs\\JobScheduler.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Jobs\\JobScheduler.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Jobs\\JobScheduler.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Jobs\\JobScheduler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T12:32:56.962Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 77,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\Notification.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Entities\\Notification.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\Notification.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Entities\\Notification.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAA7wDUAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T05:45:24.82Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 78,
+              "Title": "OverrideHub.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Hub\\OverrideHub.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Hub\\OverrideHub.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Hub\\OverrideHub.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Hub\\OverrideHub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T09:45:41.943Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 79,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Services\\GenericRepository.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\GenericRepository.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Services\\GenericRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T11:13:01.187Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 80,
+              "Title": "IValidationModel.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\IValidationModel.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Interfaces\\IValidationModel.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\IValidationModel.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Interfaces\\IValidationModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T19:28:46.456Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 81,
+              "Title": "TemplateRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\Repository\\TemplateRepository.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Services\\Repository\\TemplateRepository.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\Repository\\TemplateRepository.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Services\\Repository\\TemplateRepository.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAlwCAAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T13:10:54.86Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 82,
+              "Title": "ITemplateRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Repositories\\ITemplateRepository.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Interfaces\\Repositories\\ITemplateRepository.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Repositories\\ITemplateRepository.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Interfaces\\Repositories\\ITemplateRepository.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAQwBIAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T13:13:26.839Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 83,
+              "Title": "ISoftDelete.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\ISoftDelete.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Interfaces\\ISoftDelete.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\ISoftDelete.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Interfaces\\ISoftDelete.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAYAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T19:28:50.586Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 84,
+              "Title": "IncidentDocument.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\IncidentDocument.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Entities\\IncidentDocument.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\IncidentDocument.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Entities\\IncidentDocument.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T15:38:41.638Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 85,
+              "Title": "StaffConcerned.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\StaffConcerned.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Entities\\StaffConcerned.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\StaffConcerned.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Entities\\StaffConcerned.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T15:31:07.847Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 86,
+              "Title": "SubmissionWindows.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\SubmissionWindows.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Entities\\SubmissionWindows.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\SubmissionWindows.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Entities\\SubmissionWindows.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T14:25:27.331Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 87,
+              "Title": "VM_CR_OverrideAccessRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\Uploader\\VM_CR_OverrideAccessRequest.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\View Models\\Uploader\\VM_CR_OverrideAccessRequest.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\Uploader\\VM_CR_OverrideAccessRequest.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\View Models\\Uploader\\VM_CR_OverrideAccessRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T07:05:07.922Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 88,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Uploader\\Index.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Uploader\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Uploader\\Index.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Uploader\\Index.cshtml",
+              "ViewState": "AgIAAIUAAAAAAAAAAIBZwMwAAAB7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-21T00:35:16.67Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 89,
+              "Title": "IGenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\IGenericRepository.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Interfaces\\IGenericRepository.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\IGenericRepository.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Interfaces\\IGenericRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T10:19:39.711Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 90,
+              "Title": "ViewSubmission.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Uploader\\ViewSubmission.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Uploader\\ViewSubmission.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Uploader\\ViewSubmission.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Uploader\\ViewSubmission.cshtml",
+              "ViewState": "AgIAAPAAAAAAAAAAAAAAwB8BAABrAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-21T14:55:39.316Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 91,
+              "Title": "ActivityLog.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\ActivityLog.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Entities\\ActivityLog.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\ActivityLog.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Entities\\ActivityLog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T11:32:33.514Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 92,
+              "Title": "OverrideAccessRequests.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\OverrideAccessRequests.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Entities\\OverrideAccessRequests.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\OverrideAccessRequests.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Entities\\OverrideAccessRequests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T06:44:04.48Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 93,
+              "Title": "Submission.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\Submission.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Entities\\Submission.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Entities\\Submission.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Entities\\Submission.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAUAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T11:57:03.239Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 94,
+              "Title": "ManageSubmission.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Uploader\\ManageSubmission.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Uploader\\ManageSubmission.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Uploader\\ManageSubmission.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Uploader\\ManageSubmission.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-21T17:52:16.276Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 95,
+              "Title": "IndicatorDetails.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Uploader\\IndicatorDetails.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Uploader\\IndicatorDetails.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Uploader\\IndicatorDetails.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Uploader\\IndicatorDetails.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-22T15:16:49.333Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 96,
+              "Title": "Indicators.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Uploader\\Indicators.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Uploader\\Indicators.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Uploader\\Indicators.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Uploader\\Indicators.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-22T09:05:30.826Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 97,
+              "Title": "IAttachmentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Repositories\\IAttachmentRepository.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Interfaces\\Repositories\\IAttachmentRepository.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Repositories\\IAttachmentRepository.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Interfaces\\Repositories\\IAttachmentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T11:12:16.778Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 98,
+              "Title": "IDepartmentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Repositories\\IDepartmentRepository.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Interfaces\\Repositories\\IDepartmentRepository.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Repositories\\IDepartmentRepository.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Interfaces\\Repositories\\IDepartmentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T19:28:34.518Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 99,
+              "Title": "AttachmentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\Repository\\AttachmentRepository.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Services\\Repository\\AttachmentRepository.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Services\\Repository\\AttachmentRepository.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Services\\Repository\\AttachmentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAB5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T10:46:48.965Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 100,
+              "Title": "CommaDelimitedModelBinderProvider.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Providers\\CommaDelimitedModelBinderProvider.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Providers\\CommaDelimitedModelBinderProvider.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Providers\\CommaDelimitedModelBinderProvider.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Providers\\CommaDelimitedModelBinderProvider.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T08:03:28.071Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 101,
+              "Title": "FilterDatabase.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Context\\FilterDatabase.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Context\\FilterDatabase.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Context\\FilterDatabase.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Context\\FilterDatabase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T08:01:08.049Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 102,
+              "Title": "IIndicatorRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Repositories\\IIndicatorRepository.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Interfaces\\Repositories\\IIndicatorRepository.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Interfaces\\Repositories\\IIndicatorRepository.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Interfaces\\Repositories\\IIndicatorRepository.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAArwBIAAABpAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T12:20:36.327Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 103,
+              "Title": "SubmissionsList.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Uploader\\SubmissionsList.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Uploader\\SubmissionsList.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Uploader\\SubmissionsList.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Uploader\\SubmissionsList.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAACYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-24T13:40:06.229Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 104,
+              "Title": "VM_Template.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\KRITemplates\\VM_Template.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\View Models\\KRITemplates\\VM_Template.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\KRITemplates\\VM_Template.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\View Models\\KRITemplates\\VM_Template.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T13:00:55.789Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 105,
+              "Title": "FilteredSubmissions.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\Uploader\\FilteredSubmissions.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\View Models\\Uploader\\FilteredSubmissions.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\Uploader\\FilteredSubmissions.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\View Models\\Uploader\\FilteredSubmissions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T12:30:53.098Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 106,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T15:24:31.951Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 107,
+              "Title": "ExpressionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Extensions\\ExpressionExtensions.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\Extensions\\ExpressionExtensions.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\Extensions\\ExpressionExtensions.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\Extensions\\ExpressionExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T17:06:49.763Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 108,
+              "Title": "ManageSubmissionViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\Uploader\\ManageSubmissionViewModel.cs",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Models\\View Models\\Uploader\\ManageSubmissionViewModel.cs",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Models\\View Models\\Uploader\\ManageSubmissionViewModel.cs",
+              "RelativeToolTip": "Operational Risk Management\\Models\\View Models\\Uploader\\ManageSubmissionViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T16:03:17.688Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 109,
+              "Title": "CreateTemplate.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Template\\CreateTemplate.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Template\\CreateTemplate.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Template\\CreateTemplate.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Template\\CreateTemplate.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-21T14:07:56.475Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 110,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Template\\Details.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Template\\Details.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Template\\Details.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Template\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-21T14:07:54.251Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 111,
+              "Title": "EditTemplate.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Template\\EditTemplate.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Template\\EditTemplate.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Template\\EditTemplate.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Template\\EditTemplate.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-21T14:07:52.113Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 112,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Template\\Index.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Template\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Template\\Index.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Template\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-21T14:07:49.88Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 113,
+              "Title": "_Sidebar.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Shared\\_Sidebar.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Shared\\_Sidebar.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Shared\\_Sidebar.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Shared\\_Sidebar.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAMBdwAoAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-21T00:34:58.657Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 114,
+              "Title": "_loader.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Shared\\_loader.cshtml",
+              "RelativeDocumentMoniker": "Operational Risk Management\\Views\\Shared\\_loader.cshtml",
+              "ToolTip": "C:\\Users\\Shamsullah Fayzi\\source\\repos\\Operational-Risk-Management\\Operational Risk Management\\Views\\Shared\\_loader.cshtml",
+              "RelativeToolTip": "Operational Risk Management\\Views\\Shared\\_loader.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-21T01:22:58.567Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
