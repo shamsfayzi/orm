@@ -27,6 +27,7 @@ namespace Operational_Risk_Management.Models.Context
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<IncidentReviewComment> IncidentReviewComments { get; set; }
         public DbSet<OverrideAccessRequest> OverrideAccessRequests { get; set; }
+        public DbSet<SubmissionAuditLog> SubmissionAuditLogs { get; set; } // Added
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyFilter<ISoftDelete>(a => !a.IsDeleted);
@@ -43,6 +44,12 @@ namespace Operational_Risk_Management.Models.Context
                 .WithMany(i => i.ReviewComments)
                 .HasForeignKey(c => c.IncidentId)
                 .OnDelete(DeleteBehavior.Cascade); // Or DeleteBehavior.Restrict if preferred
+
+            modelBuilder.Entity<SubmissionAuditLog>() // Added configuration
+                .HasOne(s => s.Submission)
+                .WithMany() // Assuming Submission doesn't have a direct navigation collection for AuditLogs
+                .HasForeignKey(s => s.SubmissionId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
 
         public override int SaveChanges()

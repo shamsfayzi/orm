@@ -11,7 +11,7 @@ namespace Operational_Risk_Management.Services.Interfaces
 {
     public interface IKRIDashboardSercice
     {
-        Task<KRIDashboardDataDTO> GetRiskManagementDashboardDataAsync(DateTime? startDate, DateTime? endDate);
+        Task<KRIDashboardDataDTO> GetRiskManagementDashboardDataAsync(DateTime? startDate, DateTime? endDate, string requestingRole, string requestingUserId, string requestingDepartment);
         Task<List<VM_Submission>> GetSubmissionsWithFiltersAsync(FilterModelForSubmissions model, string submissionType = "all");
         Task<List<string>> GetAllDepartmentsAsync();
         Task<List<Indicator>> GetAllIndicatorsAsync();

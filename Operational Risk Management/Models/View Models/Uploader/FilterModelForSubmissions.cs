@@ -29,5 +29,10 @@ namespace Operational_Risk_Management.Models.View_Models.Uploader
 
         public DateTime? DateFrom { get; set; }
         public DateTime? DateTo { get; set; }
+
+        // Properties for user context based filtering
+        public string RequestingUserId { get; set; }
+        public string RequestingUserDepartment { get; set; }
+        public bool IsRequestingUserAdminOrManager { get; set; }
     }
 }

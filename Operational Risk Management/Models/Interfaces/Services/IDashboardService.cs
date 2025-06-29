@@ -9,7 +9,7 @@ namespace Operational_Risk_Management.Services.Interfaces
     public interface IIncidentDashboardService
     {
 
-            Task<IncidentDashboardDTO> GetDashboardDataAsync(DateTime? startDate, DateTime? endDate);
+            Task<IncidentDashboardDTO> GetDashboardDataAsync(DateTime? startDate, DateTime? endDate, string requestingRole, string requestingUserId, string requestingDepartment);
             Task<Dictionary<string, int>> GetIncidentsTrendAsync(DateTime? startDate, DateTime? endDate, string interval = "month");
             Task<PaginatedModel<IncidentListDTO>> GetFilteredIncidentsAsync(IncidentFilterDTO filter);
             Task<List<string>> GetDepartmentsAsync();
