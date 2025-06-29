@@ -108,13 +108,16 @@ namespace Operational_Risk_Management.Controllers
             }
             return View(await _kriTemplateRepository.TemplateDetails(model, id));
         }
-        public async Task<IActionResult> AddIndicator(Guid id) // GET
+        public async Task<IActionResult> AddIndicator(Guid id) // id is TemplateId (GET)
         {
             if (!ViewStaticState.IsAdmin && !ViewStaticState.IsRiskManager) return Forbid();
             var template = await _kriTemplateRepository.GetByIdAsync(id);
             if (template != null)
             {
-                return View(template); // This view likely needs a proper ViewModel
+                var model = new VM_KRIIndicatorCreate { TemplateId = id };
+                ViewBag.TemplateName = template.FocalPoint ?? $"Template ({template.Id.ToString().Substring(0,8)})";
+                // The AddIndicator.cshtml view should be updated to use @model VM_KRIIndicatorCreate
+                return View("AddIndicator",model); // Explicitly name view if it's not already AddIndicator.cshtml
             }
             return NotFound();
         }
@@ -123,17 +126,13 @@ namespace Operational_Risk_Management.Controllers
         public async Task<IActionResult> AddIndicator(VM_KRIIndicatorCreate model) // POST
         {
             if (!ViewStaticState.IsAdmin && !ViewStaticState.IsRiskManager) return Forbid();
-            // FluentValidation runs automatically due to Program.cs setup
-            if (!ModelState.IsValid) // Rely on ModelState
+
+            if (!ModelState.IsValid)
             {
-                // Need to fetch the template again if returning the view
                 var template = await _kriTemplateRepository.GetByIdAsync(model.TemplateId);
-                if (template == null)
-                {
-                    return NotFound(); // Or handle appropriately
-                }
-                // Pass the template back to the view if needed, or just return View(model)
-                return View(template); // Assuming AddIndicator view needs the Template object
+                ViewBag.TemplateName = template?.FocalPoint ?? $"Template ({model.TemplateId.ToString().Substring(0,8)})";
+                // The AddIndicator.cshtml view should be updated to use @model VM_KRIIndicatorCreate
+                return View("AddIndicator",model);
             }
             await _kriTemplateRepository.AddTemplateIndicatorAsync(model);
             TempData["msg-success"] = "New Indicator added successfully."; // Corrected message

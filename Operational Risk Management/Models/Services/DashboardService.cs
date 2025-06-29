@@ -21,10 +21,17 @@ namespace Operational_Risk_Management.Services
             _context = context;
         }
 
-        public async Task<IncidentDashboardDTO> GetDashboardDataAsync(DateTime? startDate, DateTime? endDate)
+        public async Task<IncidentDashboardDTO> GetDashboardDataAsync(DateTime? startDate, DateTime? endDate, string requestingRole, string requestingUserId, string requestingDepartment)
         {
-            // Apply date filters if provided
             var query = _context.Incidents.AsQueryable();
+
+            // Actual TODO: Apply filtering based on requestingRole, requestingUserId, requestingDepartment
+            // if (requestingRole == ViewStaticState.RoleUploader) // Assuming "Uploader" maps to a non-admin user role
+            // {
+            //    // Example: Filter incidents created by the user or for their department
+            //    query = query.Where(i => i.CreateBy == requestingUserId || i.BranchDepartmentUnit == requestingDepartment);
+            // }
+            // else if (requestingRole == "SomeOtherLimitedRole") { ... }
 
             if (startDate.HasValue)
             {

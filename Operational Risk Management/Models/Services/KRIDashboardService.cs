@@ -26,9 +26,20 @@ namespace Operational_Risk_Management.Services
             _context = context;
         }
 
-        public async Task<KRIDashboardDataDTO> GetRiskManagementDashboardDataAsync(DateTime? startDate, DateTime? endDate)
+        public async Task<KRIDashboardDataDTO> GetRiskManagementDashboardDataAsync(DateTime? startDate, DateTime? endDate, string requestingRole, string requestingUserId, string requestingDepartment)
         {
-            var SubmissionsQuery = ApplyDateFilter(_context.Submissions, startDate, endDate);
+            var SubmissionsQuery = _context.Submissions.AsQueryable();
+
+            // Actual TODO: Apply filtering based on requestingRole, requestingUserId, requestingDepartment
+            // For example, if role is "Uploader", filter by department or focal point (userId as focal point name)
+            // if (requestingRole == ViewStaticState.RoleUploader)
+            // {
+            //     // This requires templates to be joined to get FocalPoint or DepartmentId
+            //     // Example: SubmissionsQuery = SubmissionsQuery.Where(s => s.Indicator.Template.Department.Name == requestingDepartment);
+            //     // Or: SubmissionsQuery = SubmissionsQuery.Where(s => s.Indicator.Template.FocalPoint == requestingUserId);
+            // }
+
+            SubmissionsQuery = ApplyDateFilter(SubmissionsQuery, startDate, endDate);
 
             var dashboardData = new KRIDashboardDataDTO
             {
