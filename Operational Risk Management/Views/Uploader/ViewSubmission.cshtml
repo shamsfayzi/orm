@@ -186,13 +186,14 @@
                                         <span class="text-xs text-gray-500">@attachment.Size</span>
                                     </div>
                                 </div>
-                                @if (!Model.Submission.WindowLocked)
+                                @if (!Model.Submission.WindowLocked || Model.Submission.WindowOverride == true) // Allow delete if window open OR override active
                                 {
-                                    <a href="@Url.Action("DeleteAttachment", new { id = attachment.Id })"
-                                       class="text-red-500 hover:text-red-700 ml-2 p-1 rounded-full hover:bg-red-100 transition-colors"
-                                       onclick="return confirm('Are you sure you want to delete this attachment?');">
-                                        <i class="fas fa-trash-alt fa-sm"></i>
-                                    </a>
+                                    <form asp-action="DeleteAttachment" asp-controller="Uploader" asp-route-id="@attachment.Id" method="post" class="inline ml-2" onsubmit="return confirm('Are you sure you want to delete this attachment?');">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="text-red-500 hover:text-red-700 p-1 rounded-full hover:bg-red-100 transition-colors" title="Delete Attachment">
+                                            <i class="fas fa-trash-alt fa-sm"></i>
+                                        </button>
+                                    </form>
                                 }
                             </div>
                         }
@@ -368,11 +369,14 @@
                     });
 
                     try {
+                        const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
                         const response = await fetch('@Url.Action("UploadAttachments", "Uploader")', {
                             method: 'POST',
                             body: formData,
                             headers: {
-                                'Accept': 'application/json'
+                                'Accept': 'application/json',
+                                'RequestVerificationToken': token
                             }
                         });
 
@@ -411,15 +415,27 @@
                 overrideAccessReq() {
                     if (this.pendingRequest || !this.notRequested) return;
 
+                    const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
                     axios.post('/Uploader/RequestOverride', {
                         submissionId: this.submissionId,
                         reason: this.overrideReason,
-                        CreatedByFullName:"Shamsullah"
+                        CreatedByFullName: "@ViewStaticState.CurrentUserName" // Use ViewStaticState for consistency
+                    }, {
+                        headers: {
+                            'RequestVerificationToken': token
+                        }
                     }).then(res => {
                         alert("Request submitted.");
                         this.pendingRequest = true;
                     }).catch(error => {
-                        alert("Error: " + error.message);
+                        let errorMessage = "Error submitting request.";
+                        if (error.response && error.response.data && error.response.data.message) {
+                            errorMessage = error.response.data.message;
+                        } else if (error.message) {
+                            errorMessage = error.message;
+                        }
+                        alert(errorMessage);
+                        console.error("Override request error:", error.response || error);
                     });
                 },
                 alreadyRequested() {

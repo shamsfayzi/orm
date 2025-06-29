@@ -1,0 +1,71 @@
+@model Operational_Risk_Management.Models.View_Models.SubmissionWindows.VM_SubmissionWindow
+@using Operational_Risk_Management.Models // For ViewStaticState
+
+@{
+    ViewData["Title"] = "Edit Submission Window";
+    var frequencies = new List<SelectListItem>
+    {
+        new SelectListItem { Value = "Monthly", Text = "Monthly" },
+        new SelectListItem { Value = "Quarterly", Text = "Quarterly" },
+        new SelectListItem { Value = "Semi-Annually", Text = "Semi-Annually" },
+        new SelectListItem { Value = "Annually", Text = "Annually" }
+    };
+}
+
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-2xl font-semibold text-gray-800 mb-6">@ViewData["Title"]</h1>
+
+    @if (ViewStaticState.IsAdmin)
+    {
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <form asp-action="Edit">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="Id" />
+                <div asp-validation-summary="ModelOnly" class="text-red-600 mb-4"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label asp-for="Frequency" class="block text-sm font-medium text-gray-700"></label>
+                        <select asp-for="Frequency" asp-items="frequencies" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <option value="">-- Select Frequency --</option>
+                        </select>
+                        <span asp-validation-for="Frequency" class="text-red-600 text-sm"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="OpenDaysBeforePeriodEnd" class="block text-sm font-medium text-gray-700"></label>
+                        <input asp-for="OpenDaysBeforePeriodEnd" type="number" class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                        <span asp-validation-for="OpenDaysBeforePeriodEnd" class="text-red-600 text-sm"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="CloseDaysAfterPeriodEnd" class="block text-sm font-medium text-gray-700"></label>
+                        <input asp-for="CloseDaysAfterPeriodEnd" type="number" class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                        <span asp-validation-for="CloseDaysAfterPeriodEnd" class="text-red-600 text-sm"></span>
+                    </div>
+
+                    <div class="md:col-span-2 flex items-center">
+                        <input asp-for="IsActive" type="checkbox" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" />
+                        <label asp-for="IsActive" class="ml-2 block text-sm text-gray-900"></label>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex justify-end space-x-3">
+                    <a asp-action="Index" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-4 rounded-md transition-colors">Cancel</a>
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    }
+    else
+    {
+        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4" role="alert">
+            <p class="font-bold">Access Denied</p>
+            <p>You do not have permission to edit submission windows.</p>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

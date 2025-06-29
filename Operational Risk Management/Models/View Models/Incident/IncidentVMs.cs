@@ -227,5 +227,10 @@ namespace Operational_Risk_Management.Models.View_Models.Incident
         public bool? RequiresRevision { get; set; }
         public int PageNumber { get; set; } = 1;
         public int PageSize { get; set; } = 10;
+
+        // Properties for user context based filtering
+        public string RequestingUserId { get; set; }
+        public string RequestingUserDepartment { get; set; } // Added for department-based filtering
+        public bool IsRequestingUserAdminOrManager { get; set; }
     }
 }
