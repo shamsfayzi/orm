@@ -67,8 +67,7 @@
                 <span class="ml-1 text-sm font-medium">All Submissions</span>
             </a>
 
-            @* Placeholder for Override Request Management - visible to Admin/RiskManager *@
-            <a href="#" class="flex items-center px-4 py-2.5 text-gray-700 rounded-lg hover:bg-blue-50 transition-all duration-200 @(currentPage == "overrides" ? " bg-blue-50 text-blue-500" : "")">
+            <a href="@Url.Action("Index", "Override")" class="flex items-center px-4 py-2.5 text-gray-700 rounded-lg hover:bg-blue-50 transition-all duration-200 @(currentPage == "overrides" ? " bg-blue-50 text-blue-500" : "")">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A9 9 0 0121.5 12h-3.01M3.5 12H.5a9 9 0 011.984-5.618M12 2.5A9.5 9.5 0 002.5 12M12 21.5a9.5 9.5 0 009.5-9.5"></path></svg>
                 <span class="ml-1 text-sm font-medium">Override Requests</span>
             </a>

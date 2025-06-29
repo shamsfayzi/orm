@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Operational_Risk_Management.Models; // For ViewStaticState
 using Operational_Risk_Management.Models.Common;
 using Operational_Risk_Management.Models.Entities;
 using Operational_Risk_Management.Models.Extensions;
@@ -21,18 +22,20 @@ namespace Operational_Risk_Management.Controllers
         
         public async Task<IActionResult> Index(PaginatedModel<Department> model)
         {
-
+            if (!ViewStaticState.IsAdmin) return Forbid();
             return View(await departmentRepository.GetTableAsync(model));
         }
         [HttpGet]
         public async Task<IActionResult> Create()
         {
+            if (!ViewStaticState.IsAdmin) return Forbid();
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(VM_DepartmentCreate model)
         {
+            if (!ViewStaticState.IsAdmin) return Forbid();
             if(!ModelState.IsValid)
             {
                 return View(model);
@@ -42,8 +45,9 @@ namespace Operational_Risk_Management.Controllers
             return RedirectToAction("index");
         }
         [HttpPost]
-        public async Task<bool> Delete(Guid id)
+        public async Task<bool> Delete(Guid id) // AJAX endpoint
         {
+            if (!ViewStaticState.IsAdmin) return false; // Or throw for AJAX
             if (!await departmentRepository.IsExistedByIdAsync(id))
             {
                 return false;
@@ -54,6 +58,7 @@ namespace Operational_Risk_Management.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(Guid Id)
         {
+            if (!ViewStaticState.IsAdmin) return Forbid();
             if(!await departmentRepository.IsExistedByIdAsync(Id,out var dep))
             {
                 return NotFound();
@@ -64,6 +69,7 @@ namespace Operational_Risk_Management.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(VM_DepartmentUpdate model)
         {
+            if (!ViewStaticState.IsAdmin) return Forbid();
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -74,6 +80,7 @@ namespace Operational_Risk_Management.Controllers
         }
         public bool CheckDepartmentNameAvailability(string departmentName, Guid? id)
         {
+            // AJAX utility, access control might be less strict or handled by context
             return departmentRepository.IsDepartmentExists(departmentName, id);
         }
     }

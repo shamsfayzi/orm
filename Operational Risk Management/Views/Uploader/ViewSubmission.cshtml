@@ -28,9 +28,15 @@
                 <p class="text-sm text-gray-500 mt-1">Submitted on: @Html.DisplayFor(_ => @Model.Submission.UpdatedDate,"datetime_date_value")</p>
                 <p class="text-sm text-gray-500">Indicator Code: @Model.Submission.Indicator.RfNo</p>
             </div>
-            <div class="flex items-center px-4 py-2 rounded-lg border text-sm font-semibold @statusClass"> 
-                <i class="@statusIcon mr-2"></i> 
-               <span>@Model.Submission.Status</span>
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center px-4 py-2 rounded-lg border text-sm font-semibold @statusClass">
+                    <i class="@statusIcon mr-2"></i>
+                    <span>@Model.Submission.Status</span>
+                </div>
+                <a asp-action="Submissions" asp-controller="Uploader" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors text-sm font-medium">
+                    <i class="fas fa-arrow-left mr-2"></i>Back to Submissions
+                </a>
+            </div>
             </div>
         </div>
     </div>

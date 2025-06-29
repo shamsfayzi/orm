@@ -1,6 +1,7 @@
 ﻿using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Operational_Risk_Management.Models; // For ViewStaticState
 using Microsoft.AspNetCore.Mvc;
 using Operational_Risk_Management.Models.View_Models.Incident;
 using Operational_Risk_Management.Services.Interfaces;
@@ -36,10 +37,11 @@ namespace Operational_Risk_Management.Controllers
                                   //_userManager = userManager;
             }
 
-            [Authorize]
+            [Authorize] // Existing real authorization
             [HttpGet]
             public IActionResult CreateIncident()
             {
+                if (!ViewStaticState.IsUploader && !ViewStaticState.IsAdmin && !ViewStaticState.IsRiskManager) return Forbid();
                 var model = new CreateIncidentPageViewModel();
                 // Populate SelectListItems for Enums
                 model.IncidentTypes = Enum.GetValues(typeof(IncidentType)).Cast<IncidentType>()
@@ -59,10 +61,11 @@ namespace Operational_Risk_Management.Controllers
             }
 
             [HttpPost]
-            [Authorize(Roles = "Admin,RiskManagement")]
+            [Authorize(Roles = "Admin,RiskManagement")] // Existing real authorization
             [ValidateAntiForgeryToken]
             public async Task<IActionResult> AddComment(AddIncidentCommentViewModel model)
             {
+                if (!ViewStaticState.IsAdmin && !ViewStaticState.IsRiskManager) return Forbid();
                 if (!ModelState.IsValid)
                 {
                     // Option 1: Redirect back with TempData for error (simpler for now)
@@ -95,10 +98,11 @@ namespace Operational_Risk_Management.Controllers
             }
 
             [HttpPost]
-            [Authorize]
+            [Authorize] // Existing real authorization
             [ValidateAntiForgeryToken]
             public async Task<IActionResult> CreateIncident(CreateIncidentPageViewModel model)
             {
+                if (!ViewStaticState.IsUploader && !ViewStaticState.IsAdmin && !ViewStaticState.IsRiskManager) return Forbid();
                 if (!ModelState.IsValid)
                 {
                     // Re-populate dropdowns for the view if returning the model
@@ -232,10 +236,10 @@ namespace Operational_Risk_Management.Controllers
                 return Ok(incidents);
             }
 
-            [Authorize(Roles = "Admin,RiskManagement")]
-
+            [Authorize(Roles = "Admin,RiskManagement")] // Existing real authorization
             public async Task<IActionResult> ReviewIncident([FromBody] ReviewIncidentDTO model)
             {
+                if (!ViewStaticState.IsAdmin && !ViewStaticState.IsRiskManager) return Forbid();
                 if (!ModelState.IsValid)
                 {
                     return BadRequest(ModelState);
@@ -253,11 +257,11 @@ namespace Operational_Risk_Management.Controllers
             }
 
             [HttpPost("{id}/close")]
-            [Authorize(Roles = "Admin,RiskManagement")]
-
+            [Authorize(Roles = "Admin,RiskManagement")] // Existing real authorization
             public async Task<IActionResult> CloseIncident(Guid id)
             {
-                var userId = User.FindFirst("sub")?.Value;
+                if (!ViewStaticState.IsAdmin && !ViewStaticState.IsRiskManager) return Forbid();
+                var userId = ViewStaticState.CurrentUserId.ToString(); // Using ViewStaticState
                 var result = await _incidentService.CloseIncidentAsync(id, userId);
 
                 if (result)
@@ -330,10 +334,10 @@ namespace Operational_Risk_Management.Controllers
             //}
 
 
-            [Authorize(Roles = "Admin,RiskManagement")]
-
+            [Authorize(Roles = "Admin,RiskManagement")] // Existing real authorization
             public async Task<IActionResult> GetIncidentStatistics([FromQuery] DateTime? startDate, [FromQuery] DateTime? endDate, [FromQuery] string departmentUnit)
             {
+                if (!ViewStaticState.IsAdmin && !ViewStaticState.IsRiskManager) return Forbid();
                 var statistics = await _incidentService.GetIncidentStatisticsAsync(startDate, endDate, departmentUnit);
                 return Ok(statistics);
             }
@@ -342,6 +346,9 @@ namespace Operational_Risk_Management.Controllers
 
             public async Task<IActionResult> ExportIncidentToPdf(Guid id)
             {
+                // Access to this might be determined by ability to view the incident,
+                // but generating reports is often a higher privilege.
+                if (!ViewStaticState.IsAdmin && !ViewStaticState.IsRiskManager) return Forbid();
                 var pdfData = await _incidentService.ExportIncidentToPdfAsync(id);
 
                 if (pdfData != null)
@@ -355,10 +362,16 @@ namespace Operational_Risk_Management.Controllers
 
             public async Task<IActionResult> ExportIncidentsToExcel([FromQuery] IncidentFilterDTO filter)
             {
-                var userId = User.FindFirst("sub")?.Value;
-                var isAdmin = User.IsInRole("Admin") || User.IsInRole("RiskManagement");
+                if (!ViewStaticState.IsAdmin && !ViewStaticState.IsRiskManager) return Forbid();
 
-                var excelData = await _incidentService.ExportIncidentsToExcelAsync(filter, userId, isAdmin);
+                // Populate user context for filtering if the service method needs it explicitly here
+                // However, GetIncidentsAsync (called by ExportIncidentsToExcelAsync) should already use context from filter
+                filter.RequestingUserId = ViewStaticState.CurrentUserId.ToString();
+                filter.IsRequestingUserAdminOrManager = ViewStaticState.IsAdmin || ViewStaticState.IsRiskManager;
+                filter.RequestingUserDepartment = ViewStaticState.CurrentUserDepartment;
+
+
+                var excelData = await _incidentService.ExportIncidentsToExcelAsync(filter, filter.RequestingUserId, filter.IsRequestingUserAdminOrManager);
 
                 if (excelData != null)
                 {
@@ -389,7 +402,7 @@ namespace Operational_Risk_Management.Controllers
                 return File(fileDownloadViewModel.FileContents, fileDownloadViewModel.ContentType, fileDownloadViewModel.FileName);
             }
 
-            [Authorize]
+            [Authorize] // Existing real authorization
             [HttpGet]
             public async Task<IActionResult> EditIncident(Guid id)
             {
@@ -404,10 +417,20 @@ namespace Operational_Risk_Management.Controllers
                     return NotFound();
                 }
 
-                var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                bool isAdmin = User.IsInRole("Admin") || User.IsInRole("RiskManagement");
+                // Authorization check using ViewStaticState
+                bool canEdit = ViewStaticState.IsAdmin || ViewStaticState.IsRiskManager;
+                if (!canEdit)
+                {
+                    // Assuming incidentDetailDto.CreateBy stores the username used in ViewStaticState.CurrentUserName
+                    // And IncidentStatus is an enum available here.
+                    if (incidentDetailDto.CreateBy == ViewStaticState.CurrentUserName &&
+                        (incidentDetailDto.IncidentStatus == Operational_Risk_Management.Models.Incident.IncidentStatus.Open || incidentDetailDto.RequiresRevision))
+                    {
+                        canEdit = true;
+                    }
+                }
 
-                if (!isAdmin && incidentDetailDto.CreateBy != currentUserId)
+                if (!canEdit)
                 {
                     return Forbid();
                 }
@@ -433,10 +456,25 @@ namespace Operational_Risk_Management.Controllers
             }
 
             [HttpPost]
-            [Authorize]
+            [Authorize] // Existing real authorization
             [ValidateAntiForgeryToken]
             public async Task<IActionResult> EditIncident(EditIncidentPageViewModel model)
             {
+                // Authorization check using ViewStaticState (repeated for POST)
+                var incidentToUpdateForAuthCheck = await _incidentService.GetIncidentDetailAsync(model.Id);
+                if (incidentToUpdateForAuthCheck == null) return NotFound();
+
+                bool canEdit = ViewStaticState.IsAdmin || ViewStaticState.IsRiskManager;
+                if (!canEdit)
+                {
+                    if (incidentToUpdateForAuthCheck.CreateBy == ViewStaticState.CurrentUserName &&
+                        (incidentToUpdateForAuthCheck.IncidentStatus == Operational_Risk_Management.Models.Incident.IncidentStatus.Open || incidentToUpdateForAuthCheck.RequiresRevision))
+                    {
+                        canEdit = true;
+                    }
+                }
+                if (!canEdit) return Forbid();
+
                 if (!ModelState.IsValid)
                 {
                     model.IncidentTypes = Enum.GetValues(typeof(IncidentType)).Cast<IncidentType>()

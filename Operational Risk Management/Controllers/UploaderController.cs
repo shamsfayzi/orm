@@ -56,6 +56,7 @@ namespace Operational_Risk_Management.Controllers
 
         public async Task<IActionResult> Index()
         {
+            if (!ViewStaticState.IsUploader && !ViewStaticState.IsAdmin) return Forbid();
             var uploaderUserName = ViewStaticState.CurrentUserName;
             var uploaderDepartment = ViewStaticState.CurrentUserDepartment; // Assuming this is relevant for the service
 
@@ -96,6 +97,7 @@ namespace Operational_Risk_Management.Controllers
 
         public async Task<IActionResult> Indicators()
         {
+            if (!ViewStaticState.IsUploader && !ViewStaticState.IsAdmin) return Forbid();
             var uploaderUserName = ViewStaticState.CurrentUserName;
             var uploaderDepartment = ViewStaticState.CurrentUserDepartment; // Assuming this is relevant for the service
 
@@ -108,11 +110,13 @@ namespace Operational_Risk_Management.Controllers
 
         public async Task<IActionResult> IndicatorDetails(Guid id)
         {
+            if (!ViewStaticState.IsUploader && !ViewStaticState.IsAdmin) return Forbid();
             var indicator = await _indicatorRepository.GetAsync(filter: a => a.Id == id, includeProperties: "Template,Submissions");
             return indicator  == null ?  NotFound() : View(_mapper.Map<VM_IndicatorDetails>(indicator.First()));
         }
         public async Task<IActionResult> Submissions(FilterModelForSubmissions model)
         {
+            if (!ViewStaticState.IsUploader && !ViewStaticState.IsAdmin) return Forbid();
             var username = ViewStaticState.CurrentUserName; // Using ViewStaticState
             var template = await _customeTemplateRepo.GetTemplateByFocalPoint(username);
 
@@ -130,6 +134,7 @@ namespace Operational_Risk_Management.Controllers
         [HttpGet]
         public async Task<IActionResult> ViewSubmission(Guid id)
         {
+            if (!ViewStaticState.IsUploader && !ViewStaticState.IsAdmin) return Forbid();
             var submissionFromDb = await _submissionRepository.GetAsync(
                 filter: a => a.Id == id,
                 includeProperties: "Indicator,Attachments,Indicator.Template,Indicator.Template.Department,Feedbacks");
@@ -186,10 +191,11 @@ namespace Operational_Risk_Management.Controllers
             return Ok(new { success = true, message, files = savedFiles });
         
         }
-        [HttpPost] // Assuming this should be POST, and thus needs AntiForgeryToken
-        [ValidateAntiForgeryToken] // Added for AJAX, client must send token
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> RequestOverride([FromBody] VM_CR_OverrideAccessRequest overrideAccessRequest)
         {
+            if (!ViewStaticState.IsUploader) return Forbid(); // Strictly Uploader
             if (!ModelState.IsValid)
             {
                 return BadRequest(new { success = false, message = "Invalid request data." });
@@ -206,7 +212,8 @@ namespace Operational_Risk_Management.Controllers
         }
         public async Task<IActionResult> CheckOverrideStatus(string submissionId)
         {
-            var currentUser = User.Identity.Name;
+            if (!ViewStaticState.IsUploader) return Forbid();
+            var currentUser = ViewStaticState.CurrentUserName; // Using ViewStaticState
 
             var now = DateTime.UtcNow;
             var Id = Guid.TryParse(submissionId, out var guid) ? guid : Guid.Empty;
@@ -225,6 +232,7 @@ namespace Operational_Risk_Management.Controllers
 
         public async Task<IActionResult> GetFeedbacks(string SubmissionId)
         {
+            if (!ViewStaticState.IsUploader && !ViewStaticState.IsAdmin) return Forbid();
             var guid = Guid.Parse(SubmissionId);
             var submissionFromDb = await _submissionRepository.GetAsync(filter: a => a.Id == guid, includeProperties: "Feedbacks");
             var submission = submissionFromDb.FirstOrDefault();
@@ -240,6 +248,7 @@ namespace Operational_Risk_Management.Controllers
         [HttpGet]
         public async Task<IActionResult> DownloadAttachment(Guid id)
         {
+            if (!ViewStaticState.IsUploader && !ViewStaticState.IsAdmin) return Forbid();
             var attachment = await _attachmentRepo.GetByIdAsync(id); // Assuming IAttachmentRepository has GetByIdAsync
 
             if (attachment == null)
@@ -344,21 +353,34 @@ namespace Operational_Risk_Management.Controllers
                     DownloadUrl = Url.Action("DownloadAttachment", "Uploader", new { id = a.Id })
                 }).ToList();
 
-            // Window Lock and Override Logic (Simplified - needs robust service)
-            // This logic should ideally come from a dedicated service that checks SubmissionWindows, etc.
-            model.IsWindowLocked = indicator.Submissions.Any(s => s.ReportingMonth.Year == model.ReportingMonth.Year && s.ReportingMonth.Month == model.ReportingMonth.Month && s.WindowLocked);
-            var activeOverride = await _context.OverrideAccessRequests
-                .FirstOrDefaultAsync(o => o.SubmissionId == model.SubmissionId &&
-                                     o.RequestStatus == OverrideRequestStatus.Approved &&
-                                     o.EndTime.HasValue && o.EndTime.Value > DateTime.UtcNow);
-            model.HasActiveOverride = activeOverride != null;
-            model.OverrideEndTime = activeOverride?.EndTime;
+            // Use SubmissionCycleService to get current state
+            var submissionState = await _submissionCycleService.GetIndicatorSubmissionStateAsync(indicator.Id, ViewStaticState.CurrentUserId.ToString());
 
-            if (model.IsWindowLocked && !model.HasActiveOverride)
+            model.IsWindowLocked = (submissionState.CurrentPeriodStatus == "Locked"); // Or however the service defines locked
+            model.HasActiveOverride = false; // Default, check for explicit override below
+
+            if (model.SubmissionId.HasValue) // Only check for active overrides if we are editing an existing submission
             {
-                 TempData["msg-info"] = $"The submission window for {model.ReportingMonth:MMMM yyyy} is currently locked. You can view details or request an override.";
-                 // If editing an existing submission that's locked, redirect to ViewSubmission which has override request UI
-                 if(model.SubmissionId.HasValue) return RedirectToAction("ViewSubmission", new { id = model.SubmissionId.Value });
+                var activeOverrideRequest = await _context.OverrideAccessRequests
+                    .FirstOrDefaultAsync(o => o.SubmissionId == model.SubmissionId.Value &&
+                                         o.RequestStatus == OverrideRequestStatus.Approved &&
+                                         o.EndTime.HasValue && o.EndTime.Value > DateTime.UtcNow);
+                model.HasActiveOverride = activeOverrideRequest != null;
+                model.OverrideEndTime = activeOverrideRequest?.EndTime;
+            }
+
+            // model.CanEdit is a computed property in VM, it will use IsWindowLocked and HasActiveOverride.
+            // If not CanEdit, redirect or show message
+            if (!model.CanEdit)
+            {
+                 TempData["msg-info"] = $"The submission window for {model.ReportingMonth:MMMM yyyy} for '{indicator.IndicatorName}' is currently locked or not open for submission.";
+                 if(model.SubmissionId.HasValue)
+                 {
+                    // If there's an existing submission, allow viewing it (which has override request option)
+                    return RedirectToAction("ViewSubmission", new { id = model.SubmissionId.Value });
+                 }
+                 // If new submission and window is locked, perhaps redirect to indicators list or show a specific message page
+                 return RedirectToAction(nameof(Indicators));
             }
 
             return View(model);
@@ -373,15 +395,20 @@ namespace Operational_Risk_Management.Controllers
             var indicator = await _indicatorRepository.GetByIdAsync(model.IndicatorId);
             if (indicator == null) ModelState.AddModelError("", "Associated indicator not found.");
 
-            // Re-check window lock & override status before saving
-            bool isWindowLocked = indicator.Submissions.Any(s => s.ReportingMonth.Year == model.ReportingMonth.Year && s.ReportingMonth.Month == model.ReportingMonth.Month && s.WindowLocked);
-            var activeOverride = await _context.OverrideAccessRequests
-                .FirstOrDefaultAsync(o => o.SubmissionId == model.SubmissionId &&
-                                     o.RequestStatus == OverrideRequestStatus.Approved &&
-                                     o.EndTime.HasValue && o.EndTime.Value > DateTime.UtcNow);
-            bool hasActiveOverride = activeOverride != null;
+            // Re-check window lock & override status before saving using the service
+            var submissionState = await _submissionCycleService.GetIndicatorSubmissionStateAsync(model.IndicatorId, ViewStaticState.CurrentUserId.ToString());
+            bool isActuallyWindowLocked = (submissionState.CurrentPeriodStatus == "Locked");
+            bool hasActuallyActiveOverride = false;
+            if (model.SubmissionId.HasValue)
+            {
+                 var activeOverrideRequest = await _context.OverrideAccessRequests
+                    .FirstOrDefaultAsync(o => o.SubmissionId == model.SubmissionId.Value &&
+                                         o.RequestStatus == OverrideRequestStatus.Approved &&
+                                         o.EndTime.HasValue && o.EndTime.Value > DateTime.UtcNow);
+                hasActuallyActiveOverride = activeOverrideRequest != null;
+            }
 
-            if(isWindowLocked && !hasActiveOverride)
+            if(isActuallyWindowLocked && !hasActuallyActiveOverride)
             {
                 ModelState.AddModelError("", "Submission window is locked, and no active override found. Cannot save changes.");
             }
@@ -494,11 +521,13 @@ namespace Operational_Risk_Management.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken] // Good practice, ensure form in ViewSubmission.cshtml has this for the delete action.
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteAttachment(Guid id)
         {
-            // In a real app, ensure user is authorized to delete this attachment (e.g., owns the submission or is admin)
-            // And that the submission is not in a state that prevents modification.
+            // Uploader can delete if submission window is open/override active. Admin might have broader delete.
+            // For now, basic check. More granular permission would be better.
+            if (!ViewStaticState.IsUploader && !ViewStaticState.IsAdmin) return Forbid();
+
 
             var attachment = await _attachmentRepo.GetByIdAsync(id);
             if (attachment == null)

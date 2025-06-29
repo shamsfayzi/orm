@@ -54,7 +54,8 @@ builder.Services.AddDbContext<ApplicationDBContext>(opt =>
     opt.UseSqlServer(connectionString);
     opt.EnableDetailedErrors();
 });
-builder.AddServices();
+builder.AddServices(); // Assuming other services are registered within this call or before/after it.
+builder.Services.AddScoped<ISubmissionCycleService, SubmissionCycleService>(); // Added
 builder.Services.AddHttpContextAccessor();
 
 

@@ -39,13 +39,13 @@ namespace Operational_Risk_Management.Controllers
             // Assuming CurrentUserDepartment might be an ID or Name. Services would need to handle.
             var userDepartmentIdentifier = ViewStaticState.CurrentUserDepartment;
 
-            // TODO: Update service method signatures to accept user context for filtering
-            // var IncidentdashboardData = await _IncidentDashboardService.GetDashboardDataAsync(startDate, endDate, userRole, userName, userDepartmentIdentifier);
-            // var KRIdashboardData = await _KRIdashboardService.GetRiskManagementDashboardDataAsync(startDate, endDate, userRole, userName, userDepartmentIdentifier);
+            // Updated to use service methods that accept user context
+            var IncidentdashboardData = await _IncidentDashboardService.GetDashboardDataAsync(startDate, endDate, userRole, userName, userDepartmentIdentifier);
+            var KRIdashboardData = await _KRIdashboardService.GetRiskManagementDashboardDataAsync(startDate, endDate, userRole, userName, userDepartmentIdentifier);
 
-            // Using existing service calls for now, highlighting the need for them to be role-aware internally or via parameters
-            var IncidentdashboardData = await _IncidentDashboardService.GetDashboardDataAsync(startDate, endDate);
-            var KRIdashboardData = await _KRIdashboardService.GetRiskManagementDashboardDataAsync(startDate, endDate);
+            // Commenting out old calls
+            // var IncidentdashboardData = await _IncidentDashboardService.GetDashboardDataAsync(startDate, endDate);
+            // var KRIdashboardData = await _KRIdashboardService.GetRiskManagementDashboardDataAsync(startDate, endDate);
 
 
             return View(new DashboardDTO
@@ -243,8 +243,13 @@ namespace Operational_Risk_Management.Controllers
             // filterModel.IsUserAdminOrManager = ViewStaticState.IsAdmin || ViewStaticState.IsRiskManager;
             // filterModel.RequestingUserDepartment = ViewStaticState.CurrentUserDepartment;
 
+            // Populate user context in filterModel
+            filterModel.RequestingUserId = ViewStaticState.CurrentUserId.ToString();
+            filterModel.IsRequestingUserAdminOrManager = ViewStaticState.IsAdmin || ViewStaticState.IsRiskManager;
+            filterModel.RequestingUserDepartment = ViewStaticState.CurrentUserDepartment;
+
             // Get submissions with filters
-            var submissions = await _KRIdashboardService.GetSubmissionsWithFiltersAsync(filterModel, type /*, user context if passed directly */);
+            var submissions = await _KRIdashboardService.GetSubmissionsWithFiltersAsync(filterModel, type);
 
             return View("SubmissionDetails", submissions);
         }
